@@ -1,8 +1,10 @@
-package repositories;
+package core.repositories;
 
 import java.util.ArrayList;
 
-import database.abstracts.DatabaseManager;
+import core.database.abstracts.DatabaseManager;
+import core.models.concretes.Advisor;
+import core.models.concretes.Student;
 
 public class UserRepository {
     private DatabaseManager dbManager;

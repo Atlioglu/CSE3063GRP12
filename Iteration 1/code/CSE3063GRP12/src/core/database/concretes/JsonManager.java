@@ -1,8 +1,9 @@
-package database.concretes;
+package core.database.concretes;
 
 import java.util.Map;
 
-import database.abstracts.DatabaseManager;
+import core.database.abstracts.DatabaseManager;
+
 
 public class JsonManager extends DatabaseManager {
     public Map<String,Object> read(String key){

@@ -1,9 +1,12 @@
+package core.repositories;
+
 import java.util.ArrayList;
-package repositories
+import core.Enums.ApprovalState;
+import core.database.abstracts.DatabaseManager;
 
 
 public class CourseEnrollmentRepository{
-    private DBManager dbManager;
+    private DatabaseManager dbManager;
     private String path;
     public CourseEnrollmentRepository(){
 

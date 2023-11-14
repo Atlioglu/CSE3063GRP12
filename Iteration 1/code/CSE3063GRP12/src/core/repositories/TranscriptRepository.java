@@ -1,8 +1,11 @@
-package repositories;
+package core.repositories;
 
 import java.util.ArrayList;
 
-import database.abstracts.DatabaseManager;
+import core.database.abstracts.DatabaseManager;
+import core.models.abstracts.User;
+import core.models.concretes.Transcript;
+
 
 public class TranscriptRepository{
     private DatabaseManager dbManager;
