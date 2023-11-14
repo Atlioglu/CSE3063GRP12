@@ -2,7 +2,7 @@ package core.models.concretes;
 
 import java.util.Map;
 
-import core.Enums.CourseGrade;
+import core.enums.CourseGrade;
 
 public class Semester {
     private String id;
