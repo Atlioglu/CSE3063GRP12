@@ -1,4 +1,4 @@
-package core.Database.abstracts;
+package database.abstracts;
 
 public abstract class DatabaseManager {
     

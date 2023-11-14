@@ -1,8 +1,12 @@
+package repositories;
+
 import java.util.ArrayList;
 
+import database.abstracts.DatabaseManager;
+
 public class UserRepository {
-    private DBManager dbManager;
-    private path String;
+    private DatabaseManager dbManager;
+    private String path;
 
     public UserRepository(){
 

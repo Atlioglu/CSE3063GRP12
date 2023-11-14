@@ -1,7 +1,11 @@
+package repositories;
+
 import java.util.ArrayList;
 
+import database.abstracts.DatabaseManager;
+
 public class CourseRepository{
-    private DBManager dbManager;
+    private DatabaseManager dbManager;
     private String path;
 
     public CourseRepository(){

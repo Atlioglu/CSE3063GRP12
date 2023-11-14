@@ -1,10 +1,14 @@
+package repositories;
+
 import java.util.ArrayList;
 
-public class TranskriptRepository{
-    private DBManager dbManager;
-    private path String;
+import database.abstracts.DatabaseManager;
 
-    public TranskriptRepository(){
+public class TranscriptRepository{
+    private DatabaseManager dbManager;
+    private String path;
+
+    public TranscriptRepository(){
 
     }
 

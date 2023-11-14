@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+package repositories
+
 
 public class CourseEnrollmentRepository{
     private DBManager dbManager;
     private String path;
-
     public CourseEnrollmentRepository(){
 
     }
@@ -18,7 +19,7 @@ public class CourseEnrollmentRepository{
         return null;
     }
 
-    public void updateEnrollment(String a, ApprovalState approvalState){
+    public void updateEnrollment(String studentId, ApprovalState approvalState){
 
     }
 }
