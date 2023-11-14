@@ -1,4 +1,4 @@
-package core.Enums;
+package core.enums;
 
 public enum AdvisorMenu implements Menu{
     CourseApproval, StudentList, Logout;

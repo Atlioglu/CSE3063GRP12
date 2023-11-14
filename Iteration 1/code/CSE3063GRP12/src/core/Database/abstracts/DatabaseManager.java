@@ -1,5 +1,3 @@
-package core.Database.abstracts;
+package core.database.abstracts;
 
-public abstract class DatabaseManager {
-    
-}
+public abstract class DatabaseManager {}

@@ -1,10 +1,17 @@
+package core.repositories;
+
 import java.util.ArrayList;
 
-public class TranskriptRepository{
-    private DBManager dbManager;
-    private path String;
+import core.database.abstracts.DatabaseManager;
+import core.models.abstracts.User;
+import core.models.concretes.Transcript;
 
-    public TranskriptRepository(){
+
+public class TranscriptRepository{
+    private DatabaseManager dbManager;
+    private String path;
+
+    public TranscriptRepository(){
 
     }
 

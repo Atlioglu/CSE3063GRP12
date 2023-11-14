@@ -1,4 +1,4 @@
-package core.Enums;
+package core.enums;
 
 public enum CourseGrade {
     AA(4.00),
