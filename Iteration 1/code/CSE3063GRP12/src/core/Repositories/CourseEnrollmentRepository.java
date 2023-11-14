@@ -10,10 +10,12 @@ public class CourseEnrollmentRepository{
     public CourseEnrollment getCourseEnrollmentByStudentId(int id){
 
 
+        return null;
     }
 
     public ArrayList<CourseEnrollment> getPendingEnrollments(){
 
+        return null;
     }
 
     public void updateEnrollment(String a, ApprovalState approvalState){
