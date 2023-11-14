@@ -2,7 +2,7 @@ package core.models.concretes;
 
 import java.util.ArrayList;
 import java.util.Map;
-import core.Enums.ApprovalState;
+import core.enums.ApprovalState;
 
 public class CourseEnrollment {
     private String id;
