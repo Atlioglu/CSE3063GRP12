@@ -1,4 +1,4 @@
-package enums;
+package core.Enums;
 
 public enum CourseSlot {
     one("08.30"),

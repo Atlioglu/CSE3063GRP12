@@ -1,4 +1,4 @@
-package enums;
+package core.Enums;
 
 public enum CourseDay {
     one("Monday"),
