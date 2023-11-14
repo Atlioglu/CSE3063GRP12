@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import core.database.abstracts.DatabaseManager;
 import core.enums.ApprovalState;
-
+import core.models.concretes.CourseEnrollment;
 
 public class CourseEnrollmentRepository{
     private DatabaseManager dbManager;

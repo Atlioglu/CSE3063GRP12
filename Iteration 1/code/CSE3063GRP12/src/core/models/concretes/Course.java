@@ -30,6 +30,7 @@ public class Course {
         this.courseCode = (String) attributes.get("courseCode");
         this.name = (String) attributes.get("name");
         this.credit = (Integer) attributes.get("credit");
+        // TODO: Implement the logic to assign the values from the map to the fields.
         this.sessions = (ArrayList<CourseSession>) attributes.get("sessions");
         this.prerequisites = (ArrayList<Course>) attributes.get("prerequisites");
         this.quota = (Integer) attributes.get("quota");
