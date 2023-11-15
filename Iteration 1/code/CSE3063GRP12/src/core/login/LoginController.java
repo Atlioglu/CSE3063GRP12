@@ -7,7 +7,7 @@ import core.models.abstracts.User;
 import core.models.concretes.Student;
 import core.models.concretes.Advisor;
 import core.enums.UserType;
-import core.main_menu.MenuController;
+//import core.main_menu.MenuController;
 
 public class LoginController {
     private LoginView loginView;
@@ -22,7 +22,7 @@ public class LoginController {
 
     // navigate to the menu
     public void navigateToMenu() {
-        new MenuController();
+     //   new MenuController();
     }
 
     // get username input from the user
