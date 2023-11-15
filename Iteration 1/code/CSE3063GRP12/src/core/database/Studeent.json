@@ -1,0 +1,107 @@
+[
+  {
+    "id": "1",
+    "firstName": "Taylor",
+    "lastName": "Jones",
+    "userName": "student1",
+    "password": "pass1",
+    "advisor": {
+      "id": "1",
+      "firstName": "Jordan",
+      "lastName": "Brown",
+      "userName": "advisor1",
+      "password": "pass1",
+      "listOfStudents": [
+        {
+          "id": "1",
+          "firstName": "Taylor",
+          "lastName": "Jones"
+        },
+        {
+            "id": "2",
+            "firstName": "Taylor2",
+            "lastName": "Jones2"
+          }
+      ]
+    }
+  },
+  {
+    "id": "2",
+    "firstName": "Taylor2",
+    "lastName": "Jones2",
+    "userName": "student2",
+    "password": "pass2",
+    "advisor": {
+      "id": "1",
+      "firstName": "Jordan",
+      "lastName": "Brown",
+      "userName": "advisor1",
+      "password": "pass1",
+      "listOfStudents": [
+        {
+          "id": "1",
+          "firstName": "Taylor",
+          "lastName": "Jones"
+        },
+        {
+            "id": "2",
+            "firstName": "Taylor2",
+            "lastName": "Jones2"
+          }
+      ]
+    }
+  },
+  {
+    "id": "3",
+    "firstName": "Taylor3",
+    "lastName": "Jones3",
+    "userName": "student3",
+    "password": "pass3",
+    "advisor": {
+      "id": "22",
+      "firstName": "Jordan22",
+      "lastName": "Brown22",
+      "userName": "advisor22",
+      "password": "pass22",
+      "listOfStudents": [
+        {
+          "id": "3",
+          "firstName": "Taylor3",
+          "lastName": "Jones3"
+        },
+        {
+            "id": "4",
+            "firstName": "Taylor4",
+            "lastName": "Jones4"
+          }
+      ]
+    }
+  },
+  {
+    "id": "4",
+    "firstName": "Taylor4",
+    "lastName": "Jones4",
+    "userName": "student4",
+    "password": "pass4",
+    "advisor": {
+      "id": "22",
+      "firstName": "Jordan22",
+      "lastName": "Brown22",
+      "userName": "advisor22",
+      "password": "pass22",
+      "listOfStudents": [
+        {
+          "id": "3",
+          "firstName": "Taylor3",
+          "lastName": "Jones3"
+        },
+        {
+            "id": "4",
+            "firstName": "Taylor4",
+            "lastName": "Jones4"
+          }
+      ]
+    }
+  }
+  
+]

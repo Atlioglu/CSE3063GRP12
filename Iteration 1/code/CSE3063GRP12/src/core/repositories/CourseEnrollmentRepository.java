@@ -14,7 +14,6 @@ public class CourseEnrollmentRepository{
     }
     public CourseEnrollment getCourseEnrollmentByStudentId(int id){
 
-
         return null;
     }
 
