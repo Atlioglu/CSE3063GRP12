@@ -7,7 +7,7 @@ import core.models.concretes.Advisor;
 import core.models.concretes.Student;
 
 public class UserRepository {
-    private DatabaseManager dbManager;
+    private DatabaseManager databaseManager;
     private String path;
 
     public UserRepository(){

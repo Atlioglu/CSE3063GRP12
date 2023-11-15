@@ -5,7 +5,7 @@ import core.database.abstracts.DatabaseManager;
 import core.models.concretes.Course;
 
 public class CourseRepository{
-    private DatabaseManager dbManager;
+    private DatabaseManager databaseManager;
     private String path;
 
     public CourseRepository(){}
