@@ -10,24 +10,33 @@ public class CourseSession {
     private String id;
     private Map<CourseDay, ArrayList<CourseSlot>> courseSessions;
     private Lecturer lecturer;
+    private String name;
 
     // Constructor with parameters
     public CourseSession(String id, Map<CourseDay, ArrayList<CourseSlot>> courseSessions, Lecturer lecturer) {
         this.id = id;
         this.courseSessions = courseSessions;
         this.lecturer = lecturer;
+
     }
 
     // Constructor with a map parameter
     public CourseSession(Map<String, Object> objects) {
         this.id = (String) objects.get("id");
         // TODO: Implement the logic to assign the values from the map to the fields.
-        this.courseSessions = (Map<CourseDay, ArrayList<CourseSlot>>) objects.get("courseSessions");
+      //  this.courseSessions = (Map<CourseDay, ArrayList<CourseSlot>>) objects.get("courseSessions");
         this.lecturer = (Lecturer) objects.get("lecturer");
+        this.name = (String) objects.get("name");
     }
 
     public Map<CourseDay, ArrayList<CourseSlot>> getCourseSessions() {
         return courseSessions;
+    }
+    public Map<String,Object> toJson(){
+        return null;
+    }
+    public  String getName(){
+        return name;
     }
 
     public Lecturer getLecturer() {

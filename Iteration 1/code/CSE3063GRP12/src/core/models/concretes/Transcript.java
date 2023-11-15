@@ -2,6 +2,8 @@ package core.models.concretes;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class Transcript {
     private String id;
@@ -11,8 +13,8 @@ public class Transcript {
     private int totalCreditCompleted;
     private int currentSemester;
 
-    public Transcript(String id, ArrayList<Semester> listOfSemester, int gano, 
-                      int totalCreditTaken, String studentId, int currentSemester) {
+    public Transcript(String id, ArrayList<Semester> listOfSemester, int gano,
+            int totalCreditTaken, int totalCreditCompleted, String studentId, int currentSemester) {
         this.id = id;
         this.listOfSemester = listOfSemester;
         this.gano = gano;
@@ -21,18 +23,43 @@ public class Transcript {
         this.currentSemester = currentSemester;
     }
 
+    @SuppressWarnings("unchecked")
     public Transcript(Map<String, Object> attributes) {
-        this.id = (String) attributes.get("id");
-        this.listOfSemester = (ArrayList<Semester>) attributes.get("listOfSemester");
-        this.gano = (int) attributes.get("gano");
-        this.totalCreditTaken = (int) attributes.get("totalCreditTaken");
-        this.totalCreditCompleted = (int) attributes.get("totalCreditCompleted");
-        this.currentSemester = (int) attributes.get("currentSemester");
+        this.id = attributes.get("id") != null ? (String) attributes.get("id") : null;
+        this.gano = attributes.get("gano") != null ? (Integer) attributes.get("gano") : 0;
+        this.totalCreditTaken = attributes.get("totalCreditTaken") != null
+                ? (Integer) attributes.get("totalCreditTaken")
+                : 0;
+        this.totalCreditCompleted = attributes.get("totalCreditCompleted") != null
+                ? (Integer) attributes.get("totalCreditCompleted")
+                : 0;
+        this.currentSemester = attributes.get("currentSemester") != null
+                ? (Integer) attributes.get("currentSemester")
+                : 0;
+
+        this.listOfSemester = (attributes.get("listOfSemester") != null
+                && attributes.get("listOfSemester") instanceof ArrayList)
+                        ? ((ArrayList<Map<String, Object>>) attributes.get("listOfSemester")).stream()
+                                .map(semesterData -> new Semester(semesterData))
+                                .collect(Collectors.toCollection(ArrayList::new))
+                        : new ArrayList<>();
     }
 
     public Map<String, Object> toJson() {
-        // Convert to JSON map
-        return null; // Placeholder
+        Map<String, Object> jsonMap = new HashMap<>();
+        jsonMap.put("id", this.id);
+        jsonMap.put("gano", this.gano);
+        jsonMap.put("totalCreditTaken", this.totalCreditTaken);
+        jsonMap.put("totalCreditCompleted", this.totalCreditCompleted);
+        jsonMap.put("currentSemester", this.currentSemester);
+        if (this.listOfSemester != null) {
+            jsonMap.put("listOfSemester", this.listOfSemester.stream()
+                    .map(Semester::toJson)
+                    .collect(Collectors.toList()));
+        } else {
+            jsonMap.put("listOfSemester", null);
+        }
+        return jsonMap;
     }
 
     public ArrayList<Semester> getListOfSemester() {
@@ -55,6 +82,7 @@ public class Transcript {
         return currentSemester;
     }
 
+    // TODO: implement toString()
     @Override
     public String toString() {
         // Return string representation
