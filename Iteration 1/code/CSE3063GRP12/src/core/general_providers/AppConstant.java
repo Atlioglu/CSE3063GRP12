@@ -6,7 +6,7 @@ public class AppConstant {
     private static String backMenuMessage;
 
     private AppConstant(){
-
+        this.backMenuMessage = ("Do you want to go back");
     }
 
     public static AppConstant getInstance(){
