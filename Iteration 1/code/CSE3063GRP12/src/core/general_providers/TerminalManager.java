@@ -16,6 +16,9 @@ public class TerminalManager {
         return instance;
     }
 
+    public void dispose(){
+        scanner.close();
+    }
     
     public String read() {
         return scanner.nextLine();
