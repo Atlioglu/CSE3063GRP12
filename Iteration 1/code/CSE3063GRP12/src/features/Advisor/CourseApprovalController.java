@@ -4,7 +4,7 @@ import core.general_providers.TerminalManager;
 import core.repositories.CourseEnrollmentRepository;
 import core.models.concretes.CourseEnrollment;
 import core.exceptions.UnexpectedInputException;
-import core.main_menu.MenuController;
+import features.main_menu.MenuController;
 import java.util.ArrayList;
 
 public class CourseApprovalController {
@@ -24,7 +24,7 @@ public class CourseApprovalController {
     }
 
     private int getUserSelection() {
-        System.out.printf("Type \"q\" to see the menu\nType Student Id to process course enrollment");
+        System.out.println("Type \"q\" to see the menu\nType Student Id to process course enrollment");
         ArrayList<CourseEnrollment> courseEnrollmentList = fetchPendingEnrollments();
         courseApprovalView.showPendingCourseEnrollments(courseEnrollmentList);
         String input = TerminalManager.getInstance().read();
@@ -39,10 +39,10 @@ public class CourseApprovalController {
                     return i;
                 }
             }
-            new UnexpectedInputException(input);
+            new UnexpectedInputException();
         }
         catch (UnexpectedInputException e){
-            new UnexpectedInputException(input);
+            new UnexpectedInputException();
             return -2;
         }
     }

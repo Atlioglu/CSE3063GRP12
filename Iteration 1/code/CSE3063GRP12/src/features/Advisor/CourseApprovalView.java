@@ -12,6 +12,6 @@ public class CourseApprovalView {
     }
 
     public void showErrorMessage(Exception e){
-        UnexpectedInputException("Unexpected input");
+       new UnexpectedInputException();
     }
 }

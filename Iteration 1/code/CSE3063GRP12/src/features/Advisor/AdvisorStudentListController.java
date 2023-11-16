@@ -3,7 +3,7 @@ package features.Advisor;
 import core.general_providers.TerminalManager;
 import core.general_providers.SessionController;
 import core.models.concretes.Advisor;
-import core.main_menu.MenuController;
+import features.main_menu.MenuController;
 
 
 public class AdvisorStudentListController {
@@ -28,13 +28,14 @@ public class AdvisorStudentListController {
 
     private void handleStudentList(){
         while(true){
-            System.out.printf("Type \"q\" to see the menu\n Type \"Show\" to see the student list");
+            System.out.println("Type \"q\" to see the menu\n Type \"Show\" to see the student list");
             String input = getUserInput();
             if(input.equals("q")){
                 navigateToMenu();
                 break;
             } else if (input.equals("Show")) {
-                advisorStudentListView.showStudentList(SessionController.getInstance().getCurrentUser().getListOfStudents());
+                Advisor a = (Advisor) SessionController.getInstance().getCurrentUser();
+                advisorStudentListView.showStudentList(a.getListOfStudents());
             }
         }
     }
