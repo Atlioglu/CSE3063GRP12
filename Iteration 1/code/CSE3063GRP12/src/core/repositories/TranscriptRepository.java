@@ -3,6 +3,7 @@ package core.repositories;
 import java.util.ArrayList;
 
 import core.database.abstracts.DatabaseManager;
+import core.general_providers.InstanceManager;
 import core.models.abstracts.User;
 import core.models.concretes.Transcript;
 import core.models.concretes.Course;
@@ -12,6 +13,7 @@ public class TranscriptRepository{
     private String path;
 
     public TranscriptRepository(){
+        databaseManager= InstanceManager.getInstance().getDataBaseInstance();
 
     }
 

@@ -10,8 +10,7 @@ public class CourseRepository{
     private String path;
 
     public CourseRepository(){
-                databaseManager= InstanceManager.getInstance().getDataBaseInstance();
-
+        databaseManager= InstanceManager.getInstance().getDataBaseInstance();
     }
     public ArrayList<Course> getCoursesBySemester(int id){
         return null;
