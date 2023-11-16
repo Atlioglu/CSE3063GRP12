@@ -1,13 +1,8 @@
-package core.login;
+package features.login;
 
 import core.repositories.UserRepository;
-import core.models.abstracts.User;
+import features.main_menu.MenuController;
 import core.general_providers.TerminalManager;
-import core.models.abstracts.User;
-import core.models.concretes.Student;
-import core.models.concretes.Advisor;
-import core.enums.UserType;
-//import core.main_menu.MenuController;
 
 public class LoginController {
     private LoginView loginView;
@@ -22,19 +17,19 @@ public class LoginController {
 
     // navigate to the menu
     public void navigateToMenu() {
-     //   new MenuController();
+        new MenuController();
     }
 
     // get username input from the user
     public String getUserNameInput() {
         loginView.displayUsername();
-        return TerminalManager.getInstance().read(); // Assuming TerminalManager.getInstance(); has a read method to get input.
+        return TerminalManager.getInstance().read(); 
     }
 
     // get password input from the user
     public String getPasswordInput() {
         loginView.displayPassword();
-        return TerminalManager.getInstance().read(); // Assuming the same read method is used for password.
+        return TerminalManager.getInstance().read();
     }
 
     // handle the login logic
@@ -46,6 +41,7 @@ public class LoginController {
             navigateToMenu();
         } catch (Exception e) {
             loginView.showError(e);
+            handleLogin();
         }
     }
 }
