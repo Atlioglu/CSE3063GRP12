@@ -1,15 +1,15 @@
-package core.login;
+package features.login;
 
 public class LoginView {
     
     // Prompt the user to enter their username
     public void displayUsername() {
-        System.out.println("Please enter your username:");
+        System.out.print("Please enter your username: ");
     }
 
     // Prompt the user to enter their password
     public void displayPassword() {
-        System.out.println("Please enter your password:");
+        System.out.print("Please enter your password: ");
     }
 
     // Display an error message
