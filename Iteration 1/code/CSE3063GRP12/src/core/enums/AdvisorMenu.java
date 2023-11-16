@@ -1,5 +1,7 @@
 package core.enums;
 
+import features.login.LoginController;
+
 public enum AdvisorMenu implements Menu{
     CourseApproval, StudentList, Logout;
     public String getItemMessage() {
@@ -12,5 +14,19 @@ public enum AdvisorMenu implements Menu{
                 return ("Logout");
             }
         return this.name();
+    }
+
+    public void navigate(){
+        switch(this){
+            case CourseApproval:
+                // UNCOMMENT: new CourseApprovalController();
+                break;
+            case StudentList:
+                // UNCOMMENT: new StudentListController();
+                break;
+            case Logout:
+                    new LoginController();
+                break;
+        }
     }
 }
