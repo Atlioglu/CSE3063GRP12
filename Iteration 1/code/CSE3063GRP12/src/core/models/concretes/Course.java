@@ -7,19 +7,19 @@ public class Course {
     private String courseCode;
     private String name;
     private int credit;
-    private ArrayList<CourseSession> sessions;
+    private CourseSession session;
     private ArrayList<Course> prerequisites;
     private int quota;
     private int semester;
 
     // Constructor with parameters
     public Course(String id, String courseCode, String name, int credit,
-            ArrayList<CourseSession> sessions, ArrayList<Course> prerequisites, int quota, int semester) {
+            CourseSession session, ArrayList<Course> prerequisites, int quota, int semester) {
         this.id = id;
         this.courseCode = courseCode;
         this.name = name;
         this.credit = credit;
-        this.sessions = sessions;
+        this.session = session;
         this.prerequisites = prerequisites;
         this.quota = quota;
         this.semester = semester;
@@ -42,8 +42,8 @@ public class Course {
         return credit;
     }
 
-    public ArrayList<CourseSession> getSessions() {
-        return sessions;
+    public CourseSession getSession() {
+        return session;
     }
 
     public ArrayList<Course> getPrerequisites() {
@@ -75,8 +75,8 @@ public class Course {
         this.credit = credit;
     }
 
-    public void setSessions(ArrayList<CourseSession> sessions) {
-        this.sessions = sessions;
+    public void setSessions(CourseSession session) {
+        this.session = session;
     }
 
     public void setPrerequisites(ArrayList<Course> prerequisites) {
