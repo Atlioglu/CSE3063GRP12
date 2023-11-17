@@ -7,7 +7,7 @@ public enum AdvisorMenu implements Menu{
     public String getItemMessage() {
         switch(this){
             case CourseApproval:
-                return ("Course Approvaln");
+                return ("Course Approval");
             case StudentList:
                 return ("Student List");
             case Logout:

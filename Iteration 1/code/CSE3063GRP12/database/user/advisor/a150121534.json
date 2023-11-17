@@ -1,0 +1,1 @@
+{"advisor":{"id":"advisorId","firstName":"AdvisorName","lastName":"AdvisorSurname"},"listOfLectureSessions":[{"id":"session1","courseSessions":{},"lecturer":{},"name":"Session Name"}],"transcript":{"id":"transcriptId","gano":4.0,"totalCreditTaken":30,"totalCreditCompleted":28,"currentSemester":3},"userName":"a150121534"}
