@@ -1,7 +1,7 @@
 package features.Advisor;
 
 import core.models.concretes.CourseEnrollment;
-import core.exceptions.UnexpectedInputException;
+//import core.exceptions.UnexpectedInputException;
 import java.util.ArrayList;
 
 public class CourseApprovalView {
@@ -12,6 +12,6 @@ public class CourseApprovalView {
     }
 
     public void showErrorMessage(Exception e){
-       new UnexpectedInputException();
+       System.out.println("Error: " + e.getMessage());
     }
 }

@@ -40,6 +40,7 @@ public class LoginController {
             userRepository.loginCheck(username, password);
             navigateToMenu();
         } catch (Exception e) {
+            System.out.println("jasa");
             loginView.showError(e);
             handleLogin();
         }

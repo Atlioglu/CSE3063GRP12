@@ -37,7 +37,7 @@ public class MenuController {
         }
         
         // Convert menu from string
-        Menu menu = convertEnum(menuSelection);
+        AdvisorMenu menu = (AdvisorMenu)convertEnum(menuSelection);
         // Navigate to module
         navigateToModule(menu);
     }
@@ -46,7 +46,7 @@ public class MenuController {
     public ArrayList<String> getMenuItems() {
         ArrayList<String> menuItems = new ArrayList<String>();
         // UNCOMMENT: UserType userType = SessionController.getInstance().getUserType();
-        UserType userType = UserType.Student; //change here with upper line
+        UserType userType = UserType.Advisor; //change here with upper line
         switch (userType) {
             case Student:
                 for (StudentMenu item : StudentMenu.values()) {
@@ -82,11 +82,7 @@ public class MenuController {
     // Method to convert menu from string
     public Menu convertEnum(String menuString) {
         // convert string to Menu enum
-        Menu menu;
-        if (SessionController.getInstance().getUserType() == UserType.Advisor)
-            menu = AdvisorMenu.values()[Integer.parseInt(menuString) - 1];
-        else
-            menu = StudentMenu.values()[Integer.parseInt(menuString) - 1];
-        return menu;
+        AdvisorMenu advisorMenu= AdvisorMenu.values()[Integer.parseInt(menuString) - 1];
+        return advisorMenu;
     }
 }

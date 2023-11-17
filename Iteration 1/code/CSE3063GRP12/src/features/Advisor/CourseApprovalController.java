@@ -3,7 +3,7 @@ package features.Advisor;
 import core.general_providers.TerminalManager;
 import core.repositories.CourseEnrollmentRepository;
 import core.models.concretes.CourseEnrollment;
-import core.exceptions.UnexpectedInputException;
+//import core.exceptions.UnexpectedInputException;
 import features.main_menu.MenuController;
 import java.util.ArrayList;
 
@@ -38,17 +38,20 @@ public class CourseApprovalController {
                     courseEnrollmentList.get(i).getStudentId().equals(input);
                     return i;
                 }
-            }
-            new UnexpectedInputException();
+            }return 6;
+           // System.out.println("Error: " + e.getMessage());
+           // new Exception();
         }
-        catch (UnexpectedInputException e){
-            new UnexpectedInputException();
+        catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
             return -2;
         }
+        
+    
     }
-
     private void navigateToApprovalCoursesSelected(CourseEnrollment courseEnrollment){
-        new ApprovalCoursesSelected(courseEnrollment);
+    //    new ApprovalCoursesSelected(courseEnrollment);
+    //  new ApprovalCoursesSelectedController(courseEnrollment); 
     }
 
     private void navigateToMenu(){
