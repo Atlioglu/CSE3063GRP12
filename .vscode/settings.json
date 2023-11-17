@@ -1,5 +1,6 @@
 {
-    "java.project.sourcePaths": [
-        "Iteration 1\\code\\CSE3063GRP12\\src"
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\omer\\Downloads\\gson-2.10.1.jar"
     ]
 }
