@@ -1,0 +1,10 @@
+{
+    "id": "3",
+    "courseCode": "CSE2023",
+    "name": "Discrete Comp. Structures",
+    "credit": 6,
+    "sessions": [],
+    "prerequisites": [],
+    "quota": 10,
+    "semester": 3
+}

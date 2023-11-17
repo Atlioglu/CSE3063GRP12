@@ -1,0 +1,10 @@
+{
+    "id": "3",
+    "courseCode": "STAT2253",
+    "name": "Prob. and Stat. for Comp. Eng.",
+    "credit": 4,
+    "sessions": [],
+    "prerequisites": [],
+    "quota": 10,
+    "semester": 4
+}

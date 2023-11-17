@@ -1,0 +1,10 @@
+{
+    "id": "3",
+    "courseCode": "CSE4047",
+    "name": "Computer Network",
+    "credit": 5,
+    "sessions": [],
+    "prerequisites": [],
+    "quota": 10,
+    "semester": 7
+}
