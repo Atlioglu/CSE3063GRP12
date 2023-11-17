@@ -4,24 +4,30 @@ public class AppConstant {
     private static AppConstant instance;
     public char backKey;
     private static String backMenuMessage;
+    private String basePath;
 
-    private AppConstant(){
-        this.backMenuMessage = ("Do you want to go back");
+    private AppConstant() {
+        backMenuMessage = ("Do you want to go back");
+        basePath = "/Iteration 1/code/CSE3063GRP12/database";
     }
 
-    public static AppConstant getInstance(){
-        if(instance == null){
+    public static AppConstant getInstance() {
+        if (instance == null) {
             instance = new AppConstant();
         }
         return instance;
     }
 
-    public String getBackMenuMessage(){
+    public String getBackMenuMessage() {
         return backMenuMessage;
     }
 
     public void setBackMenuMessage(String message) {
-        this.backMenuMessage = message;
+        backMenuMessage = message;
+    }
+
+    public String getBasePath() {
+        return basePath;
     }
 
 }
