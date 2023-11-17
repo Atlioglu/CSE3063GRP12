@@ -16,11 +16,15 @@ public class TerminalManager {
         return instance;
     }
 
-    public void dispose(){
-        scanner.close();
-    }
-    
+    // public void dispose() {
+    // scanner.close();
+    // }
+
     public String read() {
-        return scanner.nextLine();
+        while (scanner.hasNextLine()) {
+            return scanner.nextLine();
+        }
+        return null;
+        // return scanner.nextLine();
     }
 }
