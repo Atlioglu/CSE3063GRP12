@@ -16,19 +16,21 @@ public class JsonManager extends DatabaseManager {
         gson = new Gson();
     }
 
-    public <T> T read(String path, Class<T> classOfT) throws IOException {
+    public <T> T read(String path, Class<T> classOfT) {
         try (FileReader reader = new FileReader(path)) {
             return gson.fromJson(reader, classOfT);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            //e.printStackTrace();
             return null;
         }
     }
 
-    public <T> void write(String path, T object) throws IOException {
+    public <T> void write(String path, T object) {
         String json = gson.toJson(object);
         try (FileWriter writer = new FileWriter(path)) {
             writer.write(json);
+        } catch (Exception e) {
+           // e.printStackTrace();
         }
     }
 }
