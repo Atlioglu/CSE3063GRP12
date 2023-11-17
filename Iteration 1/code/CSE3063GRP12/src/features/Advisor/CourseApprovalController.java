@@ -15,56 +15,46 @@ public class CourseApprovalController {
         courseEnrollmentRepository = new CourseEnrollmentRepository();
         courseApprovalView = new CourseApprovalView();
 
-        handleApprovalController();
+        try {
+            handleApprovalController();
+        } catch (UnexpectedInputException e) {
+            courseApprovalView.showErrorMessage(e);
+        }
     }
 
     private ArrayList<CourseEnrollment> fetchPendingEnrollments() {
         return courseEnrollmentRepository.getPendingEnrollments();
     }
 
-    // TODO: Handle unexpected input
-    private int getUserSelection() throws UnexpectedInputException{
-        System.out.println("Type \"q\" to see the menu\nType Student Id to process course enrollment");
-        ArrayList<CourseEnrollment> courseEnrollmentList = fetchPendingEnrollments();
-        courseApprovalView.showPendingCourseEnrollments(courseEnrollmentList);
-        String input = TerminalManager.getInstance().read();
-        TerminalManager.getInstance().dispose();
-        if (input.equals("q")) {
-            return -1;
-        } else {
-            for (int i = 0; i < courseEnrollmentList.size(); i++) {
-                if(courseEnrollmentList.get(i).getStudentId().equals(input)) {
-                    return i;
-                }
-            }
-        }
-        throw new UnexpectedInputException();
-    }
-
-    private void navigateToApprovalCourses(CourseEnrollment courseEnrollment) {
-      //  new ApprovalCoursesSelected(courseEnrollment);
+    private void navigateToApprovalCoursesSelected(CourseEnrollment courseEnrollment) {
+      //UNCOMMENT:  new ApprovalCoursesSelected(courseEnrollment);
     }
 
     private void navigateToMenu() {
         new MenuController();
     }
 
-    private void handleApprovalController() {
-        int selection;
-        while (true) {
-            try {
-                selection = getUserSelection();
-            }
-            catch (UnexpectedInputException e){
-                courseApprovalView.showErrorMessage(e);
-                selection = -2;
-            }
-            if (selection == -1) {
-                navigateToMenu();
-                break;
-            } else if (selection >= 0) {
-                navigateToApprovalCourses(fetchPendingEnrollments().get(selection));
-                break;
+    private String getUserInput() {
+        String input = TerminalManager.getInstance().read();
+        TerminalManager.getInstance().dispose();
+        return input;
+    }
+
+    private void handleApprovalController() throws UnexpectedInputException {
+        ArrayList<CourseEnrollment> pendingEnrollments = fetchPendingEnrollments();
+        courseApprovalView.showPendingCourseEnrollments(pendingEnrollments);
+        courseApprovalView.showPromptMessage();
+        String selection = getUserInput();
+        if(selection.matches("^\\d+$") == false && selection.equals("q") == false){
+            throw new UnexpectedInputException();
+        }else if(selection.equals("q")){
+            navigateToMenu();
+        }else{
+            int index = Integer.parseInt(selection);
+            if(index > courseEnrollmentRepository.getPendingEnrollments().size() || index < 0){
+                throw new UnexpectedInputException();
+            }else{
+                navigateToApprovalCoursesSelected(courseEnrollmentRepository.getPendingEnrollments().get(index));
             }
         }
     }
