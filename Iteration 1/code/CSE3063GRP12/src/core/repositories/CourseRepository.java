@@ -38,7 +38,8 @@ public class CourseRepository {
                         Course course = null;
                         try {
                             course = databaseManager.read(file.toString(), Course.class);
-                        } catch (IOException e) {
+
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         if (course != null) {
@@ -46,12 +47,13 @@ public class CourseRepository {
                         }
                     });
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
+
         return courses;
     }
 
-    public ArrayList<Course> findCoursesWithCourseIds(String directoryPath, ArrayList<String> ids) {
+    public ArrayList<Course> findCoursesWithCourseIds(ArrayList<String> ids) {
 
         ArrayList<Course> matchedCourses = new ArrayList<>();
         Path startPath = Paths.get(path);
@@ -64,12 +66,12 @@ public class CourseRepository {
                         try {
                             Course course = databaseManager.read(path.toString(), Course.class);
                             matchedCourses.add(course);
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     });
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return matchedCourses;

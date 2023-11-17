@@ -4,6 +4,7 @@ import core.general_providers.TerminalManager;
 import core.repositories.CourseEnrollmentRepository;
 import core.models.concretes.CourseEnrollment;
 import core.exceptions.UnexpectedInputException;
+import features.approval_courses_selected.ApprovalCoursesSelectedController;
 import features.main_menu.MenuController;
 import java.util.ArrayList;
 
@@ -24,10 +25,12 @@ public class CourseApprovalController {
 
     private ArrayList<CourseEnrollment> fetchPendingEnrollments() {
         return courseEnrollmentRepository.getPendingEnrollments();
+
     }
 
     private void navigateToApprovalCoursesSelected(CourseEnrollment courseEnrollment) {
-      //UNCOMMENT:  new ApprovalCoursesSelected(courseEnrollment);
+
+        new ApprovalCoursesSelectedController(courseEnrollment);
     }
 
     private void navigateToMenu() {
@@ -36,25 +39,26 @@ public class CourseApprovalController {
 
     private String getUserInput() {
         String input = TerminalManager.getInstance().read();
-        TerminalManager.getInstance().dispose();
+        // TerminalManager.getInstance().dispose();
         return input;
     }
 
     private void handleApprovalController() throws UnexpectedInputException {
         ArrayList<CourseEnrollment> pendingEnrollments = fetchPendingEnrollments();
         courseApprovalView.showPendingCourseEnrollments(pendingEnrollments);
+
         courseApprovalView.showPromptMessage();
         String selection = getUserInput();
-        if(selection.matches("^\\d+$") == false && selection.equals("q") == false){
+        if (selection.matches("^\\d+$") == false && selection.equals("q") == false) {
             throw new UnexpectedInputException();
-        }else if(selection.equals("q")){
+        } else if (selection.equals("q")) {
             navigateToMenu();
-        }else{
+        } else {
             int index = Integer.parseInt(selection);
-            if(index > courseEnrollmentRepository.getPendingEnrollments().size() || index < 0){
+            if (index > courseEnrollmentRepository.getPendingEnrollments().size() || index < 0) {
                 throw new UnexpectedInputException();
-            }else{
-                navigateToApprovalCoursesSelected(courseEnrollmentRepository.getPendingEnrollments().get(index));
+            } else {
+                navigateToApprovalCoursesSelected(courseEnrollmentRepository.getPendingEnrollments().get(index - 1));
             }
         }
     }

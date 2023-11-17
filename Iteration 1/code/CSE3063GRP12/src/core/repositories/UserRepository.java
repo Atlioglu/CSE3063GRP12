@@ -1,6 +1,9 @@
 package core.repositories;
 
 import java.util.ArrayList;
+
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import core.database.abstracts.DatabaseManager;
 import core.enums.UserType;
@@ -34,7 +37,6 @@ public class UserRepository {
             getUserType(userName);
             if (getUserType(userName) == UserType.Student) {
                 user = databaseManager.read(studentPath + "/" + userName + ".json", Student.class);
-                System.out.println(user.getPassword());
                 if (user.getPassword().equals(password)) {
                     setCurrentUser(user);
                 } else {
@@ -74,7 +76,7 @@ public class UserRepository {
                 students.add(student);
             }
             return students;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
