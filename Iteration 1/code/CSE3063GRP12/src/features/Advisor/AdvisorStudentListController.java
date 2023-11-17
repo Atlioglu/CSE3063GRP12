@@ -12,6 +12,8 @@ public class AdvisorStudentListController {
 
     public AdvisorStudentListController() {
         advisorStudentListView = new AdvisorStudentListView();
+        userRepository = new UserRepository();
+
         handleStudentList();
     }
 
@@ -21,7 +23,7 @@ public class AdvisorStudentListController {
 
     private String getUserInput() {
         String input = TerminalManager.getInstance().read();
-        TerminalManager.getInstance().dispose();
+        //TerminalManager.getInstance().dispose();
         return input;
     }
 

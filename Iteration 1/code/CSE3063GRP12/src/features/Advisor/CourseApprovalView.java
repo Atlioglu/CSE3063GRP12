@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public class CourseApprovalView {
     public void showPendingCourseEnrollments(ArrayList<CourseEnrollment> courseEnrollmentArrayList){
-        for(int i = 1;i<courseEnrollmentArrayList.size();i++) {
-            System.out.printf(i+". " + courseEnrollmentArrayList.get(i-1).getStudentId());
+        System.out.println("Pending Course Enrollments");
+        for(int i = 1;i<=courseEnrollmentArrayList.size();i++) {
+            System.out.println(i+". " + courseEnrollmentArrayList.get(i-1).getStudentId());
+
         }
     }
 

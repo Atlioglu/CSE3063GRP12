@@ -18,9 +18,8 @@ import core.general_providers.SessionController;
 import core.models.abstracts.User;
 import core.models.concretes.Transcript;
 import core.models.concretes.Course;
-import core.models.concretes.CourseSession;
+import core.models.concretes.CourseEnrollment;
 import core.models.concretes.Semester;
-import core.models.concretes.Student;
 
 public class TranscriptRepository {
     private DatabaseManager databaseManager;
@@ -78,35 +77,37 @@ public class TranscriptRepository {
     }
 
     // TODO: IT SHOULD BE UPDATED BECAUSE UPDATE AND CREATE IS DIFFERENT
-    public void updateTranscript(Student student, ArrayList<Course> courseList)
+    public void updateTranscript(CourseEnrollment courseEnrollment)
             throws IOException {
-        int currentSemester = student.getTranscript().getCurrentSemester();
-        Transcript transcript = student.getTranscript();
+        // int currentSemester = student.getTranscript().getCurrentSemester();
+        // Transcript transcript = student.getTranscript();
+        Transcript transcript = getTranscript(courseEnrollment.getStudentId());
+        int currentSemester = transcript.getCurrentSemester();
 
         if (currentSemester > transcript.getListOfSemester().size()) {
             Map<String, CourseGrade> newCourseList = new HashMap<>();
-            for (Course course : courseList) {
+            for (Course course : courseEnrollment.getSelectedCourseList()) {
                 newCourseList.put(course.getCourseCode(), CourseGrade.NON);
             }
-            int totalCreditTaken = courseList.stream().mapToInt(Course::getCredit).sum();
+            int totalCreditTaken = courseEnrollment.getSelectedCourseList().stream().mapToInt(Course::getCredit).sum();
 
             Semester semester = new Semester("0", newCourseList, totalCreditTaken, 0);
             transcript.getListOfSemester().add(semester);
-            databaseManager.write(path + "/" + student.getUserName() + ".json",
+            databaseManager.write(path + "/" + courseEnrollment.getStudentId() + ".json",
                     transcript);
         } else {
             // update current semester
             Map<String, CourseGrade> newCourseList = new HashMap<>();
-            for (Course course : courseList) {
+            for (Course course : courseEnrollment.getSelectedCourseList()) {
                 newCourseList.put(course.getCourseCode(), CourseGrade.NON);
             }
 
-            int totalCreditTaken = courseList.stream().mapToInt(Course::getCredit).sum();
+            int totalCreditTaken = courseEnrollment.getSelectedCourseList().stream().mapToInt(Course::getCredit).sum();
 
             Semester semester = new Semester("0", newCourseList, totalCreditTaken,
                     0);
             transcript.getListOfSemester().set(currentSemester - 1, semester);
-            databaseManager.write(path + "/" + student.getUserName() + ".json",
+            databaseManager.write(path + "/" + courseEnrollment.getStudentId() + ".json",
                     transcript);
         }
 
