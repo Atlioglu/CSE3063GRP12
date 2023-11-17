@@ -1,29 +1,34 @@
 package core.database.concretes;
 
-import java.util.Map;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import core.database.abstracts.DatabaseManager;
 
-
 public class JsonManager extends DatabaseManager {
-    public Map<String,Object> read(String path) throws IOException{
-        Gson gson = new Gson();
-        path = "Studentt.json";
-        try {
-            FileReader reader = new FileReader(path);
-            return gson.fromJson(reader, new TypeToken<Map<String, Object>>(){}.getType());
+    private Gson gson;
+
+    public JsonManager() {
+
+        gson = new Gson();
+    }
+
+    public <T> T read(String path, Class<T> classOfT) throws IOException {
+        try (FileReader reader = new FileReader(path)) {
+            return gson.fromJson(reader, classOfT);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
 
-
-
-         }
-    public void write(String path, Map<String,Object> map) throws IOException{
-        Gson gson = new Gson();
-            String json = gson.toJson(map);
+    public <T> void write(String path, T object) throws IOException {
+        String json = gson.toJson(object);
         try (FileWriter writer = new FileWriter(path)) {
             writer.write(json);
         }
+    }
 }
