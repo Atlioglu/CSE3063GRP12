@@ -56,7 +56,7 @@ public class UserRepository {
                 throw new UserNotFoundException();
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw new UserNotFoundException();
         }
