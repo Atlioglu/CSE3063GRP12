@@ -16,7 +16,7 @@ public enum CourseSlot {
         this.hour = hour;
     }
 
-    public String getDay() {
+    public String getSlot() {
         return hour;
     }
 }
