@@ -38,7 +38,7 @@ public class UserRepository {
                 if (user.getPassword().equals(password)) {
                     setCurrentUser(user);
                 } else {
-                    throw new WrongPasswordException(password);
+                    throw new WrongPasswordException();
                 }
 
             } else if (getUserType(userName) == UserType.Advisor) {
@@ -47,18 +47,18 @@ public class UserRepository {
                     setCurrentUser(user);
 
                 } else {
-                    throw new WrongPasswordException(password);
+                    throw new WrongPasswordException();
                 }
 
             }
             // TODO: PROBABLY IT WONT WORK
             if (user == null) {
-                throw new UserNotFoundException(password);
+                throw new UserNotFoundException();
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new UserNotFoundException(password);
+            throw new UserNotFoundException();
         }
     }
 
