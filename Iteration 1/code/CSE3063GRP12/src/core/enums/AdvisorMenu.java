@@ -1,5 +1,7 @@
 package core.enums;
 
+import features.Advisor.AdvisorStudentListController;
+import features.Advisor.CourseApprovalController;
 import features.login.LoginController;
 
 public enum AdvisorMenu implements Menu{
@@ -7,7 +9,7 @@ public enum AdvisorMenu implements Menu{
     public String getItemMessage() {
         switch(this){
             case CourseApproval:
-                return ("Course Approvaln");
+                return ("Course Approval");
             case StudentList:
                 return ("Student List");
             case Logout:
@@ -19,13 +21,13 @@ public enum AdvisorMenu implements Menu{
     public void navigate(){
         switch(this){
             case CourseApproval:
-                // UNCOMMENT: new CourseApprovalController();
+                new CourseApprovalController();
                 break;
             case StudentList:
-                // UNCOMMENT: new StudentListController();
+                new AdvisorStudentListController();
                 break;
             case Logout:
-                    new LoginController();
+                new LoginController();
                 break;
         }
     }

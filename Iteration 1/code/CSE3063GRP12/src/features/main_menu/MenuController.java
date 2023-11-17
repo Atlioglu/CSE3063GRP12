@@ -7,6 +7,7 @@ import core.enums.AdvisorMenu;
 import core.enums.StudentMenu;
 
 import core.enums.UserType;
+import core.exceptions.UnexpectedInputException;
 import core.general_providers.SessionController;
 import core.general_providers.TerminalManager;
 
@@ -31,7 +32,7 @@ public class MenuController {
 
         try{
             menuSelection = getMenuSelection();
-        }catch(IllegalArgumentException e){
+        }catch(UnexpectedInputException e){
             menuView.showErrorMessage(e);
             handleMenu();
         }
@@ -45,8 +46,8 @@ public class MenuController {
     // Method to get menu items
     public ArrayList<String> getMenuItems() {
         ArrayList<String> menuItems = new ArrayList<String>();
-        // UNCOMMENT: UserType userType = SessionController.getInstance().getUserType();
-        UserType userType = UserType.Student; //change here with upper line
+        UserType userType = SessionController.getInstance().getUserType();
+        //UserType userType = UserType.Student; //change here with upper line
         switch (userType) {
             case Student:
                 for (StudentMenu item : StudentMenu.values()) {
@@ -62,24 +63,23 @@ public class MenuController {
         return menuItems;
     }
 
-    // Method to navigate to module
+    // navigate to module
     public void navigateToModule(Menu menu) {
         menu.navigate();
     }
     
-    // Method to get menu selection from user
-    public String getMenuSelection() throws IllegalArgumentException{ //this will return UnexpectedInputException
+    // get menu selection from user
+    public String getMenuSelection() throws UnexpectedInputException{ //this will return UnexpectedInputException
         menuView.showPromptMessage();
         String selection = TerminalManager.getInstance().read();
         // Check if selection is a number
         if(selection.matches("^\\d+$") == false){
-            // UNCOMMENT: throw new UnexpectedInputException();
-            throw new IllegalArgumentException("Please enter a valid number.\n"); // TODO: change here with upper line
+            throw new UnexpectedInputException();
         } 
         return selection; 
     }
 
-    // Method to convert menu from string
+    // convert menu from string
     public Menu convertEnum(String menuString) {
         // convert string to Menu enum
         Menu menu;
