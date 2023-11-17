@@ -23,28 +23,25 @@ public class CourseApprovalController {
     }
 
     // TODO: Handle unexpected input
-    private int getUserSelection() {
+    private int getUserSelection() throws UnexpectedInputException{
         System.out.println("Type \"q\" to see the menu\nType Student Id to process course enrollment");
         ArrayList<CourseEnrollment> courseEnrollmentList = fetchPendingEnrollments();
         courseApprovalView.showPendingCourseEnrollments(courseEnrollmentList);
         String input = TerminalManager.getInstance().read();
         TerminalManager.getInstance().dispose();
-        try {
-            if (input.equals("q")) {
-                return -1;
-            } else {
-                for (int i = 0; i < courseEnrollmentList.size(); i++) {
-                    courseEnrollmentList.get(i).getStudentId().equals(input);
+        if (input.equals("q")) {
+            return -1;
+        } else {
+            for (int i = 0; i < courseEnrollmentList.size(); i++) {
+                if(courseEnrollmentList.get(i).getStudentId().equals(input)) {
                     return i;
                 }
             }
-            throw new UnexpectedInputException();
-        } catch (UnexpectedInputException e) {
-            return -2;
         }
+        throw new UnexpectedInputException();
     }
 
-    private void navigateToApprovalCoursesSelected(CourseEnrollment courseEnrollment) {
+    private void navigateToApprovalCourses(CourseEnrollment courseEnrollment) {
       //  new ApprovalCoursesSelected(courseEnrollment);
     }
 
@@ -53,13 +50,20 @@ public class CourseApprovalController {
     }
 
     private void handleApprovalController() {
+        int selection;
         while (true) {
-            int selection = getUserSelection();
+            try {
+                selection = getUserSelection();
+            }
+            catch (UnexpectedInputException e){
+                courseApprovalView.showErrorMessage(e);
+                selection = -2;
+            }
             if (selection == -1) {
                 navigateToMenu();
                 break;
             } else if (selection >= 0) {
-                navigateToApprovalCoursesSelected(fetchPendingEnrollments().get(selection));
+                navigateToApprovalCourses(fetchPendingEnrollments().get(selection));
                 break;
             }
         }
