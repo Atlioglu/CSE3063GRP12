@@ -1,13 +1,13 @@
 {
-    "id": "3",
-    "courseCode": "CSE1223",
-    "name": "123 3 Software Design",
+    "id": "1",
+    "courseCode": "CSE1241",
+    "name": "Computer Programing 1",
     "credit": 3,
     "session": {
         "id": "id1",
         "courseSessions": {
-            "FRIDAY": [
-                "seven",
+            "WEDNESDAY": [
+                "one",
                 "two"
             ]
         }
