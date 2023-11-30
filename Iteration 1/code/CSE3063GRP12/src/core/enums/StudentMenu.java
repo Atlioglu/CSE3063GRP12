@@ -1,6 +1,9 @@
 package core.enums;
 
+import features.course_registration.CourseRegistrationController;
 import features.login.LoginController;
+import features.transcript.TranscriptController;
+import features.weekly_schedule.WeeklyScheduleController;
 
 public enum StudentMenu implements Menu{
     CourseRegistration, WeeklySchedule, Transcript, Logout;
@@ -21,13 +24,13 @@ public enum StudentMenu implements Menu{
     public void navigate(){
         switch(this){
             case CourseRegistration:
-                // UNCOMMENT: new CourseRegistrationController();
+                 new CourseRegistrationController();
                 break;
             case WeeklySchedule:
-                // UNCOMMENT: new WeeklyScheduleController();
+                 new WeeklyScheduleController();
                 break;
             case Transcript:
-                // UNCOMMENT: new TranscriptController();
+                 new TranscriptController();
                 break;
             case Logout:
                 new LoginController();
