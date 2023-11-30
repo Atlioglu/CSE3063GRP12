@@ -24,9 +24,6 @@ public class CourseSession {
         return courseSessions;
     }
 
-    public Map<String, Object> toJson() {
-        return null;
-    }
 
     public String getName() {
         return name;

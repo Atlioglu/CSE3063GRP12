@@ -12,6 +12,7 @@ public class AdvisorStudentListController {
 
     public AdvisorStudentListController() {
         advisorStudentListView = new AdvisorStudentListView();
+        userRepository = new UserRepository();
 
         handleStudentList();
     }
@@ -22,21 +23,17 @@ public class AdvisorStudentListController {
 
     private String getUserInput() {
         String input = TerminalManager.getInstance().read();
-        TerminalManager.getInstance().dispose();
+        //TerminalManager.getInstance().dispose();
         return input;
     }
 
     private void handleStudentList() {
-        while (true) {
-            System.out.println("Type \"q\" to see the menu\n Type \"Show\" to see the student list");
-            String input = getUserInput();
-            if (input.equals("q")) {
-                navigateToMenu();
-                break;
-            } else if (input.equals("Show")) {
-                Advisor a = (Advisor) SessionController.getInstance().getCurrentUser();
-                advisorStudentListView.showStudentList(userRepository.getStudentsByAdvisor(a));
-            }
-        }
+        Advisor a = (Advisor) SessionController.getInstance().getCurrentUser();
+        advisorStudentListView.showStudentList(userRepository.getStudentsByAdvisor(a));
+        advisorStudentListView.showQuitMessage();
+        String input = getUserInput();
+        if (input.equals("q")) {
+            navigateToMenu();
+        }    
     }
 }
