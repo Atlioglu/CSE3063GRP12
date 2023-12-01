@@ -1,14 +1,17 @@
 {
-    "id": "1",
+    "id": "o150121534",
     "listOfSemester": [
         {
-            "id": "1",
+            "id": "0",
             "listOfCoursesTaken": {
-                "CSE2055": "BB",
-                "CSE3063": "AA"
+                "CSE1223": "NON",
+                "CSE1200": "NON",
+                "CSE1241": "NON",
+                "PHYS1101": "NON",
+                "MATH1001": "NON"
             },
-            "creditsTaken": 1,
-            "yano": 1.0
+            "creditsTaken": 15,
+            "yano": 0.0
         }
     ],
     "gano": 1.0,
