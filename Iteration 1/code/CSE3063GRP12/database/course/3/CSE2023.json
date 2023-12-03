@@ -1,10 +1,10 @@
 {
-    "id": 1,
-    "courseCode": "MBG1201",
-    "name": "Introduction to Modern Biology",
-    "credit": 5,
+    "id": 13,
+    "courseCode": "CSE2023",
+    "name": "Discrete Computational Structures",
+    "credit": 6,
     "session": {
-        "id": "id1",
+        "id": "id13",
         "courseSessions": {
             "MONDAY": ["one", "two"],
             "WEDNESDAY": ["three", "four"],
@@ -13,5 +13,5 @@
     },
     "prerequisites": [],
     "quota": 30,
-    "semester": 1
+    "semester": 3
 }

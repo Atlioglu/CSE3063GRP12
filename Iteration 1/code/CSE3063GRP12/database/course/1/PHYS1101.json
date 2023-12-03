@@ -1,18 +1,17 @@
 {
-    "id": "1",
+    "id": 5,
     "courseCode": "PHYS1101",
-    "name": "Philosophy of Science",
-    "credit": 3,
+    "name": "Physics I",
+    "credit": 4,
     "session": {
-        "id": "id1",
+        "id": "id5",
         "courseSessions": {
-            "TUESDAY": [
-                "three",
-                "four"
-            ]
+            "TUESDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "THURSDAY": ["five", "six"]
         }
     },
     "prerequisites": [],
-    "quota": 2,
+    "quota": 30,
     "semester": 1
 }

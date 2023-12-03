@@ -1,13 +1,13 @@
 {
-    "id": 28,
-    "courseCode": "CSE3063",
-    "name": "Object-Oriented Software Design",
-    "credit": 5,
+    "id": 24,
+    "courseCode": "CSE3000",
+    "name": "Summer Practice I",
+    "credit": 10,
     "session": {
-        "id": "id28",
+        "id": "id24",
         "courseSessions": {
             "MONDAY": ["one", "two"],
-            "TUESDAY": ["three", "four"],
+            "WEDNESDAY": ["three", "four"],
             "FRIDAY": ["five", "six"]
         }
     },
