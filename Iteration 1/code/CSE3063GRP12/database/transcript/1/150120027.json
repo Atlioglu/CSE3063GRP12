@@ -1,0 +1,29 @@
+{
+  "Header": {
+    "University Name": "MARMARA UNIVERSITY",
+    "Document Type": "OFFICIAL ACADEMIC RECORD",
+    "Student Type": "Transcript for Engineering Student"
+  },
+  "Personal Information": {
+    "Citizenship Id": "321098765",
+    "First Name": "Taylor",
+    "Last Name": "Thomas",
+    "E-Mail": "thomas.taylor@gmail.com",
+    "Birthdate": "8/3/2003",
+    "Age": "19 yrs",
+    "Area": "Istanbul"
+  },
+  "Academic Information": {
+    "Faculty / School": "Faculty of Engineering",
+    "Department / Program": "Computer Engineering",
+    "Student Id": "o150120027",
+    "transcriptId":"id27",
+    "Area": "Istanbul",
+    "Education Level": "Bachelor",
+    "Education Language": "English",
+    "Registration Date": "15/09/2021",
+    "Graduation Date": "---",
+    "1.Semester": {},
+    "2.Semester": {}
+  }
+}

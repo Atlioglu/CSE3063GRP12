@@ -1,0 +1,29 @@
+{
+  "Header": {
+    "University Name": "MARMARA UNIVERSITY",
+    "Document Type": "OFFICIAL ACADEMIC RECORD",
+    "Student Type": "Transcript for Engineering Student"
+  },
+  "Personal Information": {
+    "Citizenship Id": "987654321",
+    "First Name": "Alexis",
+    "Last Name": "Adams",
+    "E-Mail": "adams.alexis@gmail.com",
+    "Birthdate": "6/10/2003",
+    "Age": "19 yrs",
+    "Area": "Istanbul"
+  },
+  "Academic Information": {
+    "Faculty / School": "Faculty of Engineering",
+    "Department / Program": "Computer Engineering",
+    "Student Id": "o150120030",
+    "transcriptId":"id30",
+    "Area": "Istanbul",
+    "Education Level": "Bachelor",
+    "Education Language": "English",
+    "Registration Date": "15/09/2021",
+    "Graduation Date": "---",
+    "1.Semester": {},
+    "2.Semester": {}
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "Header": {
+    "University Name": "MARMARA UNIVERSITY",
+    "Document Type": "OFFICIAL ACADEMIC RECORD",
+    "Student Type": "Transcript for Engineering Student"
+  },
+  "Personal Information": {
+    "Citizenship Id": "109876543",
+    "First Name": "Cameron",
+    "Last Name": "Clark",
+    "E-Mail": "clark.cameron@gmail.com",
+    "Birthdate": "2/28/2003",
+    "Age": "19 yrs",
+    "Area": "Istanbul"
+  },
+  "Academic Information": {
+    "Faculty / School": "Faculty of Engineering",
+    "Department / Program": "Computer Engineering",
+    "Student Id": "o150120029",
+    "transcriptId":"id29",
+    "Area": "Istanbul",
+    "Education Level": "Bachelor",
+    "Education Language": "English",
+    "Registration Date": "15/09/2021",
+    "Graduation Date": "---",
+    "1.Semester": {},
+    "2.Semester": {}
+  }
+}

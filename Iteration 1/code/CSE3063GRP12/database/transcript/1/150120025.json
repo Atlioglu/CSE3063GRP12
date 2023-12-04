@@ -1,0 +1,29 @@
+{
+  "Header": {
+    "University Name": "MARMARA UNIVERSITY",
+    "Document Type": "OFFICIAL ACADEMIC RECORD",
+    "Student Type": "Transcript for Engineering Student"
+  },
+  "Personal Information": {
+    "Citizenship Id": "543210987",
+    "First Name": "Peyton",
+    "Last Name": "Parker",
+    "E-Mail": "parker.peyton@gmail.com",
+    "Birthdate": "11/14/2003",
+    "Age": "18 yrs",
+    "Area": "Istanbul"
+  },
+  "Academic Information": {
+    "Faculty / School": "Faculty of Engineering",
+    "Department / Program": "Computer Engineering",
+    "Student Id": "o150120025",
+    "transcriptId":"id25",
+    "Area": "Istanbul",
+    "Education Level": "Bachelor",
+    "Education Language": "English",
+    "Registration Date": "15/09/2021",
+    "Graduation Date": "---",
+    "1.Semester": {},
+    "2.Semester": {}
+  }
+}
