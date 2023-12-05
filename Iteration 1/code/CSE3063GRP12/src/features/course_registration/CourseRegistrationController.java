@@ -4,6 +4,7 @@ import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;
 import core.repositories.CourseRepository;
 import core.enums.CourseGrade;
+import core.exceptions.UserNotFoundException;
 import core.exceptions.WrongNumberOfCoursesSelectedException;
 import core.general_providers.SessionController;
 import core.models.abstracts.User;
@@ -67,7 +68,7 @@ public class CourseRegistrationController {
 
 	}
 
-	private Transcript fetchTranscript(String transcript) throws IOException {
+	private Transcript fetchTranscript(String transcript) throws IOException, UserNotFoundException {
 		return transcriptRepository.getTranscript(transcript);
 	}
 
