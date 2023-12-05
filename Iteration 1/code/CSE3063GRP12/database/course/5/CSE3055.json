@@ -1,17 +1,17 @@
 {
-    "id": 4,
-    "courseCode": "MATH1001",
-    "name": "Calculus I",
-    "credit": 6,
+    "id": 27,
+    "courseCode": "CSE3055",
+    "name": "Database Systems",
+    "credit": 7,
     "session": {
-        "id": "id4",
+        "id": "id27",
         "courseSessions": {
-            "TUESDAY": ["three", "four"],
+            "WEDNESDAY": ["three", "four"],
             "THURSDAY": ["five", "six"],
             "FRIDAY": ["seven", "eight"]
         }
     },
     "prerequisites": [],
     "quota": 30,
-    "semester": 1
+    "semester": 5
 }

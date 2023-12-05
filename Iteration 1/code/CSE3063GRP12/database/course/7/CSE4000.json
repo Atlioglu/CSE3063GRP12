@@ -1,10 +1,10 @@
 {
-    "id": 1,
-    "courseCode": "MBG1201",
-    "name": "Introduction to Modern Biology",
-    "credit": 5,
+    "id": 36,
+    "courseCode": "CSE4000",
+    "name": "Summer Practice II",
+    "credit": 10,
     "session": {
-        "id": "id1",
+        "id": "id36",
         "courseSessions": {
             "MONDAY": ["one", "two"],
             "WEDNESDAY": ["three", "four"],
@@ -13,5 +13,5 @@
     },
     "prerequisites": [],
     "quota": 30,
-    "semester": 1
+    "semester": 7
 }

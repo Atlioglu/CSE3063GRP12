@@ -1,0 +1,17 @@
+{
+    "id": 41,
+    "courseCode": "TE I",
+    "name": "Technical Elective - 1",
+    "credit": 5,
+    "session": {
+        "id": "id41",
+        "courseSessions": {
+            "WEDNESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 7
+}

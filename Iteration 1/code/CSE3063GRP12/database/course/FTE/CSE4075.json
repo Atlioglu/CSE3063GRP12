@@ -1,17 +1,17 @@
 {
-    "id": 28,
-    "courseCode": "CSE3063",
-    "name": "Object-Oriented Software Design",
+    "id": 51,
+    "courseCode": "CSE4075",
+    "name": "Wireless & Mobile Networks",
     "credit": 5,
     "session": {
-        "id": "id28",
+        "id": "id51",
         "courseSessions": {
             "MONDAY": ["one", "two"],
-            "TUESDAY": ["three", "four"],
+            "WEDNESDAY": ["three", "four"],
             "FRIDAY": ["five", "six"]
         }
     },
     "prerequisites": [],
     "quota": 30,
-    "semester": 5
+    "semester": 1
 }

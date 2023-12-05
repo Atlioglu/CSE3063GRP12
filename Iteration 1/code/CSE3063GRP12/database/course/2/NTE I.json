@@ -1,0 +1,17 @@
+{
+    "id": 12,
+    "courseCode": "NTE I",
+    "name": "Nontechnical Elective I",
+    "credit": 3,
+    "session": {
+        "id": "id12",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "TUESDAY": ["five", "six"],
+            "THURSDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 2
+}
