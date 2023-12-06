@@ -1,0 +1,17 @@
+{
+    "id": 20,
+    "courseCode": "CSE2138",
+    "name": "Systems Programming",
+    "credit": 7,
+    "session": {
+        "id": "id20",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 4
+}

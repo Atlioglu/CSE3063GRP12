@@ -1,0 +1,17 @@
+{
+    "id": 19,
+    "courseCode": "CSE2246",
+    "name": "Analysis of Algorithms",
+    "credit": 6,
+    "session": {
+        "id": "id19",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 4
+}

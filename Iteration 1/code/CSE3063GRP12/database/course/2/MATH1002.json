@@ -1,17 +1,17 @@
 {
-    "id": 28,
-    "courseCode": "CSE3063",
-    "name": "Object-Oriented Software Design",
-    "credit": 5,
+    "id": 8,
+    "courseCode": "MATH1002",
+    "name": "Calculus II",
+    "credit": 6,
     "session": {
-        "id": "id28",
+        "id": "id8",
         "courseSessions": {
             "MONDAY": ["one", "two"],
             "TUESDAY": ["three", "four"],
-            "FRIDAY": ["five", "six"]
+            "WEDNESDAY": ["five", "six"]
         }
     },
     "prerequisites": [],
     "quota": 30,
-    "semester": 5
+    "semester": 2
 }

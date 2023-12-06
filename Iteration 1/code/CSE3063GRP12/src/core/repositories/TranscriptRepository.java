@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 
 import core.database.abstracts.DatabaseManager;
 import core.enums.CourseGrade;
+import core.exceptions.UserNotFoundException;
 import core.general_providers.AppConstant;
 import core.general_providers.InstanceManager;
 import core.general_providers.SessionController;
@@ -20,18 +21,25 @@ import core.models.concretes.Transcript;
 import core.models.concretes.Course;
 import core.models.concretes.CourseEnrollment;
 import core.models.concretes.Semester;
+import core.models.concretes.Student;
 
 public class TranscriptRepository {
     private DatabaseManager databaseManager;
+    private UserRepository userRepository;
+
     private String path;
 
     public TranscriptRepository() {
         databaseManager = InstanceManager.getInstance().getDataBaseInstance();
+        userRepository = new UserRepository();
+
         path = System.getProperty("user.dir") + AppConstant.getInstance().getBasePath() + "/transcript/";
     }
 
-    public Transcript getTranscript(String studentId) throws IOException {
-        return databaseManager.read(path + "/" + studentId + ".json", Transcript.class);
+    public Transcript getTranscript(String studentId) throws IOException, UserNotFoundException {
+        Student student = (Student) userRepository.getUser(studentId);
+        int currentSemester = student.getTranscript().getCurrentSemester();
+        return databaseManager.read(path + "/" + currentSemester + "/" + studentId + ".json", Transcript.class);
     }
 
     public void createTranscript(Transcript transcript) throws IOException {
@@ -78,7 +86,7 @@ public class TranscriptRepository {
 
     // TODO: IT SHOULD BE UPDATED BECAUSE UPDATE AND CREATE IS DIFFERENT
     public void updateTranscript(CourseEnrollment courseEnrollment)
-            throws IOException {
+            throws IOException, UserNotFoundException {
         // int currentSemester = student.getTranscript().getCurrentSemester();
         // Transcript transcript = student.getTranscript();
         Transcript transcript = getTranscript(courseEnrollment.getStudentId());
