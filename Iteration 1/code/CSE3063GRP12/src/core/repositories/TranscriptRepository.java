@@ -48,7 +48,7 @@ public class TranscriptRepository {
         Transcript transcript = databaseManager.read(path + "/" + currentSemester + "/" + user.getUserName()
                 + ".json", Transcript.class);
 
-        ArrayList<Semester> semesters = transcript.getListOfSemester();
+        Map<Integer, Semester> semesters = transcript.getListOfSemester();
 
         Map<String, CourseGrade> coursesMap = semesters.get(semesters.size() -
                 1).getListOfCoursesTaken();
@@ -96,7 +96,9 @@ public class TranscriptRepository {
             int totalCreditTaken = courseEnrollment.getSelectedCourseList().stream().mapToInt(Course::getCredit).sum();
 
             Semester semester = new Semester("0", newCourseList, totalCreditTaken, 0, transcript.getCurrentSemester());
-            transcript.getListOfSemester().add(semester);
+            // transcript.getListOfSemester().add(semester);
+            transcript.getListOfSemester().put(currentSemester, semester);
+
             databaseManager.write(path + "/" + currentSemester + "/" + courseEnrollment.getStudentId() + ".json",
                     transcript);
         } else {
@@ -110,8 +112,9 @@ public class TranscriptRepository {
 
             Semester semester = new Semester("0", newCourseList, totalCreditTaken,
                     0, transcript.getCurrentSemester());
-            transcript.getListOfSemester().set(currentSemester - 1, semester);
-            databaseManager.write(path + "/" + courseEnrollment.getStudentId() + ".json",
+            transcript.getListOfSemester().put(currentSemester, semester);
+            // transcript.getListOfSemester().set(currentSemester - 1, semester);
+            databaseManager.write(path + "/" + currentSemester + "/" + courseEnrollment.getStudentId() + ".json",
                     transcript);
         }
 

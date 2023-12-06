@@ -1,7 +1,7 @@
 {
     "id": "o150121534",
-    "listOfSemester": [
-        {
+    "listOfSemester": {
+        "1": {
             "id": "0",
             "listOfCoursesTaken": {
                 "CSE1200": "NON",
@@ -14,7 +14,7 @@
             "yano": 0.0,
             "semesterNo": 1
         }
-    ],
+    },
     "gano": 1.0,
     "totalCreditTaken": 1,
     "totalCreditCompleted": 1,

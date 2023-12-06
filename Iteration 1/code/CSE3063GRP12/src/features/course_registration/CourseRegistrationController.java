@@ -87,7 +87,7 @@ public class CourseRegistrationController {
 		 */
 		// ArrayList<Semester> semester = transcript.getListOfSemester();
 
-		ArrayList<Semester> semester = transcript.getListOfSemester();
+		Map<Integer, Semester> semester = transcript.getListOfSemester();
 
 		ArrayList<Course> availableCourses = new ArrayList<>();
 		for (Course courseThisSemester : courseList) {
