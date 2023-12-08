@@ -16,19 +16,10 @@
       "yano": 3.00,
       "gano": 3.00,
       "semesterNo": 1
-    },
-    "2": {
-      "listOfCoursesTaken": {
-      },
-      "creditsTaken": 0,
-      "creditsCompleted": 0,
-      "yano": 0.0,
-      "gano": 0.0,
-      "semesterNo": 1
     }
   },
   "gano": 3.00,
   "totalCreditTaken": 27.0,
   "totalCreditCompleted": 20.25,
-  "currentSemester": 1
+  "currentSemester": 2
 }
