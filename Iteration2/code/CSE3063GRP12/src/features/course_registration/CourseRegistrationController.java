@@ -91,11 +91,8 @@ public class CourseRegistrationController {
 
 		ArrayList<Course> availableCourses = new ArrayList<>();
 		for (Course courseThisSemester : courseList) {
-			System.err.println(semester.toString());
-			System.err.println(semester.values());
-			System.err.println(semester.keySet());
 
-			if (semester.values() == null || semester.values().size() == 0) {
+			if (semester == null || semester.values() == null || semester.values().size() == 0) {
 				availableCourses.add(courseThisSemester);
 			} else {
 				Semester currentSemester = semester.get(transcript.getCurrentSemester());

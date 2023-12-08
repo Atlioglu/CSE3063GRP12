@@ -42,19 +42,21 @@ public class TranscriptRepository {
     // transcript);
     // }
 
-    // TODO: WHY WE NEED THIS?
-    public ArrayList<Course> getCoursesForSemesterByStudent(User user) throws IOException {
-        int currentSemester = ((Student) user).getTranscript().getCurrentSemester();
-        Transcript transcript = databaseManager.read(path + "/" + currentSemester + "/" + user.getUserName()
-                + ".json", Transcript.class);
+    // // TODO: WHY WE NEED THIS?
+    // public ArrayList<Course> getCoursesForSemesterByStudent(User user) throws
+    // IOException {
+    // int currentSemester = ((Student) user).getTranscript().getCurrentSemester();
+    // Transcript transcript = databaseManager.read(path + "/" + currentSemester +
+    // "/" + user.getUserName()
+    // + ".json", Transcript.class);
 
-        Map<Integer, Semester> semesters = transcript.getListOfSemester();
+    // Map<Integer, Semester> semesters = transcript.getListOfSemester();
 
-        Map<String, CourseGrade> coursesMap = semesters.get(semesters.size() -
-                1).getListOfCoursesTaken();
-        // return new ArrayList<>(coursesMap.keySet());
-        return new ArrayList<>();
-    }
+    // Map<String, CourseGrade> coursesMap = semesters.get(semesters.size() -
+    // 1).getListOfCoursesTaken();
+    // // return new ArrayList<>(coursesMap.keySet());
+    // return new ArrayList<>();
+    // }
 
     // public List<String> findFilesWithId(String directoryPath, String id) {
     // String pa = System.getProperty("user.dir") +
@@ -88,8 +90,11 @@ public class TranscriptRepository {
         Transcript transcript = getTranscript(courseEnrollment.getStudentId());
         int currentSemester = transcript.getCurrentSemester();
 
-        if (currentSemester > transcript.getListOfSemester().size()) {
+        if (transcript.getListOfSemester() == null || currentSemester > transcript.getListOfSemester().size()) {
             Map<String, CourseGrade> newCourseList = new HashMap<>();
+            if (transcript.getListOfSemester() == null) {
+                transcript.setListOfSemester(new HashMap<>());
+            }
             for (Course course : courseEnrollment.getSelectedCourseList()) {
                 newCourseList.put(course.getCourseCode(), CourseGrade.NON);
             }
@@ -97,6 +102,7 @@ public class TranscriptRepository {
 
             Semester semester = new Semester("0", newCourseList, totalCreditTaken, 0, transcript.getCurrentSemester());
             // transcript.getListOfSemester().add(semester);
+
             transcript.getListOfSemester().put(currentSemester, semester);
 
             databaseManager.write(path + "/" + currentSemester + "/" + courseEnrollment.getStudentId() + ".json",
