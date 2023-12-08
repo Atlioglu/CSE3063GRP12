@@ -1,16 +1,17 @@
 package core.models.concretes;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public class Transcript {
     private String id;
-    private ArrayList<Semester> listOfSemester;
+    private Map<Integer, Semester> listOfSemester;
+
     private double gano;
     private int totalCreditTaken;
     private int totalCreditCompleted;
     private int currentSemester;
 
-    public Transcript(String id, ArrayList<Semester> listOfSemester, double gano,
+    public Transcript(String id, Map<Integer, Semester> listOfSemester, double gano,
             int totalCreditTaken, int totalCreditCompleted, int currentSemester) {
         this.id = id;
         this.listOfSemester = listOfSemester;
@@ -20,7 +21,7 @@ public class Transcript {
         this.currentSemester = currentSemester;
     }
 
-    public ArrayList<Semester> getListOfSemester() {
+    public Map<Integer, Semester> getListOfSemester() {
         return listOfSemester;
     }
 
@@ -40,7 +41,7 @@ public class Transcript {
         return currentSemester;
     }
 
-    public void setListOfSemester(ArrayList<Semester> listOfSemester) {
+    public void setListOfSemester(Map<Integer, Semester> listOfSemester) {
         this.listOfSemester = listOfSemester;
     }
 
@@ -60,7 +61,7 @@ public class Transcript {
         this.currentSemester = currentSemester;
     }
 
-      public String toString() {
+    public String toString() {
         // Return string representation
         return ""; // Placeholder
     }

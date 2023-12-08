@@ -47,9 +47,9 @@ public class TranscriptController {
             SessionController sessionController = SessionController.getInstance();
             Transcript transcript = fetchTranscript(((Student) sessionController.getCurrentUser()).getUserName());
 
-            ArrayList<Semester> semesters = transcript.getListOfSemester();
+            Map<Integer, Semester> semesters = transcript.getListOfSemester();
 
-            for (Semester semester : semesters) {
+            for (Semester semester : semesters.values()) {
                 System.out.println(
                         "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 ArrayList<String> courseIdList = new ArrayList<>(semester.getListOfCoursesTaken().keySet());
