@@ -1,0 +1,17 @@
+{
+    "id": 29,
+    "courseCode": "IE3081",
+    "name": "Modeling and Discrete Simulation",
+    "credit": 4,
+    "session": {
+        "id": "id29",
+        "courseSessions": {
+            "WEDNESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 5
+}

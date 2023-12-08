@@ -4,6 +4,9 @@
         "firstName": "AdvisorName",
         "lastName": "AdvisorSurname"
     },
+    "listOfStudentIds": [
+        "o150121534"
+    ],
     "listOfLectureSessions": [
         {
             "id": "session1",

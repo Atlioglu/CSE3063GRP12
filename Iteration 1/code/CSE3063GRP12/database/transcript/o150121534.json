@@ -1,18 +1,1 @@
-{
-    "id": "1",
-    "listOfSemester": [
-        {
-            "id": "1",
-            "listOfCoursesTaken": {
-                "CSE2055": "BB",
-                "CSE3063": "AA"
-            },
-            "creditsTaken": 1,
-            "yano": 1.0
-        }
-    ],
-    "gano": 1.0,
-    "totalCreditTaken": 1,
-    "totalCreditCompleted": 1,
-    "currentSemester": 1
-}
+{"id":"o150121534","listOfSemester":[{"id":"0","listOfCoursesTaken":{"CSE1200":"NON","PHYS1103":"NON","PHYS1101":"NON","MBG1201":"NON","MATH1001":"NON"},"creditsTaken":21,"yano":0.0}],"gano":1.0,"totalCreditTaken":1,"totalCreditCompleted":1,"currentSemester":1}

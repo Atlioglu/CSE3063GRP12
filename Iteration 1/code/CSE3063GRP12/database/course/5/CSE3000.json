@@ -1,0 +1,17 @@
+{
+    "id": 24,
+    "courseCode": "CSE3000",
+    "name": "Summer Practice I",
+    "credit": 10,
+    "session": {
+        "id": "id24",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 5
+}

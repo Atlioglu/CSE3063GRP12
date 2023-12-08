@@ -7,9 +7,8 @@ import core.models.concretes.CourseEnrollment;
 
 import java.io.IOException;
 
-import com.google.gson.Gson;
-
 import core.enums.ApprovalState;
+import core.exceptions.UserNotFoundException;
 import core.general_providers.TerminalManager;
 
 public class ApprovalCoursesSelectedController {
@@ -58,7 +57,7 @@ public class ApprovalCoursesSelectedController {
         return Integer.parseInt(input);
     }
 
-    private void updateTranscript(CourseEnrollment courseEnrollment) throws IOException {
+    private void updateTranscript(CourseEnrollment courseEnrollment) throws IOException, UserNotFoundException {
         transcriptRepository.updateTranscript(courseEnrollment);
     }
 
