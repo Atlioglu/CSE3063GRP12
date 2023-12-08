@@ -1,0 +1,17 @@
+{
+    "id": 46,
+    "courseCode": "TE II",
+    "name": "Technical Elective - 2",
+    "credit": 5,
+    "session": {
+        "id": "id46",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 8
+}

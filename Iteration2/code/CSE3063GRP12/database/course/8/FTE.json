@@ -1,0 +1,17 @@
+{
+    "id": 45,
+    "courseCode": "FTE",
+    "name": "Faculty Technical Elective",
+    "credit": 5,
+    "session": {
+        "id": "id45",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 8
+}

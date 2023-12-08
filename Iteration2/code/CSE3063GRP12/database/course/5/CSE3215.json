@@ -1,0 +1,17 @@
+{
+    "id": 25,
+    "courseCode": "CSE3215",
+    "name": "Digital Logic Design",
+    "credit": 6,
+    "session": {
+        "id": "id25",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 5
+}

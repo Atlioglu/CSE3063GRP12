@@ -1,0 +1,17 @@
+{
+    "id": 15,
+    "courseCode": "ECON2004",
+    "name": "Engineering Economy",
+    "credit": 4,
+    "session": {
+        "id": "id15",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 3
+}

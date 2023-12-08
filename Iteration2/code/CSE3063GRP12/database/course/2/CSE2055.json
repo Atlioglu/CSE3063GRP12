@@ -1,0 +1,10 @@
+{
+    "id": "2",
+    "courseCode": "CSE2055",
+    "name": "Object Oriented Software Design",
+    "credit": 3,
+    "session": [],
+    "prerequisites": [],
+    "quota": 24,
+    "semester": 2
+}

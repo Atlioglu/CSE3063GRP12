@@ -1,0 +1,17 @@
+{
+    "id": 3,
+    "courseCode": "CSE1241",
+    "name": "Computer Programming I",
+    "credit": 6,
+    "session": {
+        "id": "id3",
+        "courseSessions": {
+            "TUESDAY": ["five", "six"],
+            "THURSDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": ["CSE1242"],
+    "quota": 30,
+    "semester": 1
+}

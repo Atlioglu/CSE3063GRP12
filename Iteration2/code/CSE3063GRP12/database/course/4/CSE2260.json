@@ -1,0 +1,17 @@
+{
+    "id": 21,
+    "courseCode": "CSE2260",
+    "name": "Principles of Programming Languages",
+    "credit": 6,
+    "session": {
+        "id": "id21",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 4
+}
