@@ -91,10 +91,14 @@ public class CourseRegistrationController {
 
 		ArrayList<Course> availableCourses = new ArrayList<>();
 		for (Course courseThisSemester : courseList) {
-			if (semester == null || semester.size() == 0) {
+			System.err.println(semester.toString());
+			System.err.println(semester.values());
+			System.err.println(semester.keySet());
+
+			if (semester.values() == null || semester.values().size() == 0) {
 				availableCourses.add(courseThisSemester);
 			} else {
-				Semester currentSemester = semester.get(transcript.getCurrentSemester() - 1);
+				Semester currentSemester = semester.get(transcript.getCurrentSemester());
 				Map<String, CourseGrade> listOfCoursesTaken = currentSemester.getListOfCoursesTaken();
 				if (hasPassedPrerequisites(courseThisSemester.getPrerequisites(),
 						listOfCoursesTaken))
@@ -167,7 +171,7 @@ public class CourseRegistrationController {
 		try {
 			courseEnrollmentRepository.createCourseEnrollment(courseEnrollment);
 		} catch (Exception e) {
- 			// TODO: handle exception
+			// TODO: handle exception
 		}
 
 		// courseEnrollmentRepository.updateEnrollment((Student) currentStudent,
