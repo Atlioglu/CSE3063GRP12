@@ -1,0 +1,22 @@
+{
+    "advisor": {
+        "id": "ADid2",
+        "firstName": "Randy",
+        "lastName": "Orton"
+    },
+    "listOfStudentIds": [
+        "o150120031",
+        "o150120032",
+        "o150120033",
+        "o150120034",
+        "o150120035",
+        "o150120036",
+        "o150120037",
+        "o150120038",
+        "o150120039",
+        "o150120040"
+    ],
+    "listOfCoursesGiven": [],
+    "userName": "a150120xx1",
+    "password": "150120xx1"
+}
