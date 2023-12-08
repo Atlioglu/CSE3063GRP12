@@ -1,0 +1,17 @@
+{
+    "id": 23,
+    "courseCode": "STAT2253",
+    "name": "Probability and Statistics for Computer Engineering",
+    "credit": 5,
+    "session": {
+        "id": "id23",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "TUESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 4
+}
