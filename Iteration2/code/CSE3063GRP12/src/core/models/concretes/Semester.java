@@ -6,17 +6,18 @@ import core.enums.CourseGrade;
 
 public class Semester {
     private String id;
-    // <CourseId,CourseGrade>
     private Map<String, CourseGrade> listOfCoursesTaken;
     private int creditsTaken;
     private double yano;
+    private int semesterNo;
 
     public Semester(String id, Map<String, CourseGrade> listOfCoursesTaken,
-            int creditsTaken, double yano) {
+            int creditsTaken, double yano, int semesterNo) {
         this.id = id;
         this.listOfCoursesTaken = listOfCoursesTaken;
         this.creditsTaken = creditsTaken;
         this.yano = yano;
+        this.semesterNo = semesterNo;
     }
 
     public String getId() {
@@ -49,6 +50,14 @@ public class Semester {
 
     public void setYano(double yano) {
         this.yano = yano;
+    }
+
+    public int getSemesterNo() {
+        return semesterNo;
+    }
+
+    public void setSemesterNo(int semesterNo) {
+        this.semesterNo = semesterNo;
     }
 
 }
