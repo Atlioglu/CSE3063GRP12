@@ -24,8 +24,8 @@ public class UserRepository {
 
     public UserRepository() {
         path = System.getProperty("user.dir") + AppConstant.getInstance().getBasePath() + "/user/";
-        advisorPath = path + "advisor/";
-        studentPath = path + "student/";
+        advisorPath = path + "advisor";
+        studentPath = path + "student";
         databaseManager = InstanceManager.getInstance().getDataBaseInstance();
 
     }
@@ -36,6 +36,9 @@ public class UserRepository {
             User user = null;
             if (getUserType(userName) == UserType.Student) {
                 user = databaseManager.read(studentPath + "/" + userName + ".json", Student.class);
+                if (user == null) {
+                    throw new UserNotFoundException();
+                }
                 if (user.getPassword().equals(password)) {
                     setCurrentUser(user);
                 } else {
@@ -44,6 +47,9 @@ public class UserRepository {
 
             } else if (getUserType(userName) == UserType.Advisor) {
                 user = databaseManager.read(advisorPath + "/" + userName + ".json", Advisor.class);
+                if (user == null) {
+                    throw new UserNotFoundException();
+                }
                 if (user.getPassword().equals(password)) {
                     setCurrentUser(user);
 
@@ -52,13 +58,9 @@ public class UserRepository {
                 }
 
             }
-            // TODO: PROBABLY IT WONT WORK
-            if (user == null) {
-                throw new UserNotFoundException();
-            }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
             throw new UserNotFoundException();
         }
     }
