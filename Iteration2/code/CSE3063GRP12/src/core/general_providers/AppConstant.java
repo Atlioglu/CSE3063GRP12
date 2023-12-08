@@ -8,7 +8,7 @@ public class AppConstant {
 
     private AppConstant() {
         backMenuMessage = ("Do you want to go back");
-        basePath = "/Iteration 1/code/CSE3063GRP12/database";
+        basePath = "/code/CSE3063GRP12/database";
     }
 
     public static AppConstant getInstance() {
