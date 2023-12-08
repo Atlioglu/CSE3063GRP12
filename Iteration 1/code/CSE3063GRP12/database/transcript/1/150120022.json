@@ -1,29 +1,28 @@
 {
-  "Header": {
-    "University Name": "MARMARA UNIVERSITY",
-    "Document Type": "OFFICIAL ACADEMIC RECORD",
-    "Student Type": "Transcript for Engineering Student"
+  "studentId": "o150120022",
+  "transcriptId": "id22",
+  "listOfSemesters": {
+    "1": {
+      "listOfCoursesTaken": {
+        },
+      "creditsTaken": 0,
+      "creditsCompleted": 0,
+      "yano": 0.0,
+      "gano": 0.0,
+      "semesterNo": 1
+    },
+    "2": {
+      "listOfCoursesTaken": {
+      },
+      "creditsTaken": 0,
+      "creditsCompleted": 0,
+      "yano": 0.0,
+      "gano": 0.0,
+      "semesterNo": 2
+    }
   },
-  "Personal Information": {
-    "Citizenship Id": "876543210",
-    "First Name": "Ethan",
-    "Last Name": "Evans",
-    "E-Mail": "evans.ethan@gmail.com",
-    "Birthdate": "10/15/2003",
-    "Age": "19 yrs",
-    "Area": "Istanbul"
-  },
-  "Academic Information": {
-    "Faculty / School": "Faculty of Engineering",
-    "Department / Program": "Computer Engineering",
-    "Student Id": "o150120022",
-    "transcriptId":"id22",
-    "Area": "Istanbul",
-    "Education Level": "Bachelor",
-    "Education Language": "English",
-    "Registration Date": "15/09/2021",
-    "Graduation Date": "---",
-    "1.Semester": {},
-    "2.Semester": {}
-  }
+  "gano": 0.0,
+  "totalCreditTaken": 0,
+  "totalCreditCompleted": 0,
+  "currentSemester": 1
 }

@@ -1,29 +1,28 @@
 {
-  "Header": {
-    "University Name": "MARMARA UNIVERSITY",
-    "Document Type": "OFFICIAL ACADEMIC RECORD",
-    "Student Type": "Transcript for Engineering Student"
+  "studentId": "o150120025",
+  "transcriptId": "id25",
+  "listOfSemesters": {
+    "1": {
+      "listOfCoursesTaken": {
+        },
+      "creditsTaken": 0,
+      "creditsCompleted": 0,
+      "yano": 0.0,
+      "gano": 0.0,
+      "semesterNo": 1
+    },
+    "2": {
+      "listOfCoursesTaken": {
+      },
+      "creditsTaken": 0,
+      "creditsCompleted": 0,
+      "yano": 0.0,
+      "gano": 0.0,
+      "semesterNo": 2
+    }
   },
-  "Personal Information": {
-    "Citizenship Id": "543210987",
-    "First Name": "Peyton",
-    "Last Name": "Parker",
-    "E-Mail": "parker.peyton@gmail.com",
-    "Birthdate": "11/14/2003",
-    "Age": "18 yrs",
-    "Area": "Istanbul"
-  },
-  "Academic Information": {
-    "Faculty / School": "Faculty of Engineering",
-    "Department / Program": "Computer Engineering",
-    "Student Id": "o150120025",
-    "transcriptId":"id25",
-    "Area": "Istanbul",
-    "Education Level": "Bachelor",
-    "Education Language": "English",
-    "Registration Date": "15/09/2021",
-    "Graduation Date": "---",
-    "1.Semester": {},
-    "2.Semester": {}
-  }
+  "gano": 0.0,
+  "totalCreditTaken": 0,
+  "totalCreditCompleted": 0,
+  "currentSemester": 1
 }
