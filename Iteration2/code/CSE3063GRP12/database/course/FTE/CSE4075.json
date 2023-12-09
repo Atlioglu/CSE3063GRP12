@@ -1,0 +1,17 @@
+{
+    "id": 51,
+    "courseCode": "CSE4075",
+    "name": "Wireless & Mobile Networks",
+    "credit": 5,
+    "session": {
+        "id": "id51",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 1
+}

@@ -1,0 +1,17 @@
+{
+    "id": 52,
+    "courseCode": "CSE4034",
+    "name": "Advanced Unix Programming",
+    "credit": 5,
+    "session": {
+        "id": "id52",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 1
+}

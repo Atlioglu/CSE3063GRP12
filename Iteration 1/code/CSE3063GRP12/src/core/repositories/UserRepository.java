@@ -34,7 +34,6 @@ public class UserRepository {
             throws UserNotFoundException, WrongPasswordException {
         try {
             User user = null;
-            getUserType(userName);
             if (getUserType(userName) == UserType.Student) {
                 user = databaseManager.read(studentPath + "/" + userName + ".json", Student.class);
                 if (user.getPassword().equals(password)) {
@@ -81,6 +80,28 @@ public class UserRepository {
         }
 
         return null;
+    }
+
+    public User getUser(String userName) throws UserNotFoundException {
+        User user = null;
+        try {
+
+            if (getUserType(userName) == UserType.Student) {
+                user = databaseManager.read(studentPath + "/" + userName + ".json", Student.class);
+            } else if (getUserType(userName) == UserType.Advisor) {
+                user = databaseManager.read(advisorPath + "/" + userName + ".json", Advisor.class);
+            }
+            // TODO: PROBABLY IT WONT WORK
+            if (user == null) {
+                throw new UserNotFoundException();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new UserNotFoundException();
+        }
+        return user;
+
     }
 
     private UserType getUserType(String userName) {

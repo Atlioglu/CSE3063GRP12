@@ -4,6 +4,7 @@ import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;
 import core.repositories.CourseRepository;
 import core.enums.CourseGrade;
+import core.exceptions.UserNotFoundException;
 import core.exceptions.WrongNumberOfCoursesSelectedException;
 import core.general_providers.SessionController;
 import core.models.abstracts.User;
@@ -67,7 +68,7 @@ public class CourseRegistrationController {
 
 	}
 
-	private Transcript fetchTranscript(String transcript) throws IOException {
+	private Transcript fetchTranscript(String transcript) throws IOException, UserNotFoundException {
 		return transcriptRepository.getTranscript(transcript);
 	}
 
@@ -86,14 +87,18 @@ public class CourseRegistrationController {
 		 */
 		// ArrayList<Semester> semester = transcript.getListOfSemester();
 
-		ArrayList<Semester> semester = transcript.getListOfSemester();
+		Map<Integer, Semester> semester = transcript.getListOfSemester();
 
 		ArrayList<Course> availableCourses = new ArrayList<>();
 		for (Course courseThisSemester : courseList) {
-			if (semester == null || semester.size() == 0) {
+			System.err.println(semester.toString());
+			System.err.println(semester.values());
+			System.err.println(semester.keySet());
+
+			if (semester.values() == null || semester.values().size() == 0) {
 				availableCourses.add(courseThisSemester);
 			} else {
-				Semester currentSemester = semester.get(transcript.getCurrentSemester() - 1);
+				Semester currentSemester = semester.get(transcript.getCurrentSemester());
 				Map<String, CourseGrade> listOfCoursesTaken = currentSemester.getListOfCoursesTaken();
 				if (hasPassedPrerequisites(courseThisSemester.getPrerequisites(),
 						listOfCoursesTaken))
@@ -166,7 +171,7 @@ public class CourseRegistrationController {
 		try {
 			courseEnrollmentRepository.createCourseEnrollment(courseEnrollment);
 		} catch (Exception e) {
- 			// TODO: handle exception
+			// TODO: handle exception
 		}
 
 		// courseEnrollmentRepository.updateEnrollment((Student) currentStudent,

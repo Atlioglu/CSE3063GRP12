@@ -1,0 +1,17 @@
+{
+    "id": 8,
+    "courseCode": "MATH1002",
+    "name": "Calculus II",
+    "credit": 6,
+    "session": {
+        "id": "id8",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "TUESDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 2
+}

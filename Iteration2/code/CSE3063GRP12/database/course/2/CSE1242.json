@@ -1,0 +1,17 @@
+{
+    "id": 7,
+    "courseCode": "CSE1242",
+    "name": "Computer Programming II",
+    "credit": 6,
+    "session": {
+        "id": "id7",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": ["CSE2225"],
+    "quota": 30,
+    "semester": 2
+}

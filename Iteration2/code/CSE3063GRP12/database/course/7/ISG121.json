@@ -1,0 +1,17 @@
+{
+    "id": 42,
+    "courseCode": "ISG121",
+    "name": "Work Safety I",
+    "credit": 2,
+    "session": {
+        "id": "id42",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 7
+}
