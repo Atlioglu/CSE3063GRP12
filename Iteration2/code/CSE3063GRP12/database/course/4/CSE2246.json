@@ -11,7 +11,7 @@
             "FRIDAY": ["seven", "eight"]
         }
     },
-    "prerequisites": [],
+    "prerequisites": ["CSE2225"],
     "quota": 30,
     "semester": 4
 }
