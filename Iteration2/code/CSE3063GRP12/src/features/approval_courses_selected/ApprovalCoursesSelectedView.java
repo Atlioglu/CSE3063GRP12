@@ -6,7 +6,7 @@ import core.models.concretes.Course;
 public class ApprovalCoursesSelectedView {
 
 	public void showSelectedCourses(ArrayList<Course> selectedCourseList) {
-		System.out.println("Your selected courses are:");
+		System.out.println("Student's selected courses are:");
 		for (int i = 0; i < selectedCourseList.size(); i++)
 			System.out.println((i + 1) + ". " + selectedCourseList.get(i).getName());
 	}
