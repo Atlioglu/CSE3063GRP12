@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Objects;
 
 public class CourseRegistrationController {
 	private CourseRegistrationView courseRegistrationView;
@@ -47,9 +46,12 @@ public class CourseRegistrationController {
 			if (courseEnrollment != null && courseEnrollment.getApprovalState() != ApprovalState.Rejected) {
 				// Handle existing CourseEnrollment
 				handleExistingCourseEnrollment(courseEnrollment);
-			} else {
+			} else{
 				// Handle null or rejected CourseEnrollment
-				handleNullOrRejectedCourseEnrollment(courseEnrollment.getApprovalState(), currentStudent);
+				if(courseEnrollment == null)
+					handleNullOrRejectedCourseEnrollment(null, currentStudent);
+				else
+					handleNullOrRejectedCourseEnrollment(courseEnrollment.getApprovalState(), currentStudent);
 			}
 		} catch (Exception e) {
 			courseRegistrationView.showErrorMessage(e);
@@ -67,7 +69,7 @@ public class CourseRegistrationController {
 		try {
 			Transcript transcript = fetchTranscript(currentStudent.getUserName());
 			ArrayList<Course> allCoursesPerSemester = fetchCoursesBySemester(transcript.getCurrentSemester());
-	
+
 			ArrayList<Course> availableCoursesForStudent = arrangeCoursesForStudent(transcript, allCoursesPerSemester);
 			
 			if(approvalState == ApprovalState.Rejected){
@@ -104,6 +106,7 @@ public class CourseRegistrationController {
 	private ArrayList<Course> arrangeCoursesForStudent(Transcript transcript, ArrayList<Course> currentSemesterCourseList) {
 		Map<Integer, Semester> semesters = transcript.getListOfSemester();
 		ArrayList<Course> availableCourses = new ArrayList<>();
+
 		for (Course courseThisSemester : currentSemesterCourseList) {
 			if (semesters == null || semesters.values() == null || semesters.values().size() == 0) {
 				availableCourses.add(courseThisSemester);
@@ -112,13 +115,10 @@ public class CourseRegistrationController {
 				if (courseThisSemester.getPrerequisites() != null && !courseThisSemester.getPrerequisites().isEmpty()) {
 					addFailedPrerequisites(courseThisSemester.getPrerequisites(), semesters, availableCourses);
 				} 
-				
 				// if the course does not have any prerequisites, add it
 				else availableCourses.add(courseThisSemester); 
 			}
-		}
-				
-				
+		}	
 		return availableCourses;
 	}
 	
@@ -141,7 +141,6 @@ public class CourseRegistrationController {
 		return false; // Student has not failed the course
 	}
 
-	
 
 	private void addDropCoursesOptions(ArrayList<Course> courseList, ArrayList<Course> availableCourses){
 		try{
