@@ -1,0 +1,18 @@
+{
+    "id": 14,
+    "courseCode": "ME3004",
+    "name": "Mathematical Modeling in Mechanical Engineering",
+    "credit": 5.00,
+    "session": {
+        "id": "id14",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 10
+}
+ 
