@@ -1,4 +1,4 @@
-package features.approval_courses_selected;
+package features.advisor.approval_courses_selected;
 
 import java.util.ArrayList;
 import core.models.concretes.Course;

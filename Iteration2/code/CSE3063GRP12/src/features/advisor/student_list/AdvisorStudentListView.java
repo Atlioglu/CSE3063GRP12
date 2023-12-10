@@ -1,4 +1,4 @@
-package features.Advisor;
+package features.advisor.student_list;
 
 import core.models.concretes.Student;
 import java.util.ArrayList;

@@ -1,10 +1,10 @@
-package features.Advisor;
+package features.advisor.course_approval;
 
 import core.general_providers.TerminalManager;
 import core.repositories.CourseEnrollmentRepository;
 import core.models.concretes.CourseEnrollment;
 import core.exceptions.UnexpectedInputException;
-import features.approval_courses_selected.ApprovalCoursesSelectedController;
+import features.advisor.approval_courses_selected.ApprovalCoursesSelectedController;
 import features.main_menu.MenuController;
 import java.util.ArrayList;
 

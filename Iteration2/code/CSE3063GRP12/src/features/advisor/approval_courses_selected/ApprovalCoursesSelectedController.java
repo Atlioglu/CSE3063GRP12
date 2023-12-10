@@ -1,4 +1,4 @@
-package features.approval_courses_selected;
+package features.advisor.approval_courses_selected;
 
 import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;

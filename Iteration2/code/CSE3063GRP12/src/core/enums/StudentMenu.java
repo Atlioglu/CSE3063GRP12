@@ -1,9 +1,9 @@
 package core.enums;
 
-import features.course_registration.CourseRegistrationController;
 import features.login.LoginController;
-import features.transcript.TranscriptController;
-import features.weekly_schedule.WeeklyScheduleController;
+import features.student.course_registration.CourseRegistrationController;
+import features.student.transcript.TranscriptController;
+import features.student.weekly_schedule.WeeklyScheduleController;
 
 public enum StudentMenu implements Menu{
     CourseRegistration, WeeklySchedule, Transcript, Logout;

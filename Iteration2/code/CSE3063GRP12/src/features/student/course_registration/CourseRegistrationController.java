@@ -1,4 +1,4 @@
-package features.course_registration;
+package features.student.course_registration;
 
 import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;

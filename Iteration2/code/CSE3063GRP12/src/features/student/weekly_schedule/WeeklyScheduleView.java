@@ -1,4 +1,4 @@
-package features.weekly_schedule;
+package features.student.weekly_schedule;
 
 import java.util.ArrayList;
 import java.util.Map;
