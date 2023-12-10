@@ -1,6 +1,9 @@
 package core.models.abstracts;
 
+import java.util.Objects;
+
 import core.enums.UserType;
+import core.models.concretes.Student;
 
 public abstract class User {
 
@@ -64,5 +67,21 @@ public abstract class User {
             return UserType.Advisor;
         }
         return null;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Student student = (Student) obj;
+        return Objects.equals(userName, student.userName) &&
+                Objects.equals(password, student.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, password);
     }
 }

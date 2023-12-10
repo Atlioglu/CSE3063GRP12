@@ -1,9 +1,7 @@
 package core.database.concretes;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import core.database.abstracts.DatabaseManager;
@@ -20,7 +18,7 @@ public class JsonManager extends DatabaseManager {
         try (FileReader reader = new FileReader(path)) {
             return gson.fromJson(reader, classOfT);
         } catch (Exception e) {
-            //e.printStackTrace();
+            // e.printStackTrace();
             return null;
         }
     }
@@ -30,7 +28,7 @@ public class JsonManager extends DatabaseManager {
         try (FileWriter writer = new FileWriter(path)) {
             writer.write(json);
         } catch (Exception e) {
-           // e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 }

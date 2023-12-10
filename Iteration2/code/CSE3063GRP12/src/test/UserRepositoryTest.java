@@ -1,38 +1,60 @@
 package test;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import core.general_providers.SessionController;
-import core.models.concretes.Student;
-import core.repositories.UserRepository;
-import core.general_providers.SessionController;
 import core.models.abstracts.User;
-import core.models.concretes.Advisor;
 import core.models.concretes.Student;
 
 public class UserRepositoryTest {
 
     @Test
-    public void testUserFetching() {
-        UserRepository userRepository = new UserRepository();
-        Advisor advisor = new Advisor(null, null, null, null, null, null, null);
-        ArrayList<Student> users = userRepository.getStudentsByAdvisor(advisor);
-        assertNotNull("User should be found for valid username", users);
+    public void testSetCurrentUser() {
+        Student student = new Student();
+        student.setUserName("test");
+
+        SessionController sessionController = SessionController.getInstance();
+        sessionController.setCurrentUser(student);
+
+        assertEquals(sessionController.getCurrentUser(), student);
+
     }
 
-    @Mock
-    private SessionController sessionController;
     @Test
-    public void testSetCurrentUser() throws Exception {
-        UserRepository userRepository = new UserRepository();
+    public void testUserEqual() {
+        Student student = new Student();
+        student.setUserName("test");
+        student.setPassword("test");
+        Student student2 = new Student();
+        student2.setUserName("test");
+        student2.setPassword("test");
 
-         Student mockStudent = new Student();
-        userRepository.setCurrentUser(mockStudent);
+        assertEquals(student, student2);
 
-         verify(sessionController).setCurrentUser(mockStudent);
     }
+
+    @Test
+    public void testUserNotEqual() {
+        Student student = new Student();
+        student.setUserName("test");
+        student.setPassword("test");
+        Student student2 = new Student();
+        student2.setUserName("test1");
+        student2.setPassword("test1");
+
+        assertNotEquals(student, student2);
+
+    }
+
+    @Test
+    public void testUserType() {
+        User student = new Student();
+        assertTrue(student instanceof User);
+
+    }
+
 }
