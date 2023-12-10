@@ -11,7 +11,7 @@
             "THURSDAY": ["one", "two"]
         }
     },
-    "prerequisites": ["CSE4034"],
+    "prerequisites": [],
     "quota": 30,
     "semester": 5
 }
