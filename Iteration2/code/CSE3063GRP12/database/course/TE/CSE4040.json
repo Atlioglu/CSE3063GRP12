@@ -1,0 +1,18 @@
+{
+    "id": 5,
+    "courseCode": "CSE4040",
+    "name": "Cloud Computing",
+    "credit": 5.00,
+    "session": {
+        "id": "id5",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+
