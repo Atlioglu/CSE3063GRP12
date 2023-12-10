@@ -11,7 +11,7 @@
             "THURSDAY": ["three", "four"]
         }
     },
-    "prerequisites": [],
+    "prerequisites": ["CSE3033"],
     "quota": 30,
     "semester": 1
 }

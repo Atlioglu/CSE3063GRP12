@@ -11,7 +11,7 @@
             "THURSDAY": ["three", "four"]
         }
     },
-    "prerequisites": ["CSE2246"],
+    "prerequisites": ["CSE1242"],
     "quota": 30,
     "semester": 3
 }

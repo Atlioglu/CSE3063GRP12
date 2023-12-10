@@ -11,7 +11,7 @@
             "THURSDAY": ["three", "four"]
         }
     },
-    "prerequisites": ["CSE4075.json"],
+    "prerequisites": [],
     "quota": 30,
     "semester": 7
 }
