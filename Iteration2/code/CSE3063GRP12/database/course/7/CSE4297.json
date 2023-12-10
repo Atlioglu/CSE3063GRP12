@@ -11,7 +11,7 @@
             "FRIDAY": ["seven", "eight"]
         }
     },
-    "prerequisites": ["CSE4298"],
+    "prerequisites": [],
     "quota": 30,
     "semester": 7
 }

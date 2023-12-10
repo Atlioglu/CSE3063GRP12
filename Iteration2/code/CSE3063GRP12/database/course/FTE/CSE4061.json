@@ -11,7 +11,7 @@
             "THURSDAY": ["one", "two"]
         }
     },
-    "prerequisites": [],
+    "prerequisites": ["CSE3264"],
     "quota": 30,
     "semester": 1
 }
