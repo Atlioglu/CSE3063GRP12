@@ -1,0 +1,18 @@
+{
+    "id": 8,
+    "courseCode": "EE4056",
+    "name": "Introduction to Information Systems Management",
+    "credit": 5.00,
+    "session": {
+        "id": "id8",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 10
+}
+ 

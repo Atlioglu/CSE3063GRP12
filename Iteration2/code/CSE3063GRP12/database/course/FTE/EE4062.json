@@ -1,17 +1,18 @@
 {
-    "id": 51,
-    "courseCode": "CSE4075",
-    "name": "Wireless & Mobile Networks",
-    "credit": 5,
+    "id": 9,
+    "courseCode": "EE4062",
+    "name": "Introduction to Image Processing",
+    "credit": 5.00,
     "session": {
-        "id": "id51",
+        "id": "id9",
         "courseSessions": {
             "MONDAY": ["one", "two"],
             "WEDNESDAY": ["three", "four"],
             "FRIDAY": ["five", "six"]
         }
     },
-    "prerequisites": ["CSE4074"],
+    "prerequisites": [],
     "quota": 30,
-    "semester": 1
+    "semester": 10
 }
+ 

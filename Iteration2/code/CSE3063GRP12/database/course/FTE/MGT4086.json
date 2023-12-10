@@ -1,0 +1,18 @@
+{
+    "id": 23,
+    "courseCode": "MGT4086",
+    "name": "Managing Engineering and Technology",
+    "credit": 5.00,
+    "session": {
+        "id": "id23",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 10
+}
+ 
