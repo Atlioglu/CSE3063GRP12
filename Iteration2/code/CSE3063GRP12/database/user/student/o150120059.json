@@ -1,0 +1,26 @@
+{
+    "advisor": {
+        "id": "ADid6",
+        "firstName": "James",
+        "lastName": "Robert"
+    },
+  "listOfLectureSessions": [
+    {
+    "id": "session1",
+    "courseSessions": {},
+    "lecturer": {},
+    "name": "Session Name"
+    }
+  ],
+  "transcript": {
+    "id": "transcriptId",
+    "gano": 3.33,
+    "totalCreditTaken": 152,
+    "totalCreditCompleted": 152,
+    "currentSemester": 6
+  },
+  "firstName": "Tyler ",
+  "lastName": "Anderson",
+  "userName": "o150120059",
+  "password": "150120059"
+}
