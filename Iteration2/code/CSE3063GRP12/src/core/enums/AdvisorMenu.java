@@ -1,7 +1,7 @@
 package core.enums;
 
-import features.Advisor.AdvisorStudentListController;
-import features.Advisor.CourseApprovalController;
+import features.advisor.course_approval.CourseApprovalController;
+import features.advisor.student_list.AdvisorStudentListController;
 import features.login.LoginController;
 
 public enum AdvisorMenu implements Menu{

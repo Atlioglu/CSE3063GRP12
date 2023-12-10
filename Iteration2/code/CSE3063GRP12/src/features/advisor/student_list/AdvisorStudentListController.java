@@ -1,4 +1,4 @@
-package features.Advisor;
+package features.advisor.student_list;
 
 import core.general_providers.TerminalManager;
 import core.general_providers.SessionController;

@@ -1,4 +1,4 @@
-package features.course_registration;
+package features.student.course_registration;
 
 import java.util.ArrayList;
 

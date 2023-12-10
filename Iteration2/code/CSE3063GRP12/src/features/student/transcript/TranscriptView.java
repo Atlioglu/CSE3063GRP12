@@ -1,4 +1,4 @@
-package features.transcript;
+package features.student.transcript;
 
 import core.models.concretes.Transcript;
 
