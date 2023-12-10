@@ -1,0 +1,18 @@
+{
+    "id": 10,
+    "courseCode": "CSE4058",
+    "name": "Fundamentals of Electronic Commerce",
+    "credit": 5.00,
+    "session": {
+        "id": "id10",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

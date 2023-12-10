@@ -1,0 +1,18 @@
+{
+    "id": 29,
+    "courseCode": "CSE4096",
+    "name": "Special Topics in Computer Engineering IV",
+    "credit": 5.00,
+    "session": {
+        "id": "id29",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

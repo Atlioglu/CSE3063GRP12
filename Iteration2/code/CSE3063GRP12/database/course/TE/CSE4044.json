@@ -1,0 +1,18 @@
+{
+    "id": 6,
+    "courseCode": "CSE4044",
+    "name": "Software Project Management",
+    "credit": 5.00,
+    "session": {
+        "id": "id6",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+

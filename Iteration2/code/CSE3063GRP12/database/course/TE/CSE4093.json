@@ -1,0 +1,18 @@
+{
+    "id": 26,
+    "courseCode": "CSE4093",
+    "name": "Special Topics in Computer Engineering I",
+    "credit": 5.00,
+    "session": {
+        "id": "id26",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

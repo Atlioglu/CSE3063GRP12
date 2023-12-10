@@ -1,0 +1,18 @@
+{
+    "id": 28,
+    "courseCode": "CSE4095",
+    "name": "Special Topics in Computer Engineering III",
+    "credit": 5.00,
+    "session": {
+        "id": "id28",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

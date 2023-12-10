@@ -1,0 +1,18 @@
+{
+    "id": 12,
+    "courseCode": "CSE4061",
+    "name": "Compiler Design",
+    "credit": 5.00,
+    "session": {
+        "id": "id12",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": ["CSE3264"],
+    "quota": 30,
+    "semester": 20
+}
+ 

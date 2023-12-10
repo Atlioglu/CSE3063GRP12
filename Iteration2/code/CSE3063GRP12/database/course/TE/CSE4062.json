@@ -1,0 +1,18 @@
+{
+    "id": 13,
+    "courseCode": "CSE4062",
+    "name": "Introduction to Data Science and Analytics",
+    "credit": 5.00,
+    "session": {
+        "id": "id13",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 
