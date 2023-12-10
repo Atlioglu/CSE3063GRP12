@@ -9,7 +9,6 @@ import core.enums.CourseGrade;
 import core.exceptions.UserNotFoundException;
 import core.general_providers.AppConstant;
 import core.general_providers.InstanceManager;
-import core.models.abstracts.User;
 import core.models.concretes.Transcript;
 import core.models.concretes.Course;
 import core.models.concretes.CourseEnrollment;
