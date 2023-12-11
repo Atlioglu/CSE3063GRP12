@@ -11,7 +11,43 @@
             "FRIDAY": ["seven", "eight"]
         }
     },
-    "prerequisites": ["CSE2225"],
+    "prerequisites": [
+        {
+            "id": 14,
+            "courseCode": "CSE2225",
+            "name": "Data Structures",
+            "credit": 7,
+            "session": {
+                "id": "id14",
+                "courseSessions": {
+                    "TUESDAY": ["seven", "eight"],
+                    "WEDNESDAY": ["one", "two"],
+                    "THURSDAY": ["three", "four"]
+                }
+            },
+            "prerequisites": [
+                {
+                    "id": 7,
+                    "courseCode": "CSE1242",
+                    "name": "Computer Programming II",
+                    "credit": 6,
+                    "session": {
+                        "id": "id7",
+                        "courseSessions": {
+                            "MONDAY": ["three", "four"],
+                            "WEDNESDAY": ["five", "six"],
+                            "FRIDAY": ["seven", "eight"]
+                        }
+                    },
+                    "prerequisites": [],
+                    "quota": 30,
+                    "semester": 2
+                }
+            ],
+            "quota": 30,
+            "semester": 3
+        }
+    ],
     "quota": 30,
     "semester": 4
 }
