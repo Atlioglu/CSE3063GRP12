@@ -6,6 +6,8 @@ import core.enums.ApprovalState;
 public class CourseEnrollment {
     private String id;
     private ArrayList<Course> selectedCourseList;
+    private ArrayList<Course> approvedCourseList;
+    private ArrayList<Course> rejectedCourseList;
     private String studentId;
     private ApprovalState approvalState;
 
@@ -50,6 +52,22 @@ public class CourseEnrollment {
 
     public void setApprovalState(ApprovalState approvalState) {
         this.approvalState = approvalState;
+    }
+
+    public ArrayList<Course> getApprovedCourseList() {
+        return approvedCourseList;
+    }
+
+    public void setApprovedCourseList(ArrayList<Course> approvedCourseList) {
+        this.approvedCourseList = approvedCourseList;
+    }
+
+    public ArrayList<Course> getRejectedCourseList() {
+        return rejectedCourseList;
+    }
+
+    public void setRejectedCourseList(ArrayList<Course> rejectedCourseList) {
+        this.rejectedCourseList = rejectedCourseList;
     }
 
 }
