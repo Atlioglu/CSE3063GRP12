@@ -104,7 +104,7 @@ public class CourseRegistrationController {
 	}
 
 	private ArrayList<Course> arrangeCoursesForStudent(Transcript transcript, ArrayList<Course> currentSemesterCourseList) {
-		Map<Integer, Semester> semesters = transcript.getListOfSemester();
+		Map<Integer, Semester> semesters = transcript.getListOfSemesters();
 		ArrayList<Course> availableCourses = new ArrayList<>();
 
 		for (Course courseThisSemester : currentSemesterCourseList) {

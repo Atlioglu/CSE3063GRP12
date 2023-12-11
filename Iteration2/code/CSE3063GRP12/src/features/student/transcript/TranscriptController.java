@@ -28,6 +28,7 @@ public class TranscriptController {
         try {
             return transcriptRepository.getTranscript(studentId);
         } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage()   );
             return null;
         }
 
@@ -47,7 +48,7 @@ public class TranscriptController {
             SessionController sessionController = SessionController.getInstance();
             Transcript transcript = fetchTranscript(((Student) sessionController.getCurrentUser()).getUserName());
 
-            Map<Integer, Semester> semesters = transcript.getListOfSemester();
+            Map<Integer, Semester> semesters = transcript.getListOfSemesters();
             if (semesters == null) {
                 System.out.println(
                         "Student doesn't have a semester");
