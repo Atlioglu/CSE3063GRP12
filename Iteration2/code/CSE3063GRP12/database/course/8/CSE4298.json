@@ -11,7 +11,25 @@
             "FRIDAY": ["five", "six"]
         }
     },
-    "prerequisites": ["CSE4297"],
+    "prerequisites": [
+        {
+            "id": 39,
+            "courseCode": "CSE4297",
+            "name": "Engineering Project I",
+            "credit": 5,
+            "session": {
+                "id": "id39",
+                "courseSessions": {
+                    "WEDNESDAY": ["three", "four"],
+                    "THURSDAY": ["five", "six"],
+                    "FRIDAY": ["seven", "eight"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+            "semester": 7
+        }
+    ],
     "quota": 30,
     "semester": 8
 }

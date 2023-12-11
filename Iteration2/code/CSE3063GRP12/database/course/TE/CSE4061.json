@@ -11,8 +11,26 @@
             "FRIDAY": ["three", "four"]
         }
     },
-    "prerequisites": ["CSE3264"],
+    "prerequisites": [
+        {
+            "id": 33,
+            "courseCode": "CSE3264",
+            "name": "Formal Languages and Automata Theory",
+            "credit": 5,
+            "session": {
+                "id": "id33",
+                "courseSessions": {
+                    "WEDNESDAY": ["three", "four"],
+                    "THURSDAY": ["five", "six"],
+                    "FRIDAY": ["seven", "eight"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+            "semester": 6
+        }
+    ],
     "quota": 30,
     "semester": 20
 }
- 
+

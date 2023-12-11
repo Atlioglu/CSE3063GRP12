@@ -11,8 +11,26 @@
             "FRIDAY": ["seven", "eight"]
         }
     },
-    "prerequisites": ["CSE3033"],
+    "prerequisites": [
+        {
+            "id": 26,
+            "courseCode": "CSE3033",
+            "name": "Operating Systems",
+            "credit": 7,
+            "session": {
+                "id": "id26",
+                "courseSessions": {
+                    "MONDAY": ["five", "six"],
+                    "TUESDAY": ["seven", "eight"],
+                    "THURSDAY": ["one", "two"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+            "semester": 5
+        }
+    ],
     "quota": 30,
     "semester": 20
 }
- 
+

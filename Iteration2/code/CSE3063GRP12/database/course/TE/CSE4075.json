@@ -11,8 +11,26 @@
             "FRIDAY": ["four", "five"]
         }
     },
-    "prerequisites": ["CSE4074"],
+    "prerequisites": [
+        {
+            "id": 37,
+            "courseCode": "CSE4074",
+            "name": "Computer Networks",
+            "credit": 5,
+            "session": {
+                "id": "id37",
+                "courseSessions": {
+                    "TUESDAY": ["seven", "eight"],
+                    "WEDNESDAY": ["one", "two"],
+                    "THURSDAY": ["three", "four"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+            "semester": 7
+        }
+    ],
     "quota": 30,
     "semester": 20
 }
- 
+
