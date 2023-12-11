@@ -1,0 +1,17 @@
+{
+    "id": 14,
+    "courseCode": "CSE2225",
+    "name": "Data Structures",
+    "credit": 7,
+    "session": {
+        "id": "id14",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": ["CSE1242"],
+    "quota": 30,
+    "semester": 3
+}

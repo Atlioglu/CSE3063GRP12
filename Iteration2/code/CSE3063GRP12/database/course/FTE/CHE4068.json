@@ -1,0 +1,18 @@
+{
+    "id": 3,
+    "courseCode": "CHE4068",
+    "name": "Financial Engineering",
+    "credit": 5.00,
+    "session": {
+        "id": "id3",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 10
+}
+ 

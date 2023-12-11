@@ -1,0 +1,18 @@
+{
+    "id": 20,
+    "courseCode": "MGT4076",
+    "name": "Quality Management System in Automotive Industry",
+    "credit": 5.00,
+    "session": {
+        "id": "id20",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 10
+}
+ 

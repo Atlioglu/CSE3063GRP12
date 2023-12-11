@@ -1,0 +1,17 @@
+{
+    "id": 22,
+    "courseCode": "EE2032",
+    "name": "Electronics",
+    "credit": 5,
+    "session": {
+        "id": "id22",
+        "courseSessions": {
+            "WEDNESDAY": ["three", "four"],
+            "THURSDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 4
+}

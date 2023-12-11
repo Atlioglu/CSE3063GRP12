@@ -1,0 +1,18 @@
+{
+    "id": 9,
+    "courseCode": "CSE4057",
+    "name": "Information Systems Security",
+    "credit": 5.00,
+    "session": {
+        "id": "id9",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

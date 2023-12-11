@@ -1,0 +1,25 @@
+{
+  "studentId": "o150120036",
+  "transcriptId": "id36",
+  "listOfSemesters": {
+    "1": {
+      "listOfCoursesTaken": {
+        "MBG1201": "BB",
+        "CSE1200": "CC",
+        "CSE1241": "BB",
+        "MATH1001": "CC",
+        "PHYS1101": "BB",
+        "PHYS1103": "BB"
+      },
+      "creditsTaken": 27.0,
+      "creditsCompleted": 22.0,
+      "yano": 3.33,
+      "gano": 3.33,
+      "semesterNo": 1
+    }
+  },
+  "gano": 3.33,
+  "totalCreditTaken": 27.0,
+  "totalCreditCompleted": 22.0,
+  "currentSemester": 2
+}

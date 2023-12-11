@@ -1,0 +1,18 @@
+{
+    "id": 1,
+    "courseCode": "CSE4026",
+    "name": "Introduction to Robotics and Control Theory",
+    "credit": 5.00,
+    "session": {
+        "id": "id1",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+

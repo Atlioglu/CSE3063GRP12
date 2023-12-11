@@ -1,0 +1,18 @@
+{
+    "id": 18,
+    "courseCode": "CSE4070",
+    "name": "Software Frameworks",
+    "credit": 5.00,
+    "session": {
+        "id": "id18",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

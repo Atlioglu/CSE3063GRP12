@@ -1,0 +1,18 @@
+{
+    "id": 7,
+    "courseCode": "CSE4053",
+    "name": "Information Systems: Analysis and Design",
+    "credit": 5.00,
+    "session": {
+        "id": "id7",
+        "courseSessions": {
+            "MONDAY": ["two", "three"],
+            "WEDNESDAY": ["four", "five"],
+            "FRIDAY": ["six", "seven"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 

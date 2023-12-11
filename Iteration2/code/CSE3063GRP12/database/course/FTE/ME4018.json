@@ -1,0 +1,18 @@
+{
+    "id": 16,
+    "courseCode": "ME4018",
+    "name": "Introduction to Robotics",
+    "credit": 5.00,
+    "session": {
+        "id": "id16",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 10
+}
+ 

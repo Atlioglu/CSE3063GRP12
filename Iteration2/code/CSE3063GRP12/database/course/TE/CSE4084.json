@@ -1,0 +1,18 @@
+{
+    "id": 21,
+    "courseCode": "CSE4084",
+    "name": "Multimedia Systems",
+    "credit": 5.00,
+    "session": {
+        "id": "id21",
+        "courseSessions": {
+            "MONDAY": ["two", "three"],
+            "WEDNESDAY": ["four", "five"],
+            "FRIDAY": ["six", "seven"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+

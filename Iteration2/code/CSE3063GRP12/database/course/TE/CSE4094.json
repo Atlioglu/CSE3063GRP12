@@ -1,0 +1,18 @@
+{
+    "id": 27,
+    "courseCode": "CSE4094",
+    "name": "Special Topics in Computer Engineering II",
+    "credit": 5.00,
+    "session": {
+        "id": "id27",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 20
+}
+ 
