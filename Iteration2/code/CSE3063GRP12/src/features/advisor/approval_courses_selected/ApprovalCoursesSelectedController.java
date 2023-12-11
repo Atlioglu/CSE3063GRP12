@@ -87,10 +87,15 @@ public class ApprovalCoursesSelectedController {
                 Arrays.sort(arraySelectedCourseIndicesString);
                 int iterApprovedCoursesIndex = 0;
                 for (int i = 0; i < courseList.size(); i++) {
-                    if (Integer.parseInt(arraySelectedCourseIndicesString[iterApprovedCoursesIndex]) == i + 1) {
-                        approvedCourses.add(courseList.get(i));
-                        iterApprovedCoursesIndex++;
-                    } else {
+                    if(iterApprovedCoursesIndex < arraySelectedCourseIndicesString.length){
+                        if (Integer.parseInt(arraySelectedCourseIndicesString[iterApprovedCoursesIndex]) == i + 1) {
+                            approvedCourses.add(courseList.get(i));
+                            iterApprovedCoursesIndex++;
+                        }else {
+                            rejectedCourses.add(courseList.get(i));
+                        }
+                    }
+                    else {
                         rejectedCourses.add(courseList.get(i));
                     }
                 }
