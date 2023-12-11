@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Transcript {
     private String id;
-    private Map<Integer, Semester> listOfSemester;
+    private Map<Integer, Semester> listOfSemesters;
 
     private double gano;
     private int totalCreditTaken;
@@ -14,15 +14,15 @@ public class Transcript {
     public Transcript(String id, Map<Integer, Semester> listOfSemester, double gano,
             int totalCreditTaken, int totalCreditCompleted, int currentSemester) {
         this.id = id;
-        this.listOfSemester = listOfSemester;
+        this.listOfSemesters = listOfSemester;
         this.gano = gano;
         this.totalCreditTaken = totalCreditTaken;
         this.totalCreditCompleted = totalCreditCompleted;
         this.currentSemester = currentSemester;
     }
 
-    public Map<Integer, Semester> getListOfSemester() {
-        return listOfSemester;
+    public Map<Integer, Semester> getListOfSemesters() {
+        return listOfSemesters;
     }
 
     public double getGano() {
@@ -41,8 +41,8 @@ public class Transcript {
         return currentSemester;
     }
 
-    public void setListOfSemester(Map<Integer, Semester> listOfSemester) {
-        this.listOfSemester = listOfSemester;
+    public void setListOfSemesters(Map<Integer, Semester> listOfSemester) {
+        this.listOfSemesters = listOfSemester;
     }
 
     public void setGano(double gano) {

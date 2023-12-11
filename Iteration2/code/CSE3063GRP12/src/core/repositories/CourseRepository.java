@@ -2,6 +2,8 @@ package core.repositories;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import core.database.abstracts.DatabaseManager;
 import core.general_providers.AppConstant;
 import core.general_providers.InstanceManager;
@@ -72,6 +74,7 @@ public class CourseRepository {
                     });
         } catch (IOException e) {
             // e.printStackTrace();
+            System.err.println("Error: " + e.getMessage());
         }
 
         return matchedCourses;

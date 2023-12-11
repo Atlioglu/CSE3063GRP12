@@ -89,10 +89,10 @@ public class TranscriptRepository {
         Transcript transcript = getTranscript(courseEnrollment.getStudentId());
         int currentSemester = transcript.getCurrentSemester();
 
-        if (transcript.getListOfSemester() == null || currentSemester > transcript.getListOfSemester().size()) {
+        if (transcript.getListOfSemesters() == null || currentSemester > transcript.getListOfSemesters().size()) {
             Map<String, CourseGrade> newCourseList = new HashMap<>();
-            if (transcript.getListOfSemester() == null) {
-                transcript.setListOfSemester(new HashMap<>());
+            if (transcript.getListOfSemesters() == null) {
+                transcript.setListOfSemesters(new HashMap<>());
             }
             for (Course course : courseEnrollment.getSelectedCourseList()) {
                 newCourseList.put(course.getCourseCode(), CourseGrade.NON);
@@ -102,7 +102,7 @@ public class TranscriptRepository {
             Semester semester = new Semester("0", newCourseList, totalCreditTaken, 0, transcript.getCurrentSemester());
             // transcript.getListOfSemester().add(semester);
 
-            transcript.getListOfSemester().put(currentSemester, semester);
+            transcript.getListOfSemesters().put(currentSemester, semester);
 
             databaseManager.write(path + "/" + currentSemester + "/" + courseEnrollment.getStudentId() + ".json",
                     transcript);
@@ -117,7 +117,7 @@ public class TranscriptRepository {
 
             Semester semester = new Semester("0", newCourseList, totalCreditTaken,
                     0, transcript.getCurrentSemester());
-            transcript.getListOfSemester().put(currentSemester, semester);
+            transcript.getListOfSemesters().put(currentSemester, semester);
             // transcript.getListOfSemester().set(currentSemester - 1, semester);
             databaseManager.write(path + "/" + currentSemester + "/" + courseEnrollment.getStudentId() + ".json",
                     transcript);

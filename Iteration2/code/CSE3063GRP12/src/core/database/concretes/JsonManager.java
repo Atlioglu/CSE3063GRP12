@@ -16,9 +16,11 @@ public class JsonManager extends DatabaseManager {
 
     public <T> T read(String path, Class<T> classOfT) {
         try (FileReader reader = new FileReader(path)) {
-            return gson.fromJson(reader, classOfT);
+            var result = gson.fromJson(reader, classOfT);
+            return result;
         } catch (Exception e) {
             // e.printStackTrace();
+            System.err.println(e.getMessage());
             return null;
         }
     }

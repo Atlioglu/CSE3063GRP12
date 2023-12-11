@@ -6,12 +6,39 @@
     "session": {
         "id": "id14",
         "courseSessions": {
-            "TUESDAY": ["seven", "eight"],
-            "WEDNESDAY": ["one", "two"],
-            "THURSDAY": ["three", "four"]
+            "TUESDAY": [
+                "seven",
+                "eight"
+            ],
+            "WEDNESDAY": [
+                "one",
+                "two"
+            ],
+            "THURSDAY": [
+                "three",
+                "four"
+            ]
         }
     },
-    "prerequisites": ["CSE1242"],
+    "prerequisites": [
+        {
+            "id": 7,
+            "courseCode": "CSE1242",
+            "name": "Computer Programming II",
+            "credit": 6,
+            "session": {
+                "id": "id7",
+                "courseSessions": {
+                    "MONDAY": ["three", "four"],
+                    "WEDNESDAY": ["five", "six"],
+                    "FRIDAY": ["seven", "eight"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+            "semester": 2
+        }
+    ],
     "quota": 30,
     "semester": 3
 }
