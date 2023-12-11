@@ -59,9 +59,11 @@ public class CourseEnrollmentRepository {
 
     }
 
-    public void updateEnrollment(String studentId, ApprovalState approvalState) throws IOException {
+    public void updateEnrollment(String studentId, ArrayList<Course> approvedCourses, ArrayList<Course> rejectedCourses , ApprovalState approvalState) throws IOException {
         CourseEnrollment courseEnrollment = databaseManager.read(path + "/" + studentId + ".json",
                 CourseEnrollment.class);
+        courseEnrollment.setApprovedCourseList(approvedCourses);
+        courseEnrollment.setRejectedCourseList(rejectedCourses);
         courseEnrollment.setApprovalState(approvalState);
         databaseManager.write(path + "/" + studentId + ".json", courseEnrollment);
     }
