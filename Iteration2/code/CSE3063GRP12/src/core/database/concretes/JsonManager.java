@@ -19,8 +19,7 @@ public class JsonManager extends DatabaseManager {
             var result = gson.fromJson(reader, classOfT);
             return result;
         } catch (Exception e) {
-            // e.printStackTrace();
-            System.err.println(e.getMessage());
+            // System.err.println(e.getMessage());
             return null;
         }
     }
