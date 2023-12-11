@@ -30,13 +30,16 @@ public class MenuController {
         // Get menu selection
         String menuSelection = null;
 
-        try{
+        try {
             menuSelection = getMenuSelection();
         }catch(UnexpectedInputException e){
             menuView.showErrorMessage(e);
             handleMenu();
+        } catch (Exception e) {
+            menuView.showErrorMessage(e);
+           // handleMenu();
         }
-        
+
         // Convert menu from string
         Menu menu = convertEnum(menuSelection);
         // Navigate to module
@@ -47,7 +50,6 @@ public class MenuController {
     public ArrayList<String> getMenuItems() {
         ArrayList<String> menuItems = new ArrayList<String>();
         UserType userType = SessionController.getInstance().getUserType();
-        //UserType userType = UserType.Student; //change here with upper line
         switch (userType) {
             case Student:
                 for (StudentMenu item : StudentMenu.values()) {
@@ -67,16 +69,16 @@ public class MenuController {
     public void navigateToModule(Menu menu) {
         menu.navigate();
     }
-    
-    // get menu selection from user
-    public String getMenuSelection() throws UnexpectedInputException{ //this will return UnexpectedInputException
+
+    // Method to get menu selection from user
+    public String getMenuSelection() throws UnexpectedInputException { // this will return UnexpectedInputException
         menuView.showPromptMessage();
         String selection = TerminalManager.getInstance().read();
         // Check if selection is a number
-        if(selection.matches("^\\d+$") == false){
+         if(selection.matches("^\\d+$") == false){
             throw new UnexpectedInputException();
         } 
-        return selection; 
+        return selection;
     }
 
     // convert menu from string
