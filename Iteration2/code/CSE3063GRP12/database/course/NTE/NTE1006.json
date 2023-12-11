@@ -1,0 +1,18 @@
+{
+    "id": 30,
+    "courseCode": "NTE1006",
+    "name": "Basic Principles of Accessibility in Informatics and Technology",
+    "credit": 3.00,
+    "session": {
+        "id": "id30",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

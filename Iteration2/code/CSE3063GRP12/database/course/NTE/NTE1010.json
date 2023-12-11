@@ -1,0 +1,18 @@
+{
+    "id": 32,
+    "courseCode": "NTE1010",
+    "name": "Introduction to Finance for Engineers",
+    "credit": 3.00,
+    "session": {
+        "id": "id32",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

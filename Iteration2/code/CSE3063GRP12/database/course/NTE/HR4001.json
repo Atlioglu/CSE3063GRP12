@@ -1,0 +1,18 @@
+{
+    "id": 17,
+    "courseCode": "HR4001",
+    "name": "Career Orientation",
+    "credit": 3.00,
+    "session": {
+        "id": "id17",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 
