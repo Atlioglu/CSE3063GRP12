@@ -13,7 +13,6 @@ import core.models.abstracts.User;
 import core.models.concretes.Course;
 import core.models.concretes.CourseEnrollment;
 import core.models.concretes.Semester;
-//import core.models.concretes.Student;
 import core.models.concretes.Transcript;
 import core.repositories.CourseEnrollmentRepository;
 import core.general_providers.TerminalManager;
@@ -21,7 +20,11 @@ import core.general_providers.TerminalManager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CourseRegistrationController {
 	private CourseRegistrationView courseRegistrationView;
@@ -51,7 +54,7 @@ public class CourseRegistrationController {
 				if(courseEnrollment == null)
 					handleNullOrRejectedCourseEnrollment(null, currentStudent);
 				else
-					handleNullOrRejectedCourseEnrollment(courseEnrollment.getApprovalState(), currentStudent);
+					handleNullOrRejectedCourseEnrollment(courseEnrollment, currentStudent);
 			}
 		} catch (Exception e) {
 			courseRegistrationView.showErrorMessage(e);
@@ -61,31 +64,53 @@ public class CourseRegistrationController {
 	private void handleExistingCourseEnrollment(CourseEnrollment courseEnrollment) {
 		courseRegistrationView.showCourseList(courseEnrollment.getSelectedCourseList(),
 				courseEnrollment.getApprovalState());
-
+				// ask the user to add/drop courses and send the rest of the courseEnrollment to the advisor
+				
 		getUserInput();
 	}
 
-	private void handleNullOrRejectedCourseEnrollment(ApprovalState approvalState, User currentStudent) {
+	private void handleNullOrRejectedCourseEnrollment(CourseEnrollment courseEnrollment, User currentStudent) {
 		try {
 			Transcript transcript = fetchTranscript(currentStudent.getUserName());
 			ArrayList<Course> allCoursesPerSemester = fetchCoursesBySemester(transcript.getCurrentSemester());
-
+	
 			ArrayList<Course> availableCoursesForStudent = arrangeCoursesForStudent(transcript, allCoursesPerSemester);
 			
-			if(approvalState == ApprovalState.Rejected){
+			// Combine rejected courses with courses not selected by the student
+				ArrayList<Course> allCourses = new ArrayList<>();
+
+			if (courseEnrollment != null && courseEnrollment.getApprovalState() == ApprovalState.Rejected) {
 				System.out.println("---------------------------------------------");
 				System.out.println("Your enrollment was rejected. Reapply again");
 				System.out.println("---------------------------------------------");
-			}
-			courseRegistrationView.showCourseList(availableCoursesForStudent);
 	
-			// get the courses selected by the student and send it to approval
-			ArrayList<Course> courseListSelection = getUserSelections(availableCoursesForStudent);
-			
-			// add and drop courses before sending them to the advisor
-			addDropCoursesOptions(courseListSelection, availableCoursesForStudent);
+				// Combine rejected courses with courses not selected by the student
+				allCourses = new ArrayList<>();
+				allCourses.addAll(getCoursesNotSelectedByStudent(courseEnrollment.getApprovedCourseList(), availableCoursesForStudent));
+				allCourses.addAll(getRetakeCourses(transcript));
 
-			if(courseListSelection.size() > 0){
+				System.out.println("Your approved courses are: ");
+				courseRegistrationView.showCourseList(courseEnrollment.getApprovedCourseList());
+				System.out.println();
+
+				// Show rejected courses along with other courses
+				courseRegistrationView.showCourseList(allCourses);
+			} 
+			else {
+				// if the student didn't enroll, show all available courses including failed, or need-to-repeat courses
+				allCourses.addAll(availableCoursesForStudent);
+				allCourses.addAll(getRetakeCourses(transcript));
+				courseRegistrationView.showCourseList(allCourses);
+
+			}
+	
+			// Get the courses selected by the student and send them to approval
+			ArrayList<Course> courseListSelection = getUserSelections(allCourses);
+	
+			// Add/drop courses before sending them to the advisor
+			addDropCoursesOptions(courseListSelection, allCourses);
+	
+			if (!courseListSelection.isEmpty()) {
 				sendCoursesToApproval(courseListSelection);
 				courseRegistrationView.showSuccessMessage();
 			}
@@ -95,6 +120,54 @@ public class CourseRegistrationController {
 		}
 	}
 	
+	// Helper method to get courses that are not selected by the student
+	private ArrayList<Course> getCoursesNotSelectedByStudent(ArrayList<Course> selectedCourses, ArrayList<Course> allCourses) {
+		ArrayList<Course> notSelectedCourses = new ArrayList<>();
+	
+		for (Course course : allCourses) {
+			if (!containsCourseWithId(selectedCourses, course)) {
+				notSelectedCourses.add(course);
+			}
+		}
+	
+		return notSelectedCourses;
+	}
+	
+	// Helper method to check if a list contains a course with a specific id
+	private boolean containsCourseWithId(ArrayList<Course> courses, Course targetCourse) {
+		for (Course course : courses) {
+			// Use a unique identifier (e.g., course code) to compare courses
+			if (course.getId().equals(targetCourse.getId())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private ArrayList<Course> getRetakeCourses(Transcript transcript) {
+		ArrayList<String> retakeCourseIds = findRetakeCourseIds(transcript);
+		return courseRepository.findCoursesWithCourseIds(retakeCourseIds);
+	}
+	
+	private ArrayList<String> findRetakeCourseIds(Transcript transcript) {
+		ArrayList<String> retakeCourseIds = new ArrayList<>();
+	
+		for (Map.Entry<Integer, Semester> entry : transcript.getListOfSemesters().entrySet()) {
+			Semester semester = entry.getValue();
+			for (Map.Entry<String, CourseGrade> courseGradeEntry : semester.getListOfCoursesTaken().entrySet()) {
+				String courseId = courseGradeEntry.getKey();
+				CourseGrade grade = courseGradeEntry.getValue();
+				
+				// Check if the grade is DD or DC, and add the courseId to retakeCourseIds
+				if (grade == CourseGrade.DD || grade == CourseGrade.DC || grade == CourseGrade.FF) {
+					retakeCourseIds.add(courseId);
+				}
+			}
+		}
+	
+		return retakeCourseIds;
+	}
+
 	private Transcript fetchTranscript(String transcript) throws IOException, UserNotFoundException {
 		return transcriptRepository.getTranscript(transcript);
 	}
@@ -141,27 +214,40 @@ public class CourseRegistrationController {
 		return false; // Student has not failed the course
 	}
 
-
-	private void addDropCoursesOptions(ArrayList<Course> courseList, ArrayList<Course> availableCourses){
-		try{
-			String decision;
-			while(true){
+	private void addDropCoursesOptions(ArrayList<Course> courseList, ArrayList<Course> availableCourses) {
+		boolean validInput = false;
+		while (!validInput) {
+			try {
+				String decision;
 				System.out.print("Do you want to add or drop any courses? (type 'add', 'drop', or 'done') ");
-				decision = TerminalManager.getInstance().read();
-				if(decision.equals("add")) {
+				decision = TerminalManager.getInstance().read().toLowerCase();
+	
+				if (decision.equals("add")) {
 					addCourseOption(courseList, availableCourses);
-				}
-				else if(decision.equals("drop")) {
+				} else if (decision.equals("drop")) {
 					dropCourseOption(courseList);
-				}
-				else if(decision.equals("done")) 
-					return;
-				else 
+				} else if (decision.equals("done")) {
+					validInput = true;
+				} else {
 					throw new UnexpectedInputException();
+				}
+				if(courseList.size() > 0){
+					System.out.print("Do you want to send your enrollment to your advisor? (yes/no) ");
+					decision = TerminalManager.getInstance().read().toLowerCase();
+					
+					if(decision.equals("yes")) {
+						validInput = true;
+						sendCoursesToApproval(courseList);
+						courseRegistrationView.showSuccessMessage();
+						getUserInput();
+					}
+					else if(decision.equals("no")) getUserInput(); // go back to menu ------
+					else throw new UnexpectedInputException();
+				}
+			} catch (UnexpectedInputException exception) {
+				courseRegistrationView.showErrorMessage(exception);
+				continue; // reprompt user
 			}
-	}
-		catch(UnexpectedInputException exception){
-			courseRegistrationView.showErrorMessage(exception);
 		}
 	}
 
@@ -170,50 +256,68 @@ public class CourseRegistrationController {
 			System.out.println("You have selected all courses!");
 			return;
 		}
-		// Create a new list to hold courses that are not in courseList
-		ArrayList<Course> coursesToDisplay = new ArrayList<>(availableCourses);
-	
-		// Remove courses that are already in courseList
-		coursesToDisplay.removeAll(courseList);
-		courseRegistrationView.showCourseList(coursesToDisplay);
-		// get the courses selected by the student, concatenate all courses selected and send it to approval
-		ArrayList<Course> courseListSelection = getUserSelections(coursesToDisplay);
-		courseList.addAll(courseListSelection);
-		if(courseList.size() > 0){
-			sendCoursesToApproval(courseList);
-			courseRegistrationView.showSuccessMessage();
-		}
-		navigateToMenu();
+			// Create a new list to hold courses that are not in courseList
+			ArrayList<Course> coursesToDisplay = new ArrayList<>(availableCourses);
+		
+			// Remove courses that are already in courseList
+			coursesToDisplay.removeAll(courseList);
+			courseRegistrationView.showCourseList(coursesToDisplay);
+			// get the courses selected by the student, concatenate all courses selected and send it to approval
+			ArrayList<Course> courseListSelection = getUserSelections(coursesToDisplay);
+			courseList.addAll(courseListSelection);
 	}
 	
 	private void dropCourseOption(ArrayList<Course> courseList) {
-		if(courseList.size() == 0){
-			System.out.println("You don't have any course to drop!");
+		if (courseList.size() == 0) {
+			System.out.println("You don't have any courses to drop!");
 			return;
 		}
-		System.out.print("Which courses do you want to drop? ");
-		String selection = TerminalManager.getInstance().read();
-		String[] selectionArray = selection.split("[,\\s.]+");
+
+		boolean isValid = false;
+		while (!isValid) {
+			courseRegistrationView.showCourseList(courseList);
+			System.out.print("Which courses do you want to drop? ");
+			String selection = TerminalManager.getInstance().read();
+			String[] selectionArray = selection.split("[,\\s.]+");
 	
-		ArrayList<Integer> indicesToRemove = new ArrayList<>();
-		try{
-			for (String selectionIndex : selectionArray) {
-				int index = Integer.parseInt(selectionIndex);
-				if (index > 0 && index <= courseList.size()) {
-					indicesToRemove.add(index - 1);
-				} else {
+			Set<Integer> indicesToRemove = new HashSet<>();
+
+        	try {
+				for (String selectionIndex : selectionArray) {
+					try {
+						int index = Integer.parseInt(selectionIndex);
+						if (index > 0 && index <= courseList.size()) {
+							indicesToRemove.add(index - 1);
+						} else {
+							throw new UnexpectedInputException();
+						}
+					} catch (NumberFormatException e) {
+						throw new UnexpectedInputException();
+					}
+				}
+
+				// Check for repetitions
+				if (indicesToRemove.size() != selectionArray.length) {
 					throw new UnexpectedInputException();
 				}
+
+				isValid = true;
+
+			} catch (UnexpectedInputException exception) {
+				courseRegistrationView.showErrorMessage(exception);
 			}
-		} catch(UnexpectedInputException exception){
-			courseRegistrationView.showErrorMessage(exception);
-		}
-	
-		for (int i = indicesToRemove.size() - 1; i >= 0; i--) {
-			courseList.remove((int) indicesToRemove.get(i));
-		}
+
+			// Remove the selected courses only if input is valid
+			if (isValid) {
+				List<Integer> indicesToRemoveList = new ArrayList<>(indicesToRemove);
+				Collections.sort(indicesToRemoveList, Collections.reverseOrder());
+
+				for (int indexToRemove : indicesToRemoveList) {
+					courseList.remove(indexToRemove);
+				}
+			}
+    	}
 	}
-	
 
 	private ArrayList<Course> getUserSelections(ArrayList<Course> courseList) {
 		ArrayList<Course> courseListSelection = new ArrayList<>();
@@ -228,27 +332,39 @@ public class CourseRegistrationController {
 				String[] arraySelectedCourseIndicesString = selectedCourseIndex.split("[,\\s.]+");
 				int[] arraySelectedCourseIndex = new int[arraySelectedCourseIndicesString.length];
 
-				try{
-					if(arraySelectedCourseIndex.length < 1)
+				Set<Integer> selectedIndicesSet = new HashSet<>();
+
+				try {
+					if (arraySelectedCourseIndex.length < 1) {
 						throw new WrongNumberOfCoursesSelectedException();
-					
+					}
 					for (int i = 0; i < arraySelectedCourseIndicesString.length; i++) {
-						arraySelectedCourseIndex[i] = Integer.parseInt(arraySelectedCourseIndicesString[i]);
-						
-						if(arraySelectedCourseIndex[i] < 1){ // must consider alphabetic inputs -----
+						try {
+							arraySelectedCourseIndex[i] = Integer.parseInt(arraySelectedCourseIndicesString[i]);
+				
+							if (arraySelectedCourseIndex[i] < 1 || arraySelectedCourseIndex[i] > courseList.size()) {
+								throw new UnexpectedInputException();
+							}
+							if (!selectedIndicesSet.add(arraySelectedCourseIndex[i])) {
+								// The index was already selected; treat it as a repetition
+								throw new UnexpectedInputException();
+							}
+
+							courseListSelection.add(courseList.get(arraySelectedCourseIndex[i] - 1));
+						} catch (NumberFormatException e) {
+							// Handle the case where the element is not a valid integer
 							throw new UnexpectedInputException();
 						}
-						courseListSelection.add(courseList.get(arraySelectedCourseIndex[i] - 1));
 					}
+				
 					return courseListSelection;
-				}
-			 	catch (UnexpectedInputException | WrongNumberOfCoursesSelectedException exception) {
+				} catch (UnexpectedInputException | WrongNumberOfCoursesSelectedException exception) {
 					// Clear arraySelectedCourseIndicesString and courseListSelection and reuse them
-    				Arrays.fill(arraySelectedCourseIndicesString, null);
+					Arrays.fill(arraySelectedCourseIndicesString, null);
 					courseListSelection.clear();
 					courseRegistrationView.showErrorMessage(exception);
-				} 
-		}
+				}	
+			}
 	}
 
 	private void getUserInput() {
@@ -265,9 +381,6 @@ public class CourseRegistrationController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
-		// courseEnrollmentRepository.updateEnrollment((Student) currentStudent,
-		// courseEnrollmentRepository.getCourseEnrollmentByStudentId(currentStudent.getId()));
 	}
 
 	// Go back to Menu by calling MenuController
