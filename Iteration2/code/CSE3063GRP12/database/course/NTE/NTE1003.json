@@ -1,0 +1,18 @@
+{
+    "id": 28,
+    "courseCode": "NTE1003",
+    "name": "The Culture of Radiation Safety",
+    "credit": 3.00,
+    "session": {
+        "id": "id28",
+        "courseSessions": {
+            "MONDAY": ["two", "three"],
+            "WEDNESDAY": ["four", "five"],
+            "FRIDAY": ["six", "seven"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

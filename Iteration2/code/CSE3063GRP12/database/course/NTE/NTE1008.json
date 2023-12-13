@@ -1,0 +1,18 @@
+{
+    "id": 31,
+    "courseCode": "NTE1008",
+    "name": "Cinema",
+    "credit": 3.00,
+    "session": {
+        "id": "id31",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

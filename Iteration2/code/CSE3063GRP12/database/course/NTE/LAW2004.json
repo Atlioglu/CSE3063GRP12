@@ -1,0 +1,18 @@
+{
+    "id": 21,
+    "courseCode": "LAW2004",
+    "name": "Labor Law",
+    "credit": 3.00,
+    "session": {
+        "id": "id21",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

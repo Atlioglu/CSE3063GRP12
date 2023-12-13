@@ -1,0 +1,18 @@
+{
+    "id": 23,
+    "courseCode": "MGT1021",
+    "name": "Design, Innovation and Entrepreneurship",
+    "credit": 3.00,
+    "session": {
+        "id": "id23",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

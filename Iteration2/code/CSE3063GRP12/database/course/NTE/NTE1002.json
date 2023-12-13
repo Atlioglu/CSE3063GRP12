@@ -1,0 +1,18 @@
+{
+    "id": 27,
+    "courseCode": "NTE1002",
+    "name": "Effects of Human Behaviour on Environment",
+    "credit": 3.00,
+    "session": {
+        "id": "id27",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 
