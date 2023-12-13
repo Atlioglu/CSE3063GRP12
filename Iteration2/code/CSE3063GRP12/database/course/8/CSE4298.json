@@ -27,11 +27,11 @@
             },
             "prerequisites": [],
             "quota": 30,
-            "currentQuota" : 0,
+            "currentQuota" : 5,
             "semester": 7
         }
     ],
     "quota": 30,
-    "currentQuota" : 0,
+    "currentQuota" : 5,
     "semester": 8
 }
