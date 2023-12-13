@@ -13,5 +13,6 @@
     },
     "prerequisites": [],
     "quota": 30,
+    "currentQuota" : 0,
     "semester": 5
 }
