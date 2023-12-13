@@ -1,9 +1,7 @@
 {
-    "advisor": {
-        "id": "ADid5",
-        "firstName": "Meesi",
-        "lastName": "Ronaldo"
-    },
+    "id": "ADid5",
+    "firstName": "Meesi",
+    "lastName": "Ronaldo",
     "listOfStudentIds": [
         "o150120011",
         "o150120012",
