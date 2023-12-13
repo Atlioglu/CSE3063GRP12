@@ -70,8 +70,9 @@ public class TranscriptController {
                                 course.getCourseCode(), course.getName(), course.getCredit(),
                                 semester.getListOfCoursesTaken().get(course.getCourseCode()));
                     }
+                    System.out.println();
                 }
-                System.out.println();
+
                 System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                 
                 transcriptView.showQuitMessage();
