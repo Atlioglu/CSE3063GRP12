@@ -1,0 +1,18 @@
+{
+    "id": 24,
+    "courseCode": "MGT3082",
+    "name": "Creativity And Innovation Management",
+    "credit": 3.00,
+    "session": {
+        "id": "id24",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

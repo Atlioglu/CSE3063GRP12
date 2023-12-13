@@ -1,0 +1,18 @@
+{
+    "id": 6,
+    "courseCode": "CAS1061",
+    "name": "Geometric Origami",
+    "credit": 3.00,
+    "session": {
+        "id": "id6",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

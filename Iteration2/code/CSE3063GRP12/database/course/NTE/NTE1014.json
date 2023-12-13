@@ -1,0 +1,18 @@
+{
+    "id": 35,
+    "courseCode": "NTE1014",
+    "name": "Introduction to Strategic Human Resources Management",
+    "credit": 3.00,
+    "session": {
+        "id": "id35",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+

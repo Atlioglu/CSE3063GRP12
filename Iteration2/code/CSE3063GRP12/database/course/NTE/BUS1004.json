@@ -1,0 +1,18 @@
+{
+    "id": 2,
+    "courseCode": "BUS1004",
+    "name": "Strategic Entrepreneurship",
+    "credit": 3.00,
+    "session": {
+        "id": "id2",
+        "courseSessions": {
+            "MONDAY": ["two", "three"],
+            "WEDNESDAY": ["four", "five"],
+            "FRIDAY": ["six", "seven"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

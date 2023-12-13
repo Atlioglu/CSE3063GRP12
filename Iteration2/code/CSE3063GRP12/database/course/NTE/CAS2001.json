@@ -1,0 +1,18 @@
+{
+    "id": 7,
+    "courseCode": "CAS2001",
+    "name": "Energy for Physical Activity",
+    "credit": 3.00,
+    "session": {
+        "id": "id7",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

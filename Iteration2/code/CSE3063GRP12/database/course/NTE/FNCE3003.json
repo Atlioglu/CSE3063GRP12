@@ -1,0 +1,18 @@
+{
+    "id": 15,
+    "courseCode": "FNCE3003",
+    "name": "Investment Planning",
+    "credit": 3.00,
+    "session": {
+        "id": "id15",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

@@ -1,0 +1,18 @@
+{
+    "id": 35,
+    "courseCode": "NTE1013",
+    "name": "Business Intelligence for Managers",
+    "credit": 3.00,
+    "session": {
+        "id": "id35",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

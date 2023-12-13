@@ -1,0 +1,18 @@
+{
+    "id": 48,
+    "courseCode": "YDA1002",
+    "name": "German",
+    "credit": 3.00,
+    "session": {
+        "id": "id48",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

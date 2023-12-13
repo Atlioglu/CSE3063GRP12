@@ -1,0 +1,39 @@
+{
+    "advisor": {
+        "id": "ADid5",
+        "firstName": "Meesi",
+        "lastName": "Ronaldo",
+        "listOfStudentIds": [
+            "o150120011",
+            "o150120012",
+            "o150120013",
+            "o150120014",
+            "o150120015",
+            "o150120016",
+            "o150120017",
+            "o150120018",
+            "o150120019",
+            "o150120020"
+        ],
+        "listOfCoursesGiven": [],
+        "userName": "a150120xx5",
+        "password": "150120xx5"
+    },
+    "listOfLectureSessions": [
+        {
+            "id": "session1",
+            "courseSessions": {},
+            "lecturer": {},
+            "name": "Session Name"
+        }
+    ],
+    "transcript": {
+        "id": "transcriptId",
+        "gano": 3.45,
+        "totalCreditTaken": 50,
+        "totalCreditCompleted": 50,
+        "currentSemester": 3
+    },
+    "userName": "o150120017",
+    "password": "150120017"
+}
