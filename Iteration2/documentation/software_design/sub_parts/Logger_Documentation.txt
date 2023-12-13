@@ -1,0 +1,10 @@
+Logger object's purpose is log the user's choice by writing it to a file. File's content consists lines in format of ({user's choice} is user's choice in method {methodName} in class {className}{\n}) and for exceptions (Exception {Exception type}).
+Attributes:
+fileName:Path => is used for log file's path. Path type is in java.nio.file.Path. In DCD showed as String not to confuse you.
+className:String => stores the class name who called the caller of Logger.
+methodName:String => stores the method name who called the caller of Logger.
+Methods:
+Logger(): => constructor with no parameters. Sets fileName to ./Iteration2/code/CSE3063GRP12/database/log/log.txt and both methodName and className to null
+Logger(String): => constructor with parameters. Sets fileName to input and both methodName and className to null
+write(string):void => APPENDS to log file in fileName. Format specified above. Does not call any other methods written in project. Only calls methods in built in Java libraries.
+writeException(string):void => APPENDS to log file in fileName. Format specified above. Does not call any other methods written in project. Only calls methods in built in Java libraries.
