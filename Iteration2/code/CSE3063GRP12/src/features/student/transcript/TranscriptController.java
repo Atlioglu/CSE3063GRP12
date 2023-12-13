@@ -58,20 +58,23 @@ public class TranscriptController {
 
             } else {
                 for (Semester semester : semesters.values()) {
-                    System.out.println(
-                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     ArrayList<String> courseIdList = new ArrayList<>(semester.getListOfCoursesTaken().keySet());
                     ArrayList<Course> courses = courseRepository.findCoursesWithCourseIds(courseIdList);
-
-                    System.out.println("Course Code \t Course Name \t Course Credit \t Course Grade");
+                
+                    System.out.printf("%-15s %-60s %-15s %-15s%n", "Course Code", "Course Name", "Course Credit", "Course Grade");
+                    System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println();
                     for (Course course : courses) {
-
-                        System.out.println(course.getCourseCode() + "\t" + course.getName() + "\t" + course.getCredit()
-                                + "\t" + semester.getListOfCoursesTaken().get(course.getCourseCode()));
+                        System.out.printf("%-15s %-60s %-15s %-15s%n",
+                                course.getCourseCode(), course.getName(), course.getCredit(),
+                                semester.getListOfCoursesTaken().get(course.getCourseCode()));
                     }
+                    System.out.println();
                 }
-                System.out.println(
-                        "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+                System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                
                 transcriptView.showQuitMessage();
                 if (getUserInput().equals("q"))
                     navigateToMenu();
