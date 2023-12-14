@@ -1,0 +1,18 @@
+{
+    "id": 41,
+    "courseCode": "YDF1002",
+    "name": "French",
+    "credit": 3.00,
+    "session": {
+        "id": "id41",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

@@ -1,0 +1,18 @@
+{
+    "id": 40,
+    "courseCode": "OB3043",
+    "name": "Organizational Behaviour",
+    "credit": 3.00,
+    "session": {
+        "id": "id40",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

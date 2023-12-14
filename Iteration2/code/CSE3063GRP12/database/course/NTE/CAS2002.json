@@ -1,0 +1,18 @@
+{
+    "id": 8,
+    "courseCode": "CAS2002",
+    "name": "Human Performance and Nutrition",
+    "credit": 3.00,
+    "session": {
+        "id": "id8",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 

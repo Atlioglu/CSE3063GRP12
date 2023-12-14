@@ -1,0 +1,18 @@
+{
+    "id": 38,
+    "courseCode": "OB2040",
+    "name": "Industrial Psychology",
+    "credit": 3.00,
+    "session": {
+        "id": "id38",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "WEDNESDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "semester": 30
+}
+ 
