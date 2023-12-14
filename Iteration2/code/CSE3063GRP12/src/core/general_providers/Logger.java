@@ -25,7 +25,10 @@ public class Logger {
         }catch (IOException e){}
     }
     public Logger(){
-        filePath = Paths.get("./Iteration2/code/CSE3063GRP12/database/log/log.txt");
+        String path = "Iteration2/"+ AppConstant.getInstance().getBasePath() + "/log/log.txt";
+        filePath = Paths.get(path);
+        className = "";
+        methodName = "";
         try {
             // Create the file if it doesn't exist
             if (!Files.exists(filePath)) {
@@ -37,8 +40,8 @@ public class Logger {
         try {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 
-            if (stackTrace.length >= 5) {
-                StackTraceElement caller = stackTrace[4];
+            if (stackTrace.length >= 4) {
+                StackTraceElement caller = stackTrace[3];
                 className = caller.getClassName();
                 methodName = caller.getMethodName();}
 

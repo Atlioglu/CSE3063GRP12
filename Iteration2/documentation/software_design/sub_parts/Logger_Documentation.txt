@@ -4,7 +4,7 @@ fileName:Path => is used for log file's path. Path type is in java.nio.file.Path
 className:String => stores the class name who called the caller of Logger.
 methodName:String => stores the method name who called the caller of Logger.
 Methods:
-Logger(): => constructor with no parameters. Sets fileName to ./Iteration2/code/CSE3063GRP12/database/log/log.txt and both methodName and className to null
+Logger(): => constructor with no parameters. Sets fileName to ./Iteration2/code/CSE3063GRP12/database/log/log.txt and both methodName and className to null. Calls AppConstant.getInstance().getBasePath() for default path.
 Logger(String): => constructor with parameters. Sets fileName to input and both methodName and className to null
 write(string):void => APPENDS to log file in fileName. Format specified above. Does not call any other methods written in project. Only calls methods in built in Java libraries.
 writeException(string):void => APPENDS to log file in fileName. Format specified above. Does not call any other methods written in project. Only calls methods in built in Java libraries.
