@@ -35,7 +35,7 @@ public class CourseRegistrationView extends Exception {
 		for (int i = 0; i < courseList.size(); i++) {
 			System.out.println((i + 1) + ". " + courseList.get(i).getName());
 		}
-		System.out.printf("Your registration status is: %s \n", approvalState);
+		System.out.printf("Your registration status is: %s \n\n", approvalState);
 
 	}
 
