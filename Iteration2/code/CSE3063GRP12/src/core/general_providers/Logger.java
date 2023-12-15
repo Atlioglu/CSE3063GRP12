@@ -25,7 +25,7 @@ public class Logger {
         }catch (IOException e){}
     }
     public Logger(){
-        String path = "Iteration2/"+ AppConstant.getInstance().getBasePath() + "/log/log.txt";
+        String path = System.getProperty("user.dir") + AppConstant.getInstance().getBasePath() + "/log/log.txt";
         filePath = Paths.get(path);
         className = "";
         methodName = "";

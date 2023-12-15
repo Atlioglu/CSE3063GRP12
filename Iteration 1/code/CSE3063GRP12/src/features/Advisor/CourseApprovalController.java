@@ -1,4 +1,4 @@
-package features.Advisor;
+package features.advisor;
 
 import core.general_providers.TerminalManager;
 import core.repositories.CourseEnrollmentRepository;
