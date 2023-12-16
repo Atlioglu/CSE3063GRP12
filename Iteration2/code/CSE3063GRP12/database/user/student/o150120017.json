@@ -34,6 +34,8 @@
         "totalCreditCompleted": 50,
         "currentSemester": 3
     },
+    "firstName": "Jack",
+    "lastName": "Reacher",
     "userName": "o150120017",
     "password": "150120017"
 }
