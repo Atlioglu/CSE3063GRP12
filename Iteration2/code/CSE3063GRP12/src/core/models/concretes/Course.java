@@ -10,11 +10,12 @@ public class Course {
     private CourseSession session;
     private ArrayList<Course> prerequisites;
     private int quota;
+    private int currentQuota;
     private int semester;
 
     // Constructor with parameters
     public Course(String id, String courseCode, String name, int credit,
-            CourseSession session, ArrayList<Course> prerequisites, int quota, int semester) {
+            CourseSession session, ArrayList<Course> prerequisites, int quota, int currentQuota, int semester) {
         this.id = id;
         this.courseCode = courseCode;
         this.name = name;
@@ -22,6 +23,7 @@ public class Course {
         this.session = session;
         this.prerequisites = prerequisites;
         this.quota = quota;
+        this.currentQuota = currentQuota;
         this.semester = semester;
     }
 
@@ -52,6 +54,10 @@ public class Course {
 
     public int getQuota() {
         return quota;
+    }
+
+    public int getCurrentQuota(){
+        return currentQuota;
     }
 
     public int getSemester() {
@@ -85,6 +91,10 @@ public class Course {
 
     public void setQuota(int quota) {
         this.quota = quota;
+    }
+
+    public void setCurrentQuota(int currentQuota){
+        this.currentQuota = currentQuota;
     }
 
     public void setSemester(int semester) {
