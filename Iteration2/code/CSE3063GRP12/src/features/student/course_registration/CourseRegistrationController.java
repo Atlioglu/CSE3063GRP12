@@ -194,6 +194,23 @@ public class CourseRegistrationController {
 			courseRegistrationView.showSuccessMessage();
 		}
 	}
+
+	private boolean checkQuota(Course course) throws IOException {
+		// Create a CourseRepository object
+		CourseRepository courseRepository = new CourseRepository();
+
+		// Get the quota and currentQuota for the selected course from the CourseRepository
+		int quota = courseRepository.getQuota(course.getCourseCode());
+		int currentQuota = courseRepository.getCurrentQuota(course.getCourseCode());
+
+		// Check if the currentQuota is greater than or equal to the quota
+		if (currentQuota >= quota) {
+			// If the quota is full, print a message and return false
+			return false;
+		}
+		return true;
+	}
+
 	private void showApprovedCourses(CourseEnrollment courseEnrollment) {
 		if (courseEnrollment.getApprovedCourseList().size() > 0) {
 			System.out.println("Your approved courses: ");
