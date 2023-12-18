@@ -30,42 +30,36 @@ public class UserRepository {
 
     }
 
-    public void loginCheck(String userName, String password)
-            throws UserNotFoundException, WrongPasswordException {
-        try {
-            User user = null;
-            if (getUserType(userName) == UserType.Student) {
-                user = databaseManager.read(studentPath + "/" + userName + ".json", Student.class);
-                if (user == null) {
-                    throw new UserNotFoundException();
-                }
-                if (user.getPassword().equals(password)) {
-                    setCurrentUser(user);
-                } else {
-                    throw new WrongPasswordException();
-                }
-
-            } else if (getUserType(userName) == UserType.Advisor) {
-                user = databaseManager.read(advisorPath + "/" + userName + ".json", Advisor.class);
-                if (user == null) {
-                    throw new UserNotFoundException();
-                }
-                if (user.getPassword().equals(password)) {
-                    setCurrentUser(user);
-
-                } else {
-                    throw new WrongPasswordException();
-                }
-
+    public void loginCheck(String userName, String password) throws UserNotFoundException, WrongPasswordException {
+        User user = null;
+        if (getUserType(userName) == UserType.Student) {
+            user = databaseManager.read(studentPath + "/" + userName + ".json", Student.class);
+            if (user == null) {
+                throw new UserNotFoundException();
+            }
+            if (user.getPassword().equals(password)) {
+                setCurrentUser(user);
+            } else {
+                throw new WrongPasswordException();
             }
 
-        } catch (Exception e) {
-            // e.printStackTrace();
-            throw new UserNotFoundException();
+        } else if (getUserType(userName) == UserType.Advisor) {
+            user = databaseManager.read(advisorPath + "/" + userName + ".json", Advisor.class);
+            if (user == null) {
+                throw new UserNotFoundException();
+            }
+            if (user.getPassword().equals(password)) {
+                setCurrentUser(user);
+
+            } else {
+                throw new WrongPasswordException();
+            }
+
         }
+
     }
 
-    public void setCurrentUser(User user) throws IOException {
+    public void setCurrentUser(User user){
         SessionController.getInstance().setCurrentUser(user);
     }
 
@@ -106,14 +100,18 @@ public class UserRepository {
 
     }
 
-    private UserType getUserType(String userName) {
+    private UserType getUserType(String userName) throws UserNotFoundException {
+        if(userName.length() < 2){
+            throw new UserNotFoundException();
+        }
         char firstChar = userName.charAt(0);
         if (firstChar == 'o') {
             return UserType.Student;
         } else if (firstChar == 'a') {
             return UserType.Advisor;
+        } else{
+            throw new UserNotFoundException();
         }
-        return null;
     }
 
 }

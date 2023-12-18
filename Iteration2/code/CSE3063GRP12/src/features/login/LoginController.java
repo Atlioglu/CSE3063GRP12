@@ -2,6 +2,8 @@ package features.login;
 
 import core.repositories.UserRepository;
 import features.main_menu.MenuController;
+import core.exceptions.UserNotFoundException;
+import core.exceptions.WrongPasswordException;
 import core.general_providers.TerminalManager;
 
 public class LoginController {
@@ -34,14 +36,21 @@ public class LoginController {
 
     // handle the login logic
     public void handleLogin() {
-        String username = getUserNameInput();
-        String password = getPasswordInput();
-        try {
-            userRepository.loginCheck(username, password);
-            navigateToMenu();
-        } catch (Exception e) {
-            loginView.showError(e);
-            handleLogin();
+        boolean loginSuccessful = false;
+        while (!loginSuccessful) {
+            try {
+                String username = getUserNameInput();
+                String password = getPasswordInput();
+    
+                userRepository.loginCheck(username, password);
+                navigateToMenu();
+                loginSuccessful = true;
+            } catch (UserNotFoundException | WrongPasswordException e) {
+                loginView.showError(e);
+            } catch (Exception e) {
+                loginView.showError(e);
+                break;
+            }
         }
     }
 }
