@@ -195,7 +195,8 @@ public class CourseRegistrationController {
 		}
 	}
 
-	private boolean checkQuota(Course course) throws IOException {
+	private boolean checkQuota(Course course) {
+		try{
 		// Create a CourseRepository object
 		CourseRepository courseRepository = new CourseRepository();
 
@@ -209,6 +210,9 @@ public class CourseRegistrationController {
 			return false;
 		}
 		return true;
+		} catch(IOException e){
+			return false;
+		}		
 	}
 
 	private void showApprovedCourses(CourseEnrollment courseEnrollment) {
@@ -242,27 +246,36 @@ public class CourseRegistrationController {
 	}
 
 	private void handleCourseSelection(CourseEnrollment courseEnrollment, ArrayList<Course> allCourses) {
-		// get the courses selected by the student
-		ArrayList<Course> newCourseListSelection = getUserSelections(allCourses);
-		ArrayList<Course> reserveCourses = new ArrayList<>();
-	
-		// add/drop courses before sending them to the advisor
-		newCourseListSelection = addDropCoursesOptions(newCourseListSelection, allCourses);
-	
-		if (!newCourseListSelection.isEmpty()) {
-			// reserve the previously approved courses to not be lost
-			reserveCourses = reservePreviouslyApprovedCourses(courseEnrollment, newCourseListSelection);
-	
-			// set the selected courses in the course enrollment
-			if (courseEnrollment != null) {
-				courseEnrollment.setSelectedCourseList(reserveCourses);
-			}
-			sendCoursesToApproval(courseEnrollment, reserveCourses, ApprovalState.Pending);
-	
-			courseRegistrationView.showSuccessMessage();
-		}
-		navigateToMenu();
-	}
+    // get the courses selected by the student
+    ArrayList<Course> newCourseListSelection = getUserSelections(allCourses);
+    ArrayList<Course> reserveCourses = new ArrayList<>();
+
+    // add/drop courses before sending them to the advisor
+    newCourseListSelection = addDropCoursesOptions(newCourseListSelection, allCourses);
+
+    // Check the quota for each course in the new selection
+    for (Course selectedCourse : newCourseListSelection) {
+        if (!checkQuota(selectedCourse)) {
+            System.out.println("Sorry, the quota for the course " + selectedCourse.getName() + " is full. Please choose another course.");
+            navigateToMenu();
+            return;  // Stop further processing
+        }
+    }
+
+    if (!newCourseListSelection.isEmpty()) {
+        // reserve the previously approved courses to not be lost
+        reserveCourses = reservePreviouslyApprovedCourses(courseEnrollment, newCourseListSelection);
+
+        // set the selected courses in the course enrollment
+        if (courseEnrollment != null) {
+            courseEnrollment.setSelectedCourseList(reserveCourses);
+        }
+        sendCoursesToApproval(courseEnrollment, reserveCourses, ApprovalState.Pending);
+
+        courseRegistrationView.showSuccessMessage();
+    }
+    navigateToMenu();
+}
 	
 	private ArrayList<Course> reservePreviouslyApprovedCourses(CourseEnrollment courseEnrollment, ArrayList<Course> newCourseListSelection) {
 		ArrayList<Course> reserveCourses = new ArrayList<>();
@@ -374,23 +387,60 @@ public class CourseRegistrationController {
 				} else {
 					throw new UnexpectedInputException();
 				}
-				if(courseList.size() > 0){
+	
+				// Check if any selected course has a full quota
+				if (hasCourseWithFullQuota(courseList)) {
+					System.out.println("Sorry, the quota for at least one of the selected courses is full. Please try again.");
+					courseList.clear(); // Clear the list to prevent further processing
+					continue; // Reprompt user
+				}
+	
+				// Additional check for sending enrollment
+				if (courseList.size() > 0) {
+					// If the user has made any selection, check if any selected course has a full quota
+					if (hasCourseWithFullQuota(courseList)) {
+						System.out.println("Sorry, the quota for at least one of the selected courses is full. Please try again.");
+						courseList.clear(); // Clear the list to prevent further processing
+						continue; // Reprompt user
+					}
+	
 					System.out.print("Do you want to send your enrollment to your advisor? (yes/no) ");
 					decision = TerminalManager.getInstance().read().toLowerCase();
-					
-					if(decision.equals("yes")) {
-						validInput = true;
+	
+					if (decision.equals("yes")) {
+						// Check again before sending to advisor to avoid sending courses with full quota
+						if (!hasCourseWithFullQuota(courseList)) {
+							validInput = true;
+						} else {
+							System.out.println("Sorry, the quota for at least one of the selected courses is full. Please try again.");
+							courseList.clear(); // Clear the list to prevent further processing
+						}
+					} else if (decision.equals("no")) {
+						continue;
+					} else {
+						throw new UnexpectedInputException();
 					}
-					else if(decision.equals("no")) continue; 
-					else throw new UnexpectedInputException();
 				}
+	
 			} catch (UnexpectedInputException exception) {
 				courseRegistrationView.showErrorMessage(exception);
-				continue; // reprompt user
+				// Reprompt user if there's an unexpected input
 			}
 		}
 		return courseList;
 	}
+	
+	
+	// Helper method to check if any selected course has a full quota
+	private boolean hasCourseWithFullQuota(ArrayList<Course> selectedCourses) {
+		for (Course selectedCourse : selectedCourses) {
+			if (!checkQuota(selectedCourse)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 	private void addCourseOption(ArrayList<Course> courseList, ArrayList<Course> availableCourses) {
 		if(courseList.size() == availableCourses.size()){
@@ -460,54 +510,66 @@ public class CourseRegistrationController {
 			}
     	}
 	}
-
+	//If all courses quota is full student cant choose
 	private ArrayList<Course> getUserSelections(ArrayList<Course> courseList) {
 		ArrayList<Course> newCourseListSelection = new ArrayList<>();
 		while (true) {
-				System.out.print("Choose the index of the courses you want to enroll in or enter q to return to main menu: ");
-				String selectedCourseIndex = TerminalManager.getInstance().read();
-
-				if(selectedCourseIndex.length() == 1 && selectedCourseIndex.equals("q")){
-					navigateToMenu();
+			System.out.print("Choose the index of the courses you want to enroll in or enter q to return to the main menu: ");
+			String selectedCourseIndex = TerminalManager.getInstance().read();
+	
+			if (selectedCourseIndex.length() == 1 && selectedCourseIndex.equals("q")) {
+				navigateToMenu();
+			}
+	
+			String[] arraySelectedCourseIndicesString = selectedCourseIndex.split("[,\\s.]+");
+			int[] arraySelectedCourseIndex = new int[arraySelectedCourseIndicesString.length];
+	
+			Set<Integer> selectedIndicesSet = new HashSet<>();
+	
+			try {
+				if (arraySelectedCourseIndex.length < 1) {
+					throw new WrongNumberOfCoursesSelectedException();
 				}
-
-				String[] arraySelectedCourseIndicesString = selectedCourseIndex.split("[,\\s.]+");
-				int[] arraySelectedCourseIndex = new int[arraySelectedCourseIndicesString.length];
-
-				Set<Integer> selectedIndicesSet = new HashSet<>();
-
-				try {
-					if (arraySelectedCourseIndex.length < 1) {
-						throw new WrongNumberOfCoursesSelectedException();
-					}
-					for (int i = 0; i < arraySelectedCourseIndicesString.length; i++) {
-						try {
-							arraySelectedCourseIndex[i] = Integer.parseInt(arraySelectedCourseIndicesString[i]);
-				
-							if (arraySelectedCourseIndex[i] < 1 || arraySelectedCourseIndex[i] > courseList.size()) {
-								throw new UnexpectedInputException();
-							}
-							if (!selectedIndicesSet.add(arraySelectedCourseIndex[i])) {
-								// The index was already selected; treat it as a repetition
-								throw new UnexpectedInputException();
-							}
-
-							newCourseListSelection.add(courseList.get(arraySelectedCourseIndex[i] - 1));
-						} catch (NumberFormatException e) {
-							// Handle the case where the element is not a valid integer
+	
+				for (int i = 0; i < arraySelectedCourseIndicesString.length; i++) {
+					try {
+						arraySelectedCourseIndex[i] = Integer.parseInt(arraySelectedCourseIndicesString[i]);
+	
+						if (arraySelectedCourseIndex[i] < 1 || arraySelectedCourseIndex[i] > courseList.size()) {
 							throw new UnexpectedInputException();
 						}
+	
+						if (!selectedIndicesSet.add(arraySelectedCourseIndex[i])) {
+							// The index was already selected; treat it as a repetition
+							throw new UnexpectedInputException();
+						}
+	
+						Course selectedCourse = courseList.get(arraySelectedCourseIndex[i] - 1);
+	
+						// Check if the quota for the selected course is full
+						if (!checkQuota(selectedCourse)) {
+							System.out.println("Sorry, the quota for the course " + selectedCourse.getName() + " is full. Please choose another course.");
+							newCourseListSelection.clear(); // Clear the list to prevent further processing
+							continue; // Reprompt user
+						}
+	
+						newCourseListSelection.add(selectedCourse);
+					} catch (NumberFormatException e) {
+						// Handle the case where the element is not a valid integer
+						throw new UnexpectedInputException();
 					}
-				
-					return newCourseListSelection;
-				} catch (UnexpectedInputException | WrongNumberOfCoursesSelectedException exception) {
-					// Clear arraySelectedCourseIndicesString and newCourseListSelection and reuse them
-					Arrays.fill(arraySelectedCourseIndicesString, null);
-					newCourseListSelection.clear();
-					courseRegistrationView.showErrorMessage(exception);
-				}	
+				}
+	
+				return newCourseListSelection;
+			} catch (UnexpectedInputException | WrongNumberOfCoursesSelectedException exception) {
+				// Clear arraySelectedCourseIndicesString and newCourseListSelection and reuse them
+				Arrays.fill(arraySelectedCourseIndicesString, null);
+				newCourseListSelection.clear();
+				courseRegistrationView.showErrorMessage(exception);
+			}
 		}
 	}
+	
 
 	private void getUserInput() {
 		System.out.println("Press q to return to the menu");

@@ -3,6 +3,7 @@ package features.advisor.approval_courses_selected;
 import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;
 import core.repositories.CourseEnrollmentRepository;
+import core.repositories.CourseRepository;
 import core.models.concretes.Course;
 import core.models.concretes.CourseEnrollment;
 
@@ -14,7 +15,6 @@ import java.util.Comparator;
 import core.enums.ApprovalState;
 import core.exceptions.UnexpectedInputException;
 import core.exceptions.UserNotFoundException;
-import core.exceptions.WrongNumberOfCoursesSelectedException;
 import core.general_providers.TerminalManager;
 
 public class ApprovalCoursesSelectedController {
@@ -22,12 +22,14 @@ public class ApprovalCoursesSelectedController {
     private CourseEnrollment currentCourseEnrollment;
     private CourseEnrollmentRepository courseEnrollmentRepository;
     private TranscriptRepository transcriptRepository;
+    private CourseRepository courseRepository;
 
     public ApprovalCoursesSelectedController(CourseEnrollment currentCourseEnrollment) {
         this.currentCourseEnrollment = currentCourseEnrollment;
         approvalCoursesSelectedView = new ApprovalCoursesSelectedView();
         courseEnrollmentRepository = new CourseEnrollmentRepository();
         transcriptRepository = new TranscriptRepository();
+        courseRepository = new CourseRepository();
 
         handleCourseApproval();
     }
@@ -67,6 +69,7 @@ public class ApprovalCoursesSelectedController {
                             ApprovalState.Approved);
                 }
                 updateTranscript(currentCourseEnrollment);
+                updateCurrentQuota(currentCourseEnrollment); 
             } else {
                 // some approved some rejected and has previous approved/rejected courses
                 if(currentCourseEnrollment.getApprovedCourseList() != null && currentCourseEnrollment.getRejectedCourseList() != null){
@@ -85,6 +88,7 @@ public class ApprovalCoursesSelectedController {
                         rejectedCourses,
                         ApprovalState.Rejected);
                     }
+                    updateCurrentQuota(currentCourseEnrollment);
             }
             navigateToMenu();
 
@@ -140,6 +144,14 @@ public class ApprovalCoursesSelectedController {
             }
         }
 
+    }
+
+    private void updateCurrentQuota(CourseEnrollment courseEnrollment){
+        try {
+            courseRepository.updateCurrentQuota(courseEnrollment);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateTranscript(CourseEnrollment courseEnrollment) throws IOException, UserNotFoundException {
