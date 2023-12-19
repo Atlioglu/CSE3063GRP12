@@ -170,31 +170,33 @@ public class CourseRegistrationController {
 	
 		// show rejected courses if any
 		showRejectedCourses(courseEnrollment);
-		
+				
 		if(allCourses.size() > 0){
-			System.out.println("Option-1: Do you want to finalize your enrollment with the approved courses? -or- Option-2: Do you want to choose other courses? ");
-			System.out.print("Choose 1 or 2: ");
-			try{
-				String input = TerminalManager.getInstance().read();
-				if(input.equals("1")){
-					sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
+			while(true){
+				System.out.println("Option-1: Do you want to finalize your enrollment with the approved courses? -or- Option-2: Do you want to choose other courses? ");
+				System.out.print("Choose 1 or 2: ");
+				try{
+					String input = TerminalManager.getInstance().read();
+					if(input.equals("1")){
+						sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
+					}
+					else if(input.equals("2")){
+						// show available courses for selection
+						showAvailableCourses(courseEnrollment, allCourses);
+						break;
+					}
+					else{
+						throw new UnexpectedInputException();
+					}
+				} catch(UnexpectedInputException e){
+					courseRegistrationView.showErrorMessage(e);
 				}
-				else if(input.equals("2")){
-					// show available courses for selection
-					showAvailableCourses(courseEnrollment, allCourses);
-				}
-				else{
-					throw new UnexpectedInputException();
-				}
-			} catch(UnexpectedInputException e){
-				courseRegistrationView.showErrorMessage(e);
 			}
 		}
 		else if(allCourses.size() == 0){
 			sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
 		}
         navigateToMenu();		
-
 	}	
 	
 	private void handleNewEnrollment(Transcript transcript, CourseEnrollment courseEnrollment, ArrayList<Course> allCourses, ArrayList<Course> availableCoursesInCurrentSemester) {
@@ -514,9 +516,17 @@ public class CourseRegistrationController {
 
 	private void getUserInput() {
 		System.out.println("Press q to return to the menu");
-		String input = TerminalManager.getInstance().read();
-		if (input.length() == 1 && input.equals("q"))
-			navigateToMenu();
+		try{
+			String input = TerminalManager.getInstance().read();
+			if (input.length() == 1 && input.equals("q"))
+				navigateToMenu();
+			else{
+				throw new UnexpectedInputException();
+			}
+		} catch(UnexpectedInputException e){
+			courseRegistrationView.showErrorMessage(e);
+			getUserInput();
+		}
 	}
 
 	private void sendCoursesToApproval(CourseEnrollment courseEnrollment, ArrayList<Course> selectedCourses, ApprovalState approvalState) {
