@@ -34,6 +34,8 @@
         "totalCreditCompleted": 50,
         "currentSemester": 3
     },
+    "firstName": "Ethan",
+    "lastName": "Taylor",
     "userName": "o150120012",
     "password": "150120012"
 }

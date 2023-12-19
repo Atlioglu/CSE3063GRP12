@@ -7,10 +7,16 @@ import core.models.concretes.Course;
 
 public class CourseRegistrationView extends Exception {
 	public void showCourseList(ArrayList<Course> courseList) {
-		System.out.println("Your list of courses for this semester:");
+		System.out.println("=======================================================||Course Registration||=======================================================");
+		System.out.println("###======List of Available Courses:");
+		System.out.println("=====================================================================================================================================");
+		System.out.printf("%-3s\t%-20s %-50s %-8s %-8s %-8s\n", " No.", "Course Code", "Course Name", "Quota", "Semester No.", "ECTS");
+		System.out.println("=====================================================================================================================================");
 		for (int i = 0; i < courseList.size(); i++) {
-			System.out.println((i + 1) + ". " + courseList.get(i).getName());
+			System.out.printf(" [%-1d]\t%-20s %-52s %-12d %-8d %-8d\n", i + 1, courseList.get(i).getCourseCode(),
+            courseList.get(i).getName(), courseList.get(i).getQuota(), courseList.get(i).getSemester() ,courseList.get(i).getCredit());
 		}
+		System.out.println("=====================================================================================================================================");
 	}
 
 	public void showCourseList(ArrayList<Course> courseList, ApprovalState approvalState) {
@@ -35,7 +41,7 @@ public class CourseRegistrationView extends Exception {
 		for (int i = 0; i < courseList.size(); i++) {
 			System.out.println((i + 1) + ". " + courseList.get(i).getName());
 		}
-		System.out.printf("Your registration status is: %s \n", approvalState);
+		System.out.printf("Your registration status is: %s \n\n", approvalState);
 
 	}
 
