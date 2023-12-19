@@ -1,9 +1,10 @@
 package features.advisor.student_list;
 
+import core.exceptions.UnexpectedInputException;
 import core.models.concretes.Student;
 import java.util.ArrayList;
 
-public class AdvisorStudentListView {
+public class AdvisorStudentListView{
     public void showStudentList(ArrayList<Student> studentArrayList){
         System.out.println("======================================================================================Student List======================================================================================");
         System.out.printf("%-27s%-20s%-20s\n", "[Student ID]", "[First Name]", "[Last Name]");
@@ -15,6 +16,9 @@ public class AdvisorStudentListView {
     }
     public void showQuitMessage(){
         System.out.print("Press q to return Main Menu: ");
+    }
+    public void showErrorMessage() throws UnexpectedInputException{
+        throw new UnexpectedInputException();
     }
 
 }
