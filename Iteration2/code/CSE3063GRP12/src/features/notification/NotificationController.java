@@ -46,6 +46,7 @@ public class NotificationController {
             ArrayList<Notification> notifications = notificationResponse.getListOfNotification();
             notificationView.showNotificationList(notifications);
             notificationRepositories.updateNotificationRead(user.getUserName());
+            notificationRepositories.updateNotificationResponseRead(user.getUserName(),false);
         } catch (IOException | UserNotFoundException e) {
             System.out.println(e.toString());
         }
