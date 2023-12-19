@@ -32,6 +32,8 @@ public class MenuController {
 
         try{
             menuSelection = getMenuSelection();
+            if(Integer.parseInt(menuSelection) < 1 || Integer.parseInt(menuSelection) > menuItems.size())
+                throw new UnexpectedInputException();
         }catch(UnexpectedInputException e){
             menuView.showErrorMessage(e);
             handleMenu();
