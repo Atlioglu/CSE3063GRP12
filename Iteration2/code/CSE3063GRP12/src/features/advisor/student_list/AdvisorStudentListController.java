@@ -32,8 +32,17 @@ public class AdvisorStudentListController {
         advisorStudentListView.showStudentList(userRepository.getStudentsByAdvisor(a));
         advisorStudentListView.showQuitMessage();
         String input = getUserInput();
-        if (input.equals("q")) {
-            navigateToMenu();
-        }    
+        try{
+            if (input.equals("q")) {
+                navigateToMenu();
+            }  
+            else{
+                advisorStudentListView.showErrorMessage();
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
+            handleStudentList();
+        }  
     }
 }
