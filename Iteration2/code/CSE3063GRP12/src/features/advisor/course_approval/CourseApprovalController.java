@@ -20,6 +20,7 @@ public class CourseApprovalController {
             handleApprovalController();
         } catch (UnexpectedInputException e) {
             courseApprovalView.showErrorMessage(e);
+            new CourseApprovalController();
         }
     }
 

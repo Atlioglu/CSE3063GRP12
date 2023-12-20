@@ -1,12 +1,14 @@
 package core.enums;
 
+import core.models.concretes.Notification;
 import features.login.LoginController;
+import features.notification.NotificationController;
 import features.student.course_registration.CourseRegistrationController;
 import features.student.transcript.TranscriptController;
 import features.student.weekly_schedule.WeeklyScheduleController;
 
 public enum StudentMenu implements Menu{
-    CourseRegistration, WeeklySchedule, Transcript, Logout;
+    CourseRegistration, WeeklySchedule, Transcript, Notification, Logout;
     public String getItemMessage() {
         switch(this){
             case CourseRegistration:
@@ -15,12 +17,17 @@ public enum StudentMenu implements Menu{
                 return ("Weekly Schedule");
             case Transcript:
                 return ("Transcript");
+            case Notification:
+                return("Notification");
             case Logout:
                 return ("Logout");
             }
         return this.name();
     }
 
+    public boolean isNotification(){
+        return this == Notification;
+    }
     public void navigate(){
         switch(this){
             case CourseRegistration:
@@ -31,6 +38,9 @@ public enum StudentMenu implements Menu{
                 break;
             case Transcript:
                  new TranscriptController();
+                break;
+             case Notification:
+                new NotificationController();
                 break;
             case Logout:
                 new LoginController();

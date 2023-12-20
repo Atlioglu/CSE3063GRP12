@@ -1,0 +1,100 @@
+{
+    "studentId": "150120065",
+    "transcriptId": "id65",
+    "academicPerformance": {
+      "1": {
+        "listOfCoursesTaken": {
+          "MBG1201": "BB",
+          "CSE1200": "CC",
+          "CSE1241": "BB",
+          "MATH1001": "AB",
+          "PHYS1101": "BA",
+          "PHYS1103": "CC"
+        },
+        "creditsTaken": 27,
+        "creditsCompleted": 27,
+        "yano": 3.30,
+        "gano": 3.30,
+        "semesterNo": 1
+      },
+      "2": {
+        "listOfCoursesTaken": {
+          "CSE1242": "AA",
+          "MATH1002": "BC",
+          "MATH2256": "BB",
+          "PHYS1102": "CC",
+          "PHYS1104": "BA",
+          "NTE I": "AA"
+        },
+        "creditsTaken": 30,
+        "creditsCompleted": 30,
+        "yano": 3.70,
+        "gano": 3.70,
+        "semesterNo": 2
+      },
+      "3": {
+        "listOfCoursesTaken": {
+          "CSE2023": "CC",
+          "CSE2225": "BB",
+          "ECON2004": "CC",
+          "EE2031": "DD",
+          "MATH2055": "BA",
+          "MATH2059": "CC"
+        },
+        "creditsTaken": 26,
+        "creditsCompleted": 26,
+        "yano": 3.45,
+        "gano": 3.50,
+        "semesterNo": 3
+      },
+      "4": {
+        "listOfCoursesTaken": {
+          "CSE2246": "BB",
+          "CSE2138": "CC",
+          "CSE2260": "BA",
+          "EE2032": "DC",
+          "STAT2253": "CC"
+        },
+        "creditsTaken": 30,
+        "creditsCompleted": 30,
+        "yano": 3.60,
+        "gano": 3.60,
+        "semesterNo": 4
+      },
+      "5": {
+        "listOfCoursesTaken": {
+          "CSE3000": "P",
+          "CSE3215": "BB",
+          "CSE3033": "CC",
+          "CSE3055": "BA",
+          "CSE3063": "CC",
+          "IE3081": "DD"
+        },
+        "creditsTaken": 39,
+        "creditsCompleted": 39,
+        "yano": 3.80,
+        "gano": 3.75,
+        "semesterNo": 5
+      },
+      "6": {
+        "listOfCoursesTaken": {
+          "CSE3038": "AB",
+          "CSE3044": "BB",
+          "CSE3048": "CC",
+          "CSE3264": "BA",
+          "IE3235": "DD",
+          "COM2276": "CC"
+        },
+        "creditsTaken": 30,
+        "creditsCompleted": 28,
+        "yano": 3.70, 
+        "gano": 3.65, 
+        "semesterNo": 6
+      }
+    },
+    "gano": 3.60,
+    "totalCreditTaken": 182,
+    "totalCreditCompleted": 152,
+    "currentSemester": 7
+  }
+  

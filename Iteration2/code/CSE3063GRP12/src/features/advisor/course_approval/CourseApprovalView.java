@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CourseApprovalView {
     public void showPendingCourseEnrollments(ArrayList<CourseEnrollment> courseEnrollmentArrayList){
-        System.out.println("Pending Course Enrollments");
+        System.out.println("Pending Course Enrollments (enter q for exit)");
         for(int i = 1;i<=courseEnrollmentArrayList.size();i++) {
             System.out.println(i+". " + courseEnrollmentArrayList.get(i-1).getStudentId());
 
@@ -14,7 +14,7 @@ public class CourseApprovalView {
     }
 
     public void showErrorMessage(Exception e){
-       new UnexpectedInputException();
+       System.out.println("Error: " + e.getMessage());
     }
 
     public void showPromptMessage() {
