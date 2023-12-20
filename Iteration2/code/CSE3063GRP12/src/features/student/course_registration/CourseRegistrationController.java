@@ -57,8 +57,10 @@ public class CourseRegistrationController {
 				handlePendingCourseEnrollment(courseEnrollment);
 			} else if (courseEnrollment != null && courseEnrollment.getApprovalState() == ApprovalState.Rejected)
 				handleNullOrRejectedCourseEnrollment(courseEnrollment, currentStudent);
-			else if (courseEnrollment == null)
+			else if (courseEnrollment == null) {
+
 				handleNullOrRejectedCourseEnrollment(null, currentStudent);
+			}
 		} catch (Exception e) {
 			courseRegistrationView.showErrorMessage(e);
 		}
@@ -96,7 +98,7 @@ public class CourseRegistrationController {
 					// add/drop courses before sending them to the advisor
 					newCourseListSelection = addDropCoursesOptions(newCourseListSelection, availableCoursesForStudent);
 
-					if (!newCourseListSelection.isEmpty()) {
+					if (newCourseListSelection != null && !newCourseListSelection.isEmpty()) {
 						// set the selected courses in the course enrollment
 						currentSelectedCourses.addAll(newCourseListSelection);
 						courseEnrollment.setSelectedCourseList(currentSelectedCourses);
@@ -158,7 +160,7 @@ public class CourseRegistrationController {
 				handleNewEnrollment(transcript, courseEnrollment, allCourses, availableCoursesForStudent);
 			}
 
-			handleCourseSelection(courseEnrollment, allCourses);
+			// handleCourseSelection(courseEnrollment, allCourses);
 			navigateToMenu();
 		} catch (IOException | UserNotFoundException e) {
 			courseRegistrationView.showErrorMessage(e);
@@ -176,36 +178,36 @@ public class CourseRegistrationController {
 
 		// show rejected courses if any
 		showRejectedCourses(courseEnrollment);
-				
-		if(allCourses.size() > 0){
-			while(true){
-				System.out.println("Option-1: Do you want to finalize your enrollment with the approved courses? -or- Option-2: Do you want to choose other courses? ");
+
+		if (allCourses.size() > 0) {
+			while (true) {
+				System.out.println(
+						"Option-1: Do you want to finalize your enrollment with the approved courses? -or- Option-2: Do you want to choose other courses? ");
 				System.out.print("Choose 1 or 2: ");
-				try{
+				try {
 					String input = TerminalManager.getInstance().read();
-					if(input.equals("1")){
-						sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
-					}
-					else if(input.equals("2")){
+					if (input.equals("1")) {
+						sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(),
+								ApprovalState.Approved);
+					} else if (input.equals("2")) {
 						// show available courses for selection
 						showAvailableCourses(courseEnrollment, allCourses);
 						break;
-					}
-					else{
+					} else {
 						throw new UnexpectedInputException();
 					}
-				} catch(UnexpectedInputException e){
+				} catch (UnexpectedInputException e) {
 					courseRegistrationView.showErrorMessage(e);
 				}
 			}
-		}
-		else if(allCourses.size() == 0){
+		} else if (allCourses.size() == 0) {
 			sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
 		}
-        navigateToMenu();		
+		navigateToMenu();
 	}
 
-	private void handleNewEnrollment(Transcript transcript, CourseEnrollment courseEnrollment, ArrayList<Course> allCourses, ArrayList<Course> availableCoursesInCurrentSemester) {
+	private void handleNewEnrollment(Transcript transcript, CourseEnrollment courseEnrollment,
+			ArrayList<Course> allCourses, ArrayList<Course> availableCoursesInCurrentSemester) {
 		allCourses.addAll(availableCoursesInCurrentSemester);
 		allCourses.addAll(getRetakeCourses(transcript));
 		courseRegistrationView.showCourseList(allCourses);
@@ -216,7 +218,7 @@ public class CourseRegistrationController {
 		// add/drop courses before sending them to the advisor
 		newCourseListSelection = addDropCoursesOptions(newCourseListSelection, allCourses);
 
-		if (!newCourseListSelection.isEmpty()) {
+		if (newCourseListSelection != null && !newCourseListSelection.isEmpty()) {
 			// send the combined list to approval
 			sendNotification("registered");
 			sendCoursesToApproval(courseEnrollment, newCourseListSelection, ApprovalState.Pending);
@@ -283,19 +285,18 @@ public class CourseRegistrationController {
 		// add/drop courses before sending them to the advisor
 		newCourseListSelection = addDropCoursesOptions(newCourseListSelection, allCourses);
 
-		// Check the quota for each course in the new selection
-		for (Course selectedCourse : newCourseListSelection) {
-			if (!checkQuota(selectedCourse)) {
-				final String ANSI_BOLD = "\u001B[1m";
-				final String ANSI_RESET = "\u001B[0m";
-				System.out.println("Sorry, the quota for the course " + ANSI_BOLD + selectedCourse.getName()
-						+ ANSI_RESET + " is full. Please choose another course.");
-				navigateToMenu();
-				return; // Stop further processing
+		if (newCourseListSelection != null && !newCourseListSelection.isEmpty()) {
+			// Check the quota for each course in the new selection
+			for (Course selectedCourse : newCourseListSelection) {
+				if (!checkQuota(selectedCourse)) {
+					final String ANSI_BOLD = "\u001B[1m";
+					final String ANSI_RESET = "\u001B[0m";
+					System.out.println("Sorry, the quota for the course " + ANSI_BOLD + selectedCourse.getName()
+							+ ANSI_RESET + " is full. Please choose another course.");
+					navigateToMenu();
+					return; // Stop further processing
+				}
 			}
-		}
-
-		if (!newCourseListSelection.isEmpty()) {
 			// reserve the previously approved courses to not be lost
 			reserveCourses = reservePreviouslyApprovedCourses(courseEnrollment, newCourseListSelection);
 
@@ -459,7 +460,8 @@ public class CourseRegistrationController {
 							courseList.clear(); // Clear the list to prevent further processing
 						}
 					} else if (decision.equals("no")) {
-						continue;
+						// continue;
+						return null;
 					} else {
 						throw new UnexpectedInputException();
 					}
@@ -667,11 +669,10 @@ public class CourseRegistrationController {
 		new MenuController();
 	}
 
-
 	private void sendNotification(String message) {
 		Student student = (Student) SessionController.getInstance().getCurrentUser();
 		notificationRepositories.updateNotification(student.getAdvisor().getUserName(),
 				student.getUserName() + " has " + message);
 	}
 
- }
+}
