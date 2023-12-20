@@ -84,7 +84,7 @@ public class ApprovalCoursesSelectedController {
                             currentCourseEnrollment.getApprovedCourseList(),
                             currentCourseEnrollment.getRejectedCourseList(),
                             ApprovalState.Rejected);
-                    sendNotification("rejected");
+                    sendNotification("rejected, please check your course registreation module!");
                 }
 
                 else{
@@ -93,7 +93,7 @@ public class ApprovalCoursesSelectedController {
                         approvedCourses,
                         rejectedCourses,
                         ApprovalState.Rejected);
-                    sendNotification("rejected");
+                    sendNotification("some of your courses are rejected. Please check in course registeration module");
 
                     }
                     updateCurrentQuota(currentCourseEnrollment);
