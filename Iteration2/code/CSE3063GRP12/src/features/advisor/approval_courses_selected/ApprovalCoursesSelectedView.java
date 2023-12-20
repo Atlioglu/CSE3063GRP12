@@ -9,7 +9,7 @@ public class ApprovalCoursesSelectedView {
     System.out.println("====================================================|| Registration Management ||====================================================");
     System.out.println("###======List of Student Selected Courses:");
     System.out.println("=====================================================================================================================================");
-    System.out.printf("%-3s\t%-20s %-50s %-8s %-8s %-8s\n", " No.", "Course Code", "Course Name", "Quota", "Semester No.", "ECTS");
+    System.out.printf("%-3s\t%-20s %-50s %-8s %-10s  %-8s\n", " No.", "Course Code", "Course Name", "Quota", "Semester No.", "ECTS");
     System.out.println("=====================================================================================================================================");
 
     for (int i = 0; i < selectedCourseList.size(); i++) {

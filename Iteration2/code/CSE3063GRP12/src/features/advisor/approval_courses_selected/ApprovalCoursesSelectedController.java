@@ -3,6 +3,7 @@ package features.advisor.approval_courses_selected;
 import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;
 import core.repositories.CourseEnrollmentRepository;
+import core.repositories.CourseRepository;
 import core.models.concretes.Course;
 import core.models.concretes.CourseEnrollment;
 
@@ -11,10 +12,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import core.repositories.NotificationRepositories;
 import core.enums.ApprovalState;
 import core.exceptions.UnexpectedInputException;
 import core.exceptions.UserNotFoundException;
-import core.exceptions.WrongNumberOfCoursesSelectedException;
 import core.general_providers.TerminalManager;
 
 public class ApprovalCoursesSelectedController {
@@ -22,12 +23,16 @@ public class ApprovalCoursesSelectedController {
     private CourseEnrollment currentCourseEnrollment;
     private CourseEnrollmentRepository courseEnrollmentRepository;
     private TranscriptRepository transcriptRepository;
+    private CourseRepository courseRepository;
+    private NotificationRepositories notificationRepositories;
 
     public ApprovalCoursesSelectedController(CourseEnrollment currentCourseEnrollment) {
         this.currentCourseEnrollment = currentCourseEnrollment;
         approvalCoursesSelectedView = new ApprovalCoursesSelectedView();
         courseEnrollmentRepository = new CourseEnrollmentRepository();
         transcriptRepository = new TranscriptRepository();
+        courseRepository = new CourseRepository();
+		notificationRepositories = new NotificationRepositories();
 
         handleCourseApproval();
     }
@@ -67,6 +72,9 @@ public class ApprovalCoursesSelectedController {
                             ApprovalState.Approved);
                 }
                 updateTranscript(currentCourseEnrollment);
+                updateCurrentQuota(currentCourseEnrollment); 
+                sendNotification("accepted");
+
             } else {
                 // some approved some rejected and has previous approved/rejected courses
                 if(currentCourseEnrollment.getApprovedCourseList() != null && currentCourseEnrollment.getRejectedCourseList() != null){
@@ -76,6 +84,7 @@ public class ApprovalCoursesSelectedController {
                             currentCourseEnrollment.getApprovedCourseList(),
                             currentCourseEnrollment.getRejectedCourseList(),
                             ApprovalState.Rejected);
+                    sendNotification("rejected, please check your course registreation module!");
                 }
 
                 else{
@@ -84,7 +93,10 @@ public class ApprovalCoursesSelectedController {
                         approvedCourses,
                         rejectedCourses,
                         ApprovalState.Rejected);
+                    sendNotification("some of your courses are rejected. Please check in course registeration module");
+
                     }
+                    updateCurrentQuota(currentCourseEnrollment);
             }
             navigateToMenu();
 
@@ -93,6 +105,10 @@ public class ApprovalCoursesSelectedController {
         }
 
     }
+
+    private void sendNotification(String message) {
+        notificationRepositories.updateNotification(currentCourseEnrollment.getStudentId(), "Your request is "+ message);
+	}
 
     private boolean isCourseInList(Course course, ArrayList<Course> courseList) {
         return courseList != null && courseList.stream()
@@ -140,6 +156,14 @@ public class ApprovalCoursesSelectedController {
             }
         }
 
+    }
+
+    private void updateCurrentQuota(CourseEnrollment courseEnrollment){
+        try {
+            courseRepository.updateCurrentQuota(courseEnrollment);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateTranscript(CourseEnrollment courseEnrollment) throws IOException, UserNotFoundException {
