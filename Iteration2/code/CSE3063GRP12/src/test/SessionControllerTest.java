@@ -23,4 +23,13 @@ public class SessionControllerTest {
 
     }
 
+    @Test
+    public void testSetCurrentUser() {
+        Student student = new Student();
+        student.setUserName("test");
+        SessionController sessionController = SessionController.getInstance();
+        sessionController.setCurrentUser(student);
+        assertEquals(sessionController.getCurrentUser(), student);
+    }
+
 }
