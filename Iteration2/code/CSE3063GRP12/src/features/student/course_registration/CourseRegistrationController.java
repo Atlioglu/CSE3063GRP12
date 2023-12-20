@@ -68,49 +68,50 @@ public class CourseRegistrationController {
 	private void handlePendingCourseEnrollment(CourseEnrollment courseEnrollment) {
 		ArrayList<Course> pendingCourses = getPendingCourses(courseEnrollment.getSelectedCourseList(),
 				courseEnrollment);
-		courseRegistrationView.showCourseList(pendingCourses, courseEnrollment.getApprovalState());
-
+		// needs optimization
+		User currentStudent = SessionController.getInstance().getCurrentUser();
+		Transcript transcript;
 		try {
-			System.out.print("Do you want to add/drop courses? (yes/no): ");
-			String userInput = TerminalManager.getInstance().read().toLowerCase();
+			transcript = fetchTranscript(currentStudent.getUserName());
+			ArrayList<Course> allCoursesPerSemester = fetchCoursesBySemester(transcript.getCurrentSemester());
+			ArrayList<Course> availableCoursesForStudent = arrangeCoursesForStudent(transcript, allCoursesPerSemester);
+			availableCoursesForStudent.addAll(getRetakeCourses(transcript));
 
-			if ("yes".equals(userInput)) {
-				// needs optimization
-				User currentStudent = SessionController.getInstance().getCurrentUser();
-				Transcript transcript = fetchTranscript(currentStudent.getUserName());
-				ArrayList<Course> allCoursesPerSemester = fetchCoursesBySemester(transcript.getCurrentSemester());
-				ArrayList<Course> availableCoursesForStudent = arrangeCoursesForStudent(transcript,
-						allCoursesPerSemester);
-				availableCoursesForStudent.addAll(getRetakeCourses(transcript));
+			// add the courses that are not selected and show them
+			ArrayList<Course> filterOutCourseList = new ArrayList<>();
+			filterOutCourseList.addAll(getCoursesNotSelectedByStudent(courseEnrollment, availableCoursesForStudent));
+			courseRegistrationView.showCourseList(pendingCourses, courseEnrollment.getApprovalState());
 
-				// add the courses that are not selected and show them
-				ArrayList<Course> filterOutCourseList = new ArrayList<>();
-				filterOutCourseList
-						.addAll(getCoursesNotSelectedByStudent(courseEnrollment, availableCoursesForStudent));
+			if (filterOutCourseList.size() > 0) {
+				System.out.print("Do you want to add courses? (yes/no): ");
+				String userInput = TerminalManager.getInstance().read().toLowerCase();
 
-				courseRegistrationView.showCourseList(filterOutCourseList);
+				if ("yes".equals(userInput)) {
+					courseRegistrationView.showCourseList(filterOutCourseList);
 
-				// get the courses selected by the student
-				ArrayList<Course> currentSelectedCourses = courseEnrollment.getSelectedCourseList();
-				ArrayList<Course> newCourseListSelection = getUserSelections(filterOutCourseList);
+					// get the courses selected by the student
+					ArrayList<Course> currentSelectedCourses = courseEnrollment.getSelectedCourseList();
+					ArrayList<Course> newCourseListSelection = getUserSelections(filterOutCourseList);
 
-				// add/drop courses before sending them to the advisor
-				newCourseListSelection = addDropCoursesOptions(newCourseListSelection, availableCoursesForStudent);
+					// add/drop courses before sending them to the advisor
+					newCourseListSelection = addDropCoursesOptions(newCourseListSelection, availableCoursesForStudent);
 
-				if (!newCourseListSelection.isEmpty()) {
-					// set the selected courses in the course enrollment
-					currentSelectedCourses.addAll(newCourseListSelection);
-					courseEnrollment.setSelectedCourseList(currentSelectedCourses);
+					if (!newCourseListSelection.isEmpty()) {
+						// set the selected courses in the course enrollment
+						currentSelectedCourses.addAll(newCourseListSelection);
+						courseEnrollment.setSelectedCourseList(currentSelectedCourses);
 
-					// send the updated course enrollment to the advisor
-					sendNotification("uploaded");
-					sendCoursesToApproval(courseEnrollment, newCourseListSelection, ApprovalState.Pending);
-					courseRegistrationView.showSuccessMessage();
-				}
-			} else if (userInput.equals("no"))
-				;
-			else
-				throw new UnexpectedInputException();
+						// send the updated course enrollment to the advisor
+						sendNotification("uploaded");
+
+						sendCoursesToApproval(courseEnrollment, newCourseListSelection, ApprovalState.Pending);
+						courseRegistrationView.showSuccessMessage();
+					}
+				} else if (userInput.equals("no"))
+					;
+				else
+					throw new UnexpectedInputException();
+			}
 			getUserInput();
 		} catch (IOException | UserNotFoundException | UnexpectedInputException e) {
 			courseRegistrationView.showErrorMessage(e);
@@ -154,7 +155,7 @@ public class CourseRegistrationController {
 			if (courseEnrollment != null && courseEnrollment.getApprovalState() == ApprovalState.Rejected) {
 				handleRejectedEnrollment(transcript, courseEnrollment, availableCoursesForStudent, allCourses);
 			} else {
-				handleNewEnrollment(courseEnrollment, allCourses, transcript, availableCoursesForStudent);
+				handleNewEnrollment(transcript, courseEnrollment, allCourses, availableCoursesForStudent);
 			}
 
 			handleCourseSelection(courseEnrollment, allCourses);
@@ -175,16 +176,36 @@ public class CourseRegistrationController {
 
 		// show rejected courses if any
 		showRejectedCourses(courseEnrollment);
-
-		// show available courses for selection
-		showAvailableCourses(courseEnrollment, allCourses);
-
-		navigateToMenu();
-
+				
+		if(allCourses.size() > 0){
+			while(true){
+				System.out.println("Option-1: Do you want to finalize your enrollment with the approved courses? -or- Option-2: Do you want to choose other courses? ");
+				System.out.print("Choose 1 or 2: ");
+				try{
+					String input = TerminalManager.getInstance().read();
+					if(input.equals("1")){
+						sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
+					}
+					else if(input.equals("2")){
+						// show available courses for selection
+						showAvailableCourses(courseEnrollment, allCourses);
+						break;
+					}
+					else{
+						throw new UnexpectedInputException();
+					}
+				} catch(UnexpectedInputException e){
+					courseRegistrationView.showErrorMessage(e);
+				}
+			}
+		}
+		else if(allCourses.size() == 0){
+			sendCoursesToApproval(courseEnrollment, courseEnrollment.getApprovedCourseList(), ApprovalState.Approved);
+		}
+        navigateToMenu();		
 	}
 
-	private void handleNewEnrollment(CourseEnrollment courseEnrollment, ArrayList<Course> allCourses,
-			Transcript transcript, ArrayList<Course> availableCoursesInCurrentSemester) {
+	private void handleNewEnrollment(Transcript transcript, CourseEnrollment courseEnrollment, ArrayList<Course> allCourses, ArrayList<Course> availableCoursesInCurrentSemester) {
 		allCourses.addAll(availableCoursesInCurrentSemester);
 		allCourses.addAll(getRetakeCourses(transcript));
 		courseRegistrationView.showCourseList(allCourses);
@@ -607,9 +628,17 @@ public class CourseRegistrationController {
 
 	private void getUserInput() {
 		System.out.println("Press q to return to the menu");
-		String input = TerminalManager.getInstance().read();
-		if (input.length() == 1 && input.equals("q"))
-			navigateToMenu();
+		try {
+			String input = TerminalManager.getInstance().read();
+			if (input.length() == 1 && input.equals("q"))
+				navigateToMenu();
+			else {
+				throw new UnexpectedInputException();
+			}
+		} catch (UnexpectedInputException e) {
+			courseRegistrationView.showErrorMessage(e);
+			getUserInput();
+		}
 	}
 
 	private void sendCoursesToApproval(CourseEnrollment courseEnrollment, ArrayList<Course> selectedCourses,
@@ -635,16 +664,9 @@ public class CourseRegistrationController {
 
 	// Go back to Menu by calling MenuController
 	private void navigateToMenu() {
-		// clearScreen();
-		// TerminalManager.getInstance().dispose();
 		new MenuController();
 	}
 
-	public void clearScreen() {
-
-		System.out.print("\033[H\033[2J");
-		System.out.flush();
-	}
 
 	private void sendNotification(String message) {
 		Student student = (Student) SessionController.getInstance().getCurrentUser();
@@ -652,4 +674,4 @@ public class CourseRegistrationController {
 				student.getUserName() + " has " + message);
 	}
 
-}
+ }
