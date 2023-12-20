@@ -256,7 +256,9 @@ public class CourseRegistrationController {
     // Check the quota for each course in the new selection
     for (Course selectedCourse : newCourseListSelection) {
         if (!checkQuota(selectedCourse)) {
-            System.out.println("Sorry, the quota for the course " + selectedCourse.getName() + " is full. Please choose another course.");
+			final String ANSI_BOLD = "\u001B[1m";
+        	final String ANSI_RESET = "\u001B[0m";
+            System.out.println("Sorry, the quota for the course " + ANSI_BOLD + selectedCourse.getName() + ANSI_RESET + " is full. Please choose another course.");
             navigateToMenu();
             return;  // Stop further processing
         }
@@ -514,6 +516,7 @@ public class CourseRegistrationController {
 	private ArrayList<Course> getUserSelections(ArrayList<Course> courseList) {
 		ArrayList<Course> newCourseListSelection = new ArrayList<>();
 		while (true) {
+			boolean skipToWhileLoop = false;
 			System.out.print("Choose the index of the courses you want to enroll in or enter q to return to the main menu: ");
 			String selectedCourseIndex = TerminalManager.getInstance().read();
 	
@@ -548,8 +551,11 @@ public class CourseRegistrationController {
 	
 						// Check if the quota for the selected course is full
 						if (!checkQuota(selectedCourse)) {
-							System.out.println("Sorry, the quota for the course " + selectedCourse.getName() + " is full. Please choose another course.");
+							final String ANSI_BOLD = "\u001B[1m";
+        					final String ANSI_RESET = "\u001B[0m";
+            				System.out.println("Sorry, the quota for the course " + ANSI_BOLD + selectedCourse.getName() + ANSI_RESET + " is full. Please choose another course.");
 							newCourseListSelection.clear(); // Clear the list to prevent further processing
+							skipToWhileLoop = true;
 							continue; // Reprompt user
 						}
 	
@@ -558,6 +564,12 @@ public class CourseRegistrationController {
 						// Handle the case where the element is not a valid integer
 						throw new UnexpectedInputException();
 					}
+				}
+				
+				if(skipToWhileLoop || hasCourseWithFullQuota(newCourseListSelection)){
+					// Clear newCourseListSelection and reuse them
+					newCourseListSelection.clear();
+					continue;
 				}
 	
 				return newCourseListSelection;
