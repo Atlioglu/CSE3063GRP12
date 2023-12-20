@@ -37,7 +37,7 @@ public class NotificationRepositories {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
             // throw new UserNotFoundException();
             return null;
         }
@@ -114,7 +114,7 @@ public class NotificationRepositories {
             System.out.println(e.getMessage());
         }
     }
-    
+
     public void updateNotificationResponseRead(String userName, boolean containNew) {
         UserType userType = getUserType(userName);
         NotificationResponse notificationResponse = null;
@@ -132,6 +132,7 @@ public class NotificationRepositories {
             System.out.println(e.getMessage());
         }
     }
+
     private UserType getUserType(String userName) {
         char firstChar = userName.charAt(0);
         if (firstChar == 'o') {
