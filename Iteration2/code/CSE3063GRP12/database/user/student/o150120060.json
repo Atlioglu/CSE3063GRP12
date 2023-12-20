@@ -1,24 +1,23 @@
 {
   "advisor": {
-    "id": "ADid3",
-    "firstName": "John",
-    "lastName": "Cena",
+    "id": "ADid6",
+    "firstName": "James",
+    "lastName": "Robert",
     "listOfStudentIds": [
-      "o150120041",
-      "o150120042",
-      "o150120043",
-      "o150120044",
-      "o150120045",
-      "o150120046",
-      "o150120047",
-      "o150120048",
-      "o150120049",
-      "o150120050",
-      "o150120060"
+        "o150120051",
+        "o150120052",
+        "o150120053",
+        "o150120054",
+        "o150120055",
+        "o150120056",
+        "o150120057",
+        "o150120058",
+        "o150120059",
+        "o150120060"
     ],
     "listOfCoursesGiven": [],
-    "userName": "a150120xx3",
-    "password": "150120xx3"
+    "userName": "a150120xx6",
+    "password": "150120xx6"
   },
   "listOfLectureSessions": [
     {
