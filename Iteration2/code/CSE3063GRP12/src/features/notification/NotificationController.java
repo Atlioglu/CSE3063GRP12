@@ -15,36 +15,40 @@ public class NotificationController {
     private NotificationView notificationView;
     private NotificationRepositories notificationRepositories;
     private Notification notification;
-    //read = true olacak
-    //notification listesini tek tek yazacak
-    //q ya basarsa main menuye dönecek
-    public NotificationController(){
+
+    // read = true olacak
+    // notification listesini tek tek yazacak
+    // q ya basarsa main menuye dönecek
+    public NotificationController() {
         this.notificationView = new NotificationView();
         this.notificationRepositories = new NotificationRepositories();
         this.notification = new Notification();
         handleNotification();
     }
 
-
     private void navigateToMenu() {
         new MenuController();
     }
-
 
     private String getUserInput() {
         String input = TerminalManager.getInstance().read();
         return input;
     }
 
-    public void handleNotification(){
+    public void handleNotification() {
         User user = SessionController.getInstance().getCurrentUser();
         NotificationResponse notificationResponse;
         try {
             notificationResponse = notificationRepositories.getNotification(user.getUserName());
-            ArrayList<Notification> notifications = notificationResponse.getListOfNotification();
-            notificationView.showNotificationList(notifications);
-            notificationRepositories.updateNotificationRead(user.getUserName());
-            notificationRepositories.updateNotificationResponseRead(user.getUserName(),false);
+            if (notificationResponse == null) {
+                System.err.println("You have no notification");
+            } else {
+                ArrayList<Notification> notifications = notificationResponse.getListOfNotification();
+                notificationView.showNotificationList(notifications);
+                notificationRepositories.updateNotificationRead(user.getUserName());
+                notificationRepositories.updateNotificationResponseRead(user.getUserName(), false);
+            }
+
         } catch (IOException | UserNotFoundException e) {
             System.out.println(e.toString());
         }
@@ -53,7 +57,7 @@ public class NotificationController {
         String input = getUserInput();
         if (input.equals("q")) {
             navigateToMenu();
-        } 
+        }
     }
 
 }
