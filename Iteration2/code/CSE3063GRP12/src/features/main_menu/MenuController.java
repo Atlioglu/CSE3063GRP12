@@ -3,21 +3,29 @@ package features.main_menu;
 import java.util.ArrayList;
 
 import core.enums.Menu;
+import core.database.abstracts.DatabaseManager;
 import core.enums.AdvisorMenu;
 import core.enums.StudentMenu;
 
 import core.enums.UserType;
 import core.exceptions.UnexpectedInputException;
+import core.general_providers.AppConstant;
+import core.general_providers.InstanceManager;
 import core.general_providers.SessionController;
 import core.general_providers.TerminalManager;
+import core.models.abstracts.User;
+import core.models.concretes.NotificationResponse;
+import core.repositories.NotificationRepositories;
 
 public class MenuController {
-
+    private DatabaseManager databaseManager;
+    private NotificationRepositories notificationRepositories;
     private MenuView menuView;
 
     // Constructor
     public MenuController() {
         this.menuView = new MenuView();
+        this.notificationRepositories = new NotificationRepositories();
         handleMenu();
     }
 
@@ -50,21 +58,53 @@ public class MenuController {
         ArrayList<String> menuItems = new ArrayList<String>();
         UserType userType = SessionController.getInstance().getUserType();
         //UserType userType = UserType.Student; //change here with upper line
+        
+        boolean containNew= getNotification(userType);
         switch (userType) {
             case Student:
                 for (StudentMenu item : StudentMenu.values()) {
-                    menuItems.add(item.getItemMessage());
+                    if( item.isNotification()&& containNew){
+                        menuItems.add("\033[1m" +"*"+ item.getItemMessage() +"*"+ "\033[0m ");
+                       }else{
+                        menuItems.add(item.getItemMessage());
+                       }
                 }
                 break;
             case Advisor:
                 for (AdvisorMenu item : AdvisorMenu.values()) {
-                    menuItems.add(item.getItemMessage());
-                }
+                    System.out.println(containNew);
+                    if( item.isNotification()&& containNew){
+                        menuItems.add("\033[1m" +"*"+ item.getItemMessage() +"*"+ "\033[0m ");
+                       }else{
+                        menuItems.add(item.getItemMessage());
+                       }}
                 break;
         }
         return menuItems;
     }
 
+    public boolean getNotification(UserType userType){
+        User user = SessionController.getInstance().getCurrentUser();
+        NotificationResponse notificationResponse = null;
+        try{
+            if (userType == UserType.Student) {
+                notificationResponse = notificationRepositories.getNotification(user.getUserName());
+            } else if (userType == UserType.Advisor) {
+                notificationResponse = notificationRepositories.getNotification(user.getUserName());
+            }
+            if (notificationResponse == null) {
+                // throw new UserNotFoundException();
+                return false;
+            }else{
+                return notificationResponse.isContainsNew();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // throw new UserNotFoundException();
+        }
+
+        return true;
+    }
     // navigate to module
     public void navigateToModule(Menu menu) {
         menu.navigate();

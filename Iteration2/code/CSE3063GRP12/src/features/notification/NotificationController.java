@@ -2,8 +2,6 @@ package features.notification;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import core.enums.UserType;
 import core.exceptions.UserNotFoundException;
 import core.general_providers.SessionController;
 import core.general_providers.TerminalManager;
@@ -46,6 +44,7 @@ public class NotificationController {
             ArrayList<Notification> notifications = notificationResponse.getListOfNotification();
             notificationView.showNotificationList(notifications);
             notificationRepositories.updateNotificationRead(user.getUserName());
+            notificationRepositories.updateNotificationResponseRead(user.getUserName(),false);
         } catch (IOException | UserNotFoundException e) {
             System.out.println(e.toString());
         }

@@ -3,6 +3,7 @@ package features.student.course_registration;
 import core.repositories.TranscriptRepository;
 import features.main_menu.MenuController;
 import core.repositories.CourseRepository;
+import core.repositories.NotificationRepositories;
 import core.enums.ApprovalState;
 import core.enums.CourseGrade;
 import core.exceptions.UserNotFoundException;
@@ -32,12 +33,15 @@ public class CourseRegistrationController {
 	private TranscriptRepository transcriptRepository;
 	private CourseRepository courseRepository;
 	private CourseEnrollmentRepository courseEnrollmentRepository;
+	private NotificationRepositories notificationRepositories;
+
 
 	public CourseRegistrationController() {
 		this.courseRegistrationView = new CourseRegistrationView();
 		this.transcriptRepository = new TranscriptRepository();
 		this.courseRepository = new CourseRepository();
 		this.courseEnrollmentRepository = new CourseEnrollmentRepository();
+		this.notificationRepositories = new NotificationRepositories();
 		handleCourseRegistration();
 	}
 
@@ -99,6 +103,7 @@ public class CourseRegistrationController {
 					courseEnrollment.setSelectedCourseList(currentSelectedCourses);
 		
 					// send the updated course enrollment to the advisor
+					sendNotification("uploaded");
 					sendCoursesToApproval(courseEnrollment, newCourseListSelection, ApprovalState.Pending);
 					courseRegistrationView.showSuccessMessage();
 				}
@@ -190,6 +195,7 @@ public class CourseRegistrationController {
 	
 		if (!newCourseListSelection.isEmpty()) {
 			// send the combined list to approval
+			sendNotification("registered");
 			sendCoursesToApproval(courseEnrollment, newCourseListSelection, ApprovalState.Pending);
 			courseRegistrationView.showSuccessMessage();
 		}
@@ -240,6 +246,7 @@ public class CourseRegistrationController {
 			if (courseEnrollment != null) {
 				courseEnrollment.setSelectedCourseList(reserveCourses);
 			}
+			sendNotification("uploadeed");
 			sendCoursesToApproval(courseEnrollment, reserveCourses, ApprovalState.Pending);
 	
 			courseRegistrationView.showSuccessMessage();
@@ -530,6 +537,10 @@ public class CourseRegistrationController {
 
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
+	}
+	private void sendNotification(String message) {
+		Student student = (Student) SessionController.getInstance().getCurrentUser();		
+		notificationRepositories.updateNotification(student.getAdvisor().getUserName(), student.getUserName() +" has "+message);
 	}
 
 }

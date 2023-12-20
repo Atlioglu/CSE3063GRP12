@@ -83,8 +83,11 @@ public class NotificationRepositories {
                 notificationResponse.getListOfNotification().add(notification);
             }
             writeNotification(userName, notificationResponse);
+            updateNotificationResponseRead(userName, true);
+
         } catch (Exception e) {
             // e.printStackTrace();
+
             System.out.println(e.getMessage());
             // throw new UserNotFoundException();
         }
@@ -111,7 +114,24 @@ public class NotificationRepositories {
             System.out.println(e.getMessage());
         }
     }
-
+    
+    public void updateNotificationResponseRead(String userName, boolean containNew) {
+        UserType userType = getUserType(userName);
+        NotificationResponse notificationResponse = null;
+        try {
+            if (userType == UserType.Student) {
+                notificationResponse = databaseManager.read(studentPath + "/" + userName + ".json",
+                        NotificationResponse.class);
+            } else if (userType == UserType.Advisor) {
+                notificationResponse = databaseManager.read(advisorPath + "/" + userName + ".json",
+                        NotificationResponse.class);
+            }
+            notificationResponse.setContainsNew(containNew);
+            writeNotification(userName, notificationResponse);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     private UserType getUserType(String userName) {
         char firstChar = userName.charAt(0);
         if (firstChar == 'o') {
