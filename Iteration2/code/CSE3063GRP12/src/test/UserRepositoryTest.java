@@ -2,59 +2,37 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import core.exceptions.UserNotFoundException;
+import core.exceptions.WrongPasswordException;
 import core.general_providers.SessionController;
 import core.models.abstracts.User;
 import core.models.concretes.Student;
+import core.repositories.UserRepository;
 
 public class UserRepositoryTest {
 
     @Test
-    public void testSetCurrentUser() {
-        Student student = new Student();
-        student.setUserName("test");
-
-        SessionController sessionController = SessionController.getInstance();
-        sessionController.setCurrentUser(student);
-
-        assertEquals(sessionController.getCurrentUser(), student);
-
+    public void testLoginCheckSuccessful() throws UserNotFoundException, WrongPasswordException {
+        UserRepository userRepository = new UserRepository();
+        userRepository.loginCheck("o150121534", "123123");
+        User user = SessionController.getInstance().getCurrentUser();
+        assertNotNull(user);
     }
 
-    @Test
-    public void testUserEqual() {
-        Student student = new Student();
-        student.setUserName("test");
-        student.setPassword("test");
-        Student student2 = new Student();
-        student2.setUserName("test");
-        student2.setPassword("test");
-
-        assertEquals(student, student2);
-
+    @Test(expected = UserNotFoundException.class)
+    public void testLoginCheckUserNotFound() throws UserNotFoundException, WrongPasswordException {
+        UserRepository userRepository = new UserRepository();
+        userRepository.loginCheck("o1501215", "123123");
     }
 
-    @Test
-    public void testUserNotEqual() {
-        Student student = new Student();
-        student.setUserName("test");
-        student.setPassword("test");
-        Student student2 = new Student();
-        student2.setUserName("test1");
-        student2.setPassword("test1");
-
-        assertNotEquals(student, student2);
-
+    @Test(expected = WrongPasswordException.class)
+    public void testLoginCheckWrongPassword() throws UserNotFoundException, WrongPasswordException {
+        UserRepository userRepository = new UserRepository();
+        userRepository.loginCheck("o150121534", "1231234");
     }
-
-    @Test
-    public void testUserType() {
-        User student = new Student();
-        assertTrue(student instanceof User);
-
-    }
-
 }
