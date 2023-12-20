@@ -2,8 +2,6 @@ package features.notification;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import core.enums.UserType;
 import core.exceptions.UserNotFoundException;
 import core.general_providers.SessionController;
 import core.general_providers.TerminalManager;
