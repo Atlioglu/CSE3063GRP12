@@ -107,7 +107,7 @@ public class ApprovalCoursesSelectedController {
     }
 
     private void sendNotification(String message) {
-        notificationRepositories.updateNotification(currentCourseEnrollment.getStudentId(), "Your requeste is "+ message);
+        notificationRepositories.updateNotification(currentCourseEnrollment.getStudentId(), "Your request is "+ message);
 	}
 
     private boolean isCourseInList(Course course, ArrayList<Course> courseList) {

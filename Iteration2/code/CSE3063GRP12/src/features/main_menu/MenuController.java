@@ -9,8 +9,6 @@ import core.enums.StudentMenu;
 
 import core.enums.UserType;
 import core.exceptions.UnexpectedInputException;
-import core.general_providers.AppConstant;
-import core.general_providers.InstanceManager;
 import core.general_providers.SessionController;
 import core.general_providers.TerminalManager;
 import core.models.abstracts.User;
@@ -72,7 +70,6 @@ public class MenuController {
                 break;
             case Advisor:
                 for (AdvisorMenu item : AdvisorMenu.values()) {
-                    System.out.println(containNew);
                     if( item.isNotification()&& containNew){
                         menuItems.add("\033[1m" +"*"+ item.getItemMessage() +"*"+ "\033[0m ");
                        }else{
