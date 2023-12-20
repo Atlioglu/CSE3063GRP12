@@ -12,7 +12,7 @@
         }
     },
     "prerequisites": [],
-    "quota": 30,
+    "quota": 5,
     "currentQuota" : 5,
     "semester": 6
 }
