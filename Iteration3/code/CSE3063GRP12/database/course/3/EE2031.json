@@ -1,0 +1,18 @@
+{
+    "id": 150,
+    "courseCode": "EE2031",
+    "name": "Electric Circuits",
+    "credit": 4,
+    "session": {
+        "id": "id15",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 3
+}

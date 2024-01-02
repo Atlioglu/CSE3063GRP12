@@ -1,0 +1,19 @@
+{
+    "id": 8,
+    "courseCode": "CSE4056",
+    "name": "Management of Information Systems",
+    "credit": 5.00,
+    "session": {
+        "id": "id8",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+ 

@@ -1,0 +1,21 @@
+{
+  "listOfSemester": {
+    "1": {
+      "id": "0",
+      "listOfCoursesTaken": {
+        "CSE1200": "NON",
+        "PHYS1103": "NON",
+        "PHYS1101": "NON",
+        "MBG1201": "NON",
+        "MATH1001": "NON"
+      },
+      "creditsTaken": 21,
+      "yano": 0.0,
+      "semesterNo": 1
+    }
+  },
+  "gano": 0.0,
+  "totalCreditTaken": 0,
+  "totalCreditCompleted": 0,
+  "currentSemester": 1
+}

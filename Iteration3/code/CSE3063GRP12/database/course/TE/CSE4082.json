@@ -1,0 +1,19 @@
+{
+    "id": 19,
+    "courseCode": "CSE4082",
+    "name": "Artificial Intelligence",
+    "credit": 5.00,
+    "session": {
+        "id": "id19",
+        "courseSessions": {
+            "MONDAY": ["eight", "one"],
+            "WEDNESDAY": ["two", "three"],
+            "FRIDAY": ["four", "five"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+

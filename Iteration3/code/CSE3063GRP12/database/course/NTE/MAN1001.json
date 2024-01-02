@@ -1,0 +1,19 @@
+{
+    "id": 22,
+    "courseCode": "MAN1001",
+    "name": "Principles of Managerial Economics & Financial Management",
+    "credit": 3.00,
+    "session": {
+        "id": "id22",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 30
+}
+ 

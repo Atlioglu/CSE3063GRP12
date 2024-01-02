@@ -1,0 +1,18 @@
+{
+    "id": 35,
+    "courseCode": "COM2276",
+    "name": "Technical Communication and Entrepreneurship",
+    "credit": 2,
+    "session": {
+        "id": "id35",
+        "courseSessions": {
+            "WEDNESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 5,
+    "currentQuota" : 5,
+    "semester": 6
+}

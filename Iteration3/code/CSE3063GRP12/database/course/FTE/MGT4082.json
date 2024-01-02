@@ -1,0 +1,19 @@
+{
+    "id": 21,
+    "courseCode": "MGT4082",
+    "name": "Advanced Innovative Design Management for Entrepreneurship",
+    "credit": 5.00,
+    "session": {
+        "id": "id21",
+        "courseSessions": {
+            "MONDAY": ["six", "seven"],
+            "WEDNESDAY": ["eight", "one"],
+            "FRIDAY": ["two", "three"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 10
+}
+ 

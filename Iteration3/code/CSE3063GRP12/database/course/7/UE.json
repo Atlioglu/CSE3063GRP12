@@ -1,0 +1,18 @@
+{
+    "id": 43,
+    "courseCode": "UE",
+    "name": "University Elective",
+    "credit": 3,
+    "session": {
+        "id": "id43",
+        "courseSessions": {
+            "WEDNESDAY": ["three", "four"],
+            "THURSDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 7
+}

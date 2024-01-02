@@ -1,0 +1,18 @@
+{
+    "id": 11,
+    "courseCode": "PHYS1104",
+    "name": "Physics Lab II",
+    "credit": 2,
+    "session": {
+        "id": "id11",
+        "courseSessions": {
+            "WEDNESDAY": ["five", "six"],
+            "THURSDAY": ["seven", "eight"],
+            "FRIDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 2
+}

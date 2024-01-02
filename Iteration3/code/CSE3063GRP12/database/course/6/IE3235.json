@@ -1,0 +1,18 @@
+{
+    "id": 34,
+    "courseCode": "IE3235",
+    "name": "Operations Research",
+    "credit": 4,
+    "session": {
+        "id": "id34",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "TUESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 6
+}

@@ -1,0 +1,18 @@
+{
+    "id": 31,
+    "courseCode": "CSE3044",
+    "name": "Software Engineering",
+    "credit": 7,
+    "session": {
+        "id": "id31",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 6
+}

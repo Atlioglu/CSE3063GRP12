@@ -1,0 +1,18 @@
+{
+    "id": 37,
+    "courseCode": "CSE4074",
+    "name": "Computer Networks",
+    "credit": 5,
+    "session": {
+        "id": "id37",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 7
+}
