@@ -1,0 +1,19 @@
+ {
+    "id": 23,
+    "courseCode": "CSE4086",
+    "name": "Mobile Device Programming",
+    "credit": 5.00,
+    "session": {
+        "id": "id23",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+

@@ -1,0 +1,18 @@
+{
+    "id": 27,
+    "courseCode": "CSE3055",
+    "name": "Database Systems",
+    "credit": 7,
+    "session": {
+        "id": "id27",
+        "courseSessions": {
+            "WEDNESDAY": ["three", "four"],
+            "THURSDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 5
+}

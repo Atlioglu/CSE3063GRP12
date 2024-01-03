@@ -1,0 +1,19 @@
+{
+    "id": 19,
+    "courseCode": "ME4051",
+    "name": "Automotive Engineering",
+    "credit": 5.00,
+    "session": {
+        "id": "id19",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 10
+}
+ 

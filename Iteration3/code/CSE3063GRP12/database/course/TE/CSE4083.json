@@ -1,0 +1,19 @@
+{
+    "id": 20,
+    "courseCode": "CSE4083",
+    "name": "Computer Graphics",
+    "credit": 5.00,
+    "session": {
+        "id": "id20",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+

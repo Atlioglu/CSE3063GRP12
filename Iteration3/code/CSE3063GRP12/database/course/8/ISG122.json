@@ -1,0 +1,18 @@
+{
+    "id": 49,
+    "courseCode": "ISG122",
+    "name": "Work Safety II",
+    "credit": 2,
+    "session": {
+        "id": "id49",
+        "courseSessions": {
+            "WEDNESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 8
+}

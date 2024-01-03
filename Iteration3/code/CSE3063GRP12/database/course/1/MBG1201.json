@@ -1,0 +1,18 @@
+{
+    "id": 1,
+    "courseCode": "MBG1201",
+    "name": "Introduction to Modern Biology",
+    "credit": 5,
+    "session": {
+        "id": "id1",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 1
+}

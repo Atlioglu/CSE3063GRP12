@@ -1,0 +1,18 @@
+{
+    "id": 28,
+    "courseCode": "CSE3063",
+    "name": "Object-Oriented Software Design",
+    "credit": 5,
+    "session": {
+        "id": "id28",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "TUESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 5
+}

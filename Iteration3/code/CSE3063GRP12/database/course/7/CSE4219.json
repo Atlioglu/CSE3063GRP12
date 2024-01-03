@@ -1,0 +1,18 @@
+{
+    "id": 38,
+    "courseCode": "CSE4219",
+    "name": "Principles of Embedded System Design",
+    "credit": 6,
+    "session": {
+        "id": "id38",
+        "courseSessions": {
+            "MONDAY": ["five", "six"],
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 7
+}

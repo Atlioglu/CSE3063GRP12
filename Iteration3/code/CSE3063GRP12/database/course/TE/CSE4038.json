@@ -1,0 +1,19 @@
+{
+    "id": 4,
+    "courseCode": "CSE4038",
+    "name": "Introduction to Parallel Processing",
+    "credit": 5.00,
+    "session": {
+        "id": "id4",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+ 

@@ -1,0 +1,41 @@
+{
+  "advisor": {
+    "id": "ADid1",
+    "firstName": "Alice",
+    "lastName": "Adams",
+    "listOfStudentIds": [
+        "o150120021",
+        "o150120022",
+        "o150120023",
+        "o150120024",
+        "o150120025",
+        "o150120026",
+        "o150120027",
+        "o150120028",
+        "o150120029",
+        "o150120030"
+    ],
+    "listOfCoursesGiven": [],
+    "userName": "a150120xx1",
+    "password": "150120xx1"
+  },
+  "listOfLectureSessions": [
+    {
+    "id": "session1",
+    "courseSessions": {},
+    "lecturer": {},
+    "name": "Session Name"
+    }
+  ],
+  "transcript": {
+    "id": "transcriptId",
+    "gano": 0.0,
+    "totalCreditTaken": 0.0,
+    "totalCreditCompleted": 0.0,
+    "currentSemester": 1
+  },
+  "firstName": "Ava",
+  "lastName": "Anderson",
+  "userName": "o150120026",
+  "password": "150120026"
+}

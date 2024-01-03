@@ -1,0 +1,20 @@
+{
+    "id": "ADid6",
+    "firstName": "James",
+    "lastName": "Robert",
+    "listOfStudentIds": [
+        "o150120051",
+        "o150120052",
+        "o150120053",
+        "o150120054",
+        "o150120055",
+        "o150120056",
+        "o150120057",
+        "o150120058",
+        "o150120059",
+        "o150120060"
+    ],
+    "listOfCoursesGiven": [],
+    "userName": "a150120xx6",
+    "password": "150120xx6"
+}

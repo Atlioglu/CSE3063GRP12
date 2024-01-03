@@ -1,0 +1,37 @@
+{
+    "id": 44,
+    "courseCode": "CSE4298",
+    "name": "Engineering Project II",
+    "credit": 5,
+    "session": {
+        "id": "id44",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [
+        {
+            "id": 39,
+            "courseCode": "CSE4297",
+            "name": "Engineering Project I",
+            "credit": 5,
+            "session": {
+                "id": "id39",
+                "courseSessions": {
+                    "WEDNESDAY": ["three", "four"],
+                    "THURSDAY": ["five", "six"],
+                    "FRIDAY": ["seven", "eight"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+            "currentQuota" : 5,
+            "semester": 7
+        }
+    ],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 8
+}

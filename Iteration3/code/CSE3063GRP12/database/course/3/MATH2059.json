@@ -1,0 +1,18 @@
+{
+    "id": 18,
+    "courseCode": "MATH2059",
+    "name": "Numerical Methods",
+    "credit": 4,
+    "session": {
+        "id": "id18",
+        "courseSessions": {
+            "WEDNESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 3
+}

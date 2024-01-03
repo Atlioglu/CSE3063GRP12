@@ -1,0 +1,18 @@
+{
+    "id": 9,
+    "courseCode": "MATH2256",
+    "name": "Linear Algebra for Computer Engineering",
+    "credit": 5,
+    "session": {
+        "id": "id9",
+        "courseSessions": {
+            "TUESDAY": ["seven", "eight"],
+            "THURSDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 2
+}

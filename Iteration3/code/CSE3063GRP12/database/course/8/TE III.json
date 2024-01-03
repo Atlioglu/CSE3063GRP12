@@ -1,0 +1,18 @@
+{
+    "id": 47,
+    "courseCode": "TE III",
+    "name": "Technical Elective - 3",
+    "credit": 5,
+    "session": {
+        "id": "id47",
+        "courseSessions": {
+            "WEDNESDAY": ["three", "four"],
+            "THURSDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 8
+}
