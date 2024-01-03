@@ -1,0 +1,19 @@
+{
+    "id": 14,
+    "courseCode": "CSE4063",
+    "name": "Fundamentals of Data Mining",
+    "credit": 5.00,
+    "session": {
+        "id": "id14",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+

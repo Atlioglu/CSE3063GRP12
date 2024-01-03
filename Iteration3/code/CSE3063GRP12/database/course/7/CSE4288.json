@@ -1,0 +1,18 @@
+{
+    "id": 40,
+    "courseCode": "CSE4288",
+    "name": "Introduction to Machine Learning",
+    "credit": 5,
+    "session": {
+        "id": "id40",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "TUESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 7
+}

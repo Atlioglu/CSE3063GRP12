@@ -1,0 +1,19 @@
+ {
+    "id": 47,
+    "courseCode": "YDA1001",
+    "name": "German for Beginners",
+    "credit": 3.00,
+    "session": {
+        "id": "id47",
+        "courseSessions": {
+            "MONDAY": ["four", "five"],
+            "WEDNESDAY": ["six", "seven"],
+            "FRIDAY": ["eight", "one"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 30
+}
+

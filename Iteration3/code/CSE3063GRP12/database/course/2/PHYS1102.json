@@ -1,0 +1,18 @@
+{
+    "id": 10,
+    "courseCode": "PHYS1102",
+    "name": "Physics II",
+    "credit": 4,
+    "session": {
+        "id": "id10",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "THURSDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 2
+}

@@ -1,0 +1,18 @@
+{
+    "id": 5,
+    "courseCode": "PHYS1101",
+    "name": "Physics I",
+    "credit": 4,
+    "session": {
+        "id": "id5",
+        "courseSessions": {
+            "TUESDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "THURSDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 1
+}

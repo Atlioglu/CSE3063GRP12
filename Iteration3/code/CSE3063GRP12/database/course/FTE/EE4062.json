@@ -1,0 +1,19 @@
+{
+    "id": 9,
+    "courseCode": "EE4062",
+    "name": "Introduction to Image Processing",
+    "credit": 5.00,
+    "session": {
+        "id": "id9",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 10
+}
+ 

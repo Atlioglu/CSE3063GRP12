@@ -1,0 +1,68 @@
+{
+  "studentId": "o150120008",
+  "transcriptId": "id8",
+  "listOfSemesters": {
+    "1": {
+      "listOfCoursesTaken": {
+        "MBG1201": "BB",
+        "CSE1200": "CC",
+        "CSE1241": "BB",
+        "MATH1001": "CC",
+        "PHYS1101": "BB",
+        "PHYS1103": "CC"
+      },
+      "creditsTaken": 27,
+      "creditsCompleted": 27,
+      "yano": 3.00,
+      "gano": 3.00,
+      "semesterNo": 1
+    },
+    "2": {
+      "listOfCoursesTaken": {
+        "CSE1242": "CC",
+        "MATH1002": "BB",
+        "MATH2256": "CC",
+        "PHYS1102": "BB",
+        "PHYS1104": "CC"
+      },
+      "creditsTaken": 23,
+      "creditsCompleted": 23,
+      "yano": 3.10,
+      "gano": 3.05,
+      "semesterNo": 2
+    },
+    "3": {
+      "listOfCoursesTaken": {
+        "CSE2023": "CC",
+        "CSE2225": "BB",
+        "ECON2004": "CC",
+        "EE2031": "BB",
+        "MATH2055": "CC",
+        "MATH2059": "BB"
+      },
+      "creditsTaken": 26,
+      "creditsCompleted": 26,
+      "yano": 3.20,
+      "gano": 3.12,
+      "semesterNo": 3
+    },
+    "4": {
+      "listOfCoursesTaken": {
+        "CSE2246": "BB",
+        "CSE2138": "CC",
+        "CSE2260": "BB",
+        "EE2032": "CC",
+        "STAT2253": "BB"
+      },
+      "creditsTaken": 30,
+      "creditsCompleted": 30,
+      "yano": 3.15,
+      "gano": 3.14,
+      "semesterNo": 4
+    }
+  },
+  "gano": 3.14,
+  "totalCreditTaken": 106,
+  "totalCreditCompleted": 106,
+  "currentSemester": 5
+}

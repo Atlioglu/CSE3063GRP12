@@ -1,0 +1,19 @@
+{
+    "id": 42,
+    "courseCode": "YDI1004",
+    "name": "Report Writing in English",
+    "credit": 3.00,
+    "session": {
+        "id": "id42",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 30
+}
+ 

@@ -1,0 +1,18 @@
+{
+    "id": 13,
+    "courseCode": "CSE2023",
+    "name": "Discrete Computational Structures",
+    "credit": 6,
+    "session": {
+        "id": "id13",
+        "courseSessions": {
+            "MONDAY": ["one", "two"],
+            "WEDNESDAY": ["three", "four"],
+            "FRIDAY": ["five", "six"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 3
+}

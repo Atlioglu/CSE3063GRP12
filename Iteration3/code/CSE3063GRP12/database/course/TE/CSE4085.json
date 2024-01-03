@@ -1,0 +1,19 @@
+ {
+    "id": 22,
+    "courseCode": "CSE4085",
+    "name": "Human-Computer Interaction",
+    "credit": 5.00,
+    "session": {
+        "id": "id22",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+

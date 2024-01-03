@@ -1,0 +1,18 @@
+{
+    "id": 2,
+    "courseCode": "CSE1200",
+    "name": "Introduction to Computer Engineering",
+    "credit": 4,
+    "session": {
+        "id": "id2",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+    "currentQuota" : 5,
+    "semester": 1
+}

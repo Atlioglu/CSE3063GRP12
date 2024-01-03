@@ -1,0 +1,38 @@
+{
+    "id": 12,
+    "courseCode": "CSE4061",
+    "name": "Compiler Design",
+    "credit": 5.00,
+    "session": {
+        "id": "id12",
+        "courseSessions": {
+            "MONDAY": ["seven", "eight"],
+            "WEDNESDAY": ["one", "two"],
+            "FRIDAY": ["three", "four"]
+        }
+    },
+    "prerequisites": [
+        {
+            "id": 33,
+            "courseCode": "CSE3264",
+            "name": "Formal Languages and Automata Theory",
+            "credit": 5,
+            "session": {
+                "id": "id33",
+                "courseSessions": {
+                    "WEDNESDAY": ["three", "four"],
+                    "THURSDAY": ["five", "six"],
+                    "FRIDAY": ["seven", "eight"]
+                }
+            },
+            "prerequisites": [],
+            "quota": 30,
+        "currentQuota": 5,
+            "semester": 6
+        }
+    ],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 20
+}
+

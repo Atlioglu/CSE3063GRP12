@@ -1,0 +1,19 @@
+{
+    "id": 26,
+    "courseCode": "MSE4074",
+    "name": "Total Quality Management in Materials Engineering",
+    "credit": 5.00,
+    "session": {
+        "id": "id26",
+        "courseSessions": {
+            "MONDAY": ["three", "four"],
+            "WEDNESDAY": ["five", "six"],
+            "FRIDAY": ["seven", "eight"]
+        }
+    },
+    "prerequisites": [],
+    "quota": 30,
+"currentQuota": 5,
+    "semester": 10
+}
+ 

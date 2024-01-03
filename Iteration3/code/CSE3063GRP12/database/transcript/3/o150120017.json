@@ -1,0 +1,39 @@
+{
+  "studentId": "o150120017",
+  "transcriptId": "id17",
+  "listOfSemesters": {
+    "1": {
+      "listOfCoursesTaken": {
+        "MBG1201": "AA",
+        "CSE1200": "BB",
+        "CSE1241": "AA",
+        "MATH1001": "BB",
+        "PHYS1101": "AA",
+        "PHYS1103": "AA"
+      },
+      "creditsTaken": 27,
+      "creditsCompleted": 27,
+      "yano": 3.50,
+      "gano": 3.50,
+      "semesterNo": 1
+    },
+    "2": {
+      "listOfCoursesTaken": {
+        "CSE1242": "BB",
+        "MATH1002": "AA",
+        "MATH2256": "BB",
+        "PHYS1102": "AA",
+        "PHYS1104": "AA"
+      },
+      "creditsTaken": 23,
+      "creditsCompleted": 23,
+      "yano": 3.40,
+      "gano": 3.45,
+      "semesterNo": 2
+    }
+  },
+  "gano": 3.45,
+  "totalCreditTaken": 50,
+  "totalCreditCompleted": 50,
+  "currentSemester": 3
+}
