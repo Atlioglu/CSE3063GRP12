@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
 class User(ABC):
-    def __init__(self, id=None, first_name=None, last_name=None, user_name=None, password=None):
+    def __init__(self, id=None, firstName=None, lastName=None, userName=None, password=None):
         self.id = id
-        self.first_name = first_name
-        self.last_name = last_name
-        self.user_name = user_name
+        self.firstName = firstName
+        self.lastName = lastName
+        self.userName = userName
         self.password = password
 
     def get_user_type(self):
@@ -15,7 +15,7 @@ class User(ABC):
     def __eq__(self, other):
         if not isinstance(other, User):
             return False
-        return self.user_name == other.user_name and self.password == other.password
+        return self.userName == other.userName and self.password == other.password
 
     def __hash__(self):
-        return hash((self.user_name, self.password))
+        return hash((self.user_userNamename, self.password))

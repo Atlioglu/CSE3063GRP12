@@ -29,11 +29,7 @@ bin/
 .DS_Store
 
 ### Java Compile ###
-<<<<<<< Updated upstream
-*.class
-=======
 *.class
 
 ### Python ###
 __pycache__/
->>>>>>> Stashed changes
