@@ -1,5 +1,6 @@
 from core.models.concretes.Advisor import Advisor
 from core.models.concretes.Student import Student
+from core.enums.UserType import UserType
 
 class SessionController:
     _instance = None
@@ -25,8 +26,8 @@ class SessionController:
 
     def get_user_type(cls):
         if isinstance(cls._current_user, Student):
-            return "Student"
+            return UserType.Student
         elif isinstance(cls._current_user, Advisor):
-            return "Advisor"
+            return UserType.Advisor
         else:
             return None
