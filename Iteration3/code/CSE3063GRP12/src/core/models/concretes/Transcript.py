@@ -1,10 +1,22 @@
 class Transcript:
-    def __init__(self, id, listOfSemester, gano, totalCreditTaken, totalCreditCompleted, currentSemester):
-        self.id = id
-        self.listOfSemester = listOfSemester  # dictionary mapping integer (semester number) to Semester instances
+    def __init__(self,studentId, transcriptId, listOfSemesters, gano, totalCreditTaken, totalCreditCompleted, currentSemester):
+        self.studentId = studentId
+        self.transcriptId = transcriptId
+        self.listOfSemesters = listOfSemesters  # dictionary mapping integer (semester number) to Semester instances
         self.gano = gano
         self.totalCreditTaken = totalCreditTaken
         self.totalCreditCompleted = totalCreditCompleted
         self.currentSemester = currentSemester
+    
+    def to_dict(self):
+        return {
+            "studentId": self.studentId,
+            "transcriptId": self.transcriptId,
+            "listOfSemesters": {semesterNo: semester.to_dict() for semesterNo, semester in self.listOfSemesters.items()},
+            "gano": self.gano,
+            "totalCreditTaken": self.totalCreditTaken,
+            "totalCreditCompleted": self.totalCreditCompleted,
+            "currentSemester": self.currentSemester
+        }
 
   

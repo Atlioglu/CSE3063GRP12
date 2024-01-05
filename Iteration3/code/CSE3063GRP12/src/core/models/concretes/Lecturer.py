@@ -10,3 +10,13 @@ class Lecturer(User):
 
     def get_list_of_courses_given(self):
         return self.listOfCoursesGiven
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
+            "userName": self.userName,
+            "password": self.password,
+            "listOfCoursesGiven": [course.to_dict() if hasattr(course, 'to_dict') else course for course in self.listOfCoursesGiven]
+        }
