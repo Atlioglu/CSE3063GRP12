@@ -29,6 +29,8 @@ class UserRepository:
             raise UserNotFoundException()
         if user.password != password:
             raise WrongPasswordException()
+        else:
+            self.set_current_user(user)
       
 
     def set_current_user(self, user):

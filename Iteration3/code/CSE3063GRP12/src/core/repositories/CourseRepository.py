@@ -59,7 +59,7 @@ class CourseRepository:
     def getCurrentQuota(self, courseCode):
         course = self.findCourseByCode(courseCode)
         if course is not None:
-            return course.current_quota
+            return course.currentQuota
         else:
             raise ValueError(f"Course with code {courseCode} not found.")
         
@@ -99,7 +99,7 @@ class CourseRepository:
             repository_course = self.findCourseByCode(course_code)
             if repository_course is not None:
                 # Update the currentQuota for the course in the repository
-                repository_course.current_quota += 1
+                repository_course.currentQuota += 1
 
                 # Save the updated course back to the repository
                 try:

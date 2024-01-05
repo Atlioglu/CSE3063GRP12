@@ -15,7 +15,8 @@ class CourseEnrollmentRepository:
 
     def get_course_enrollment_by_student_id(self, student_id):
         try:
-            course_enrollment = self.database_manager.read(os.path.join(self.path, f"{student_id}.json"), CourseEnrollment)
+            path = os.path.join(self.path, f"{student_id}.json")
+            course_enrollment = self.database_manager.read(path, CourseEnrollment)
             return course_enrollment
         except Exception as e:
             print(f"An error occurred while getting course enrollment by student id: {e}")
