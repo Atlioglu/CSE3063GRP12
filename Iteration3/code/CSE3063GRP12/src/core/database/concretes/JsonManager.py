@@ -13,6 +13,10 @@ class JsonManager(DatabaseManager):
     def write(self, path, object):
         try:
             with open(path, 'w') as file:
-                json.dump(object.__dict__, file)  # Convert the object's attributes to JSON
+                if hasattr(object, 'to_dict'):
+                        data = object.to_dict()  # Use the to_dict() method if available
+                else:
+                    data = object.__dict__
+                json.dump(data, file)
         except Exception as e:
             pass
