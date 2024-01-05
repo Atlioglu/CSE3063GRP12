@@ -2,7 +2,7 @@ from features.login.LoginView import LoginView
 from core.repositories.UserRepository import UserRepository
 from core.exceptions.UserNotFoundException import UserNotFoundException
 from core.exceptions.WrongPasswordException import WrongPasswordException
-#from features.menu.MenuController import MenuController
+from features.main_menu.MenuController import MenuController
 
 class LoginController:
 
@@ -12,8 +12,7 @@ class LoginController:
         self.handle_login()
 
     def navigate_to_menu(self):
-        print("Navigating to menu...")
-        #MenuController()
+        MenuController()
 
     def get_username_input(self):
         return input("Please enter your username: ")
