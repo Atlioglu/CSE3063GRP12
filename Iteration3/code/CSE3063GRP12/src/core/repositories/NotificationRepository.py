@@ -1,14 +1,14 @@
 import os
 from datetime import datetime
 
-from src.core.general_providers.AppConstant import AppConstant
-from src.core.general_providers.InstanceManager import InstanceManager
-from src.core.enums.UserType import UserType
-from src.core.models.concretes.NotificationResponse import NotificationResponse
-from src.core.models.concretes.Notification import Notification
+from core.general_providers.AppConstant import AppConstant
+from core.general_providers.InstanceManager import InstanceManager
+from core.enums.UserType import UserType
+from core.models.concretes.NotificationResponse import NotificationResponse
+from core.models.concretes.Notification import Notification
 
-class NotificationRepositories:
-    def __init__(self, database_manager):
+class NotificationRepository:
+    def __init__(self):
         self.database_manager = InstanceManager().get_database_instance()
         self.path = os.getcwd() + AppConstant.getInstance().get_base_path() + "notification/"
         self.student_path = os.path.join(self.path, "student")
@@ -18,10 +18,10 @@ class NotificationRepositories:
         user_type = self.get_user_type(user_name)
         notification_response = None
         try:
-            if user_type == UserType.STUDENT:
+            if user_type == UserType.Student:
                 file_path = f"{self.student_path}/{user_name}.json"
                 notification_response = self.database_manager.read(file_path,NotificationResponse)
-            elif user_type == UserType.ADVISOR:
+            elif user_type == UserType.Advisor:
                 file_path = f"{self.advisor_path}/{user_name}.json"
                 notification_response = self.database_manager.read(file_path,NotificationResponse)
             if notification_response is None:
@@ -34,7 +34,7 @@ class NotificationRepositories:
     def write_notification(self, user_name, notification_response):
         user_type = self.get_user_type(user_name)
         try:
-            file_path = os.path.join(self.advisor_path if user_type == UserType.ADVISOR else self.student_path, user_name + ".json")
+            file_path = os.path.join(self.advisor_path if user_type == UserType.Advisor else self.student_path, user_name + ".json")
             self.database_manager.write(file_path, notification_response)
         except Exception as e:
             print(f"An error occurred while writing notification: {e}")
@@ -45,9 +45,9 @@ class NotificationRepositories:
         notification_response = None
 
         try:
-            if user_type == UserType.STUDENT:
+            if user_type == UserType.Student:
                 notification_response = self.database_manager.read(f"{self.student_path}/{user_name}.json", NotificationResponse)
-            elif user_type == UserType.ADVISOR:
+            elif user_type == UserType.Advisor:
                 notification_response = self.database_manager.read(f"{self.advisor_path}/{user_name}.json", NotificationResponse)
 
             date = datetime.now()
@@ -73,9 +73,9 @@ class NotificationRepositories:
         notification_response = None
 
         try:
-            if user_type == UserType.STUDENT:
+            if user_type == UserType.Student:
                 notification_response = self.database_manager.read(f"{self.student_path}/{user_name}.json",NotificationResponse)
-            elif user_type == UserType.ADVISOR:
+            elif user_type == UserType.Advisor:
                 notification_response = self.database_manager.read(f"{self.advisor_path}/{user_name}.json",NotificationResponse)
 
             notifications = notification_response.listOfNotification
@@ -92,9 +92,9 @@ class NotificationRepositories:
         notification_response = None
 
         try:
-            if user_type == UserType.STUDENT:
+            if user_type == UserType.Student:
                 notification_response = self.database_manager.read(f"{self.student_path}/{user_name}.json",NotificationResponse)
-            elif user_type == UserType.ADVISOR:
+            elif user_type == UserType.Advisor:
                 notification_response = self.database_manager.read(f"{self.advisor_path}/{user_name}.json", NotificationResponse)
 
             notification_response.containsNew = contain_new
@@ -107,9 +107,9 @@ class NotificationRepositories:
     def get_user_type(self, user_name):
         first_letter = user_name[0]
         if first_letter == "o":
-            return UserType.STUDENT
+            return UserType.Student
         elif first_letter == "a":
-            return UserType.ADVISOR
+            return UserType.Advisor
         else:
             return None
 
