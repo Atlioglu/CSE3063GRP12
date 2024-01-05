@@ -1,15 +1,9 @@
-from abc import ABC, abstractmethod
+from enum import Enum
 
-class Menu(ABC):
-
-    @abstractmethod
+class Menu(Enum):
     def get_item_message(self):
         pass
-
-    @abstractmethod
     def navigate(self):
         pass
-
-    @abstractmethod
     def is_notification(self):
         pass

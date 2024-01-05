@@ -1,4 +1,6 @@
 from core.enums.Menu import Menu
+from features.student.course_registration.CourseRegistrationController import CourseRegistrationController
+from features.student.transcript.TranscriptController import TranscriptController
 
 class StudentMenu(Menu):
     COURSE_REGISTRATION = "Course Registration"
@@ -12,20 +14,19 @@ class StudentMenu(Menu):
     
     def navigate(self):
         if self == StudentMenu.COURSE_REGISTRATION:
-            # Placeholder for course registration action
-            print("Navigating to Course Registration")
+            CourseRegistrationController()
         elif self == StudentMenu.WEEKLY_SCHEDULE:
-            # Placeholder for weekly schedule action
-            print("Navigating to Weekly Schedule")
+            from features.student.weekly_schedule.WeeklyScheduleController import WeeklyScheduleController
+            WeeklyScheduleController()
         elif self == StudentMenu.TRANSCRIPT:
-            # Placeholder for transcript action
-            print("Navigating to Transcript")
+            TranscriptController()
         elif self == StudentMenu.NOTIFICATION:
             # Placeholder for notification action
             print("Navigating to Notifications")
         elif self == StudentMenu.LOGOUT:
-            # Placeholder for logout action
-            print("Logging out")    
+            from features.login.LoginController import LoginController
+            LoginController()    
         
     def is_notification(self):
         return self == StudentMenu.NOTIFICATION
+    
