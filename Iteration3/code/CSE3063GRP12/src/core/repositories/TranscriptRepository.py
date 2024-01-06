@@ -26,8 +26,8 @@ class TranscriptRepository:
     
     def update_transcript(self, course_enrollment):
         try:
-            transcript = self.get_transcript(course_enrollment.student_id)
-            current_semester = transcript.current_semester
+            transcript = self.get_transcript(course_enrollment.studentId)
+            current_semester = transcript.currentSemester
 
             if transcript.listOfSemesters == None or current_semester > len(transcript.listOfSemesters):
                 new_course_list = {}
@@ -35,23 +35,25 @@ class TranscriptRepository:
                 if transcript.listOfSemesters == None:
                     transcript.listOfSemesters = {}
                 
-                for course in course_enrollment.selectedCourseList:
-                    new_course_list[course.courseCode] = CourseGrade.NON
+                for course in course_enrollment.approved_course_list:
+                    new_course_list[course.get('courseCode')] = CourseGrade.NON
 
-                total_credit_taken = sum(course.credit for course in course_enrollment.selectedCourseList)
+                total_credit_taken = sum(course.get('credit') for course in course_enrollment.approved_course_list)
                 semester = Semester("0", new_course_list, total_credit_taken, 0, transcript.currentSemester)
                 
-                transcript.listOfSemesters[current_semester] = semester
+                transcript.listOfSemesters[str(current_semester)] = semester.to_dict()
 
+                # {'listOfCoursesTaken': {'MBG1201': 'AA', 'CSE1200': 'BB', 'CSE1241': 'CC', 'MATH1001': 'DD', 'PHYS1101': 'BA', 'PHYS1103': 'CC'}, 'creditsTaken': 27, 'creditsCompleted': 27, 'yano': 3.7, 'gano': 3.7, 'semesterNo': 1}
+                # {'id': '0', 'listOfCoursesTaken': {'CSE3044': <CourseGrade.FF: 0.0>, 'CSE3264': <CourseGrade.FF: 0.0>, 'IE3235': <CourseGrade.FF: 0.0>}, 'credits_taken': 16, 'yano': 0, 'semesterNo': 6}
                 self.database_manager.write(os.path.join(self.path, str(current_semester), f"{course_enrollment.studentId}.json"), transcript)
             else:
                 new_course_list = {}
                 for course in course_enrollment.selectedCourseList:
-                    new_course_list[course.courseCode] = CourseGrade.NON
+                    new_course_list[course.get('courseCode')] = CourseGrade.NON
 
-                total_credit_taken = sum(course.credit for course in course_enrollment.selectedCourseList)    
+                total_credit_taken = sum(course.get('credit') for course in course_enrollment.selectedCourseList)    
 
-                semester = Semester("0", new_course_list, total_credit_taken, 0, transcript.current_semester)
+                semester = Semester("0", new_course_list, total_credit_taken, 0, transcript.currentSemester)
                 transcript.listOfSemesters[current_semester] = semester
 
                 self.database_manager.write(os.path.join(self.path, str(current_semester), f"{course_enrollment.studentId}.json"), transcript)

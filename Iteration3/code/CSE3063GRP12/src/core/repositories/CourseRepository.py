@@ -87,12 +87,12 @@ class CourseRepository:
             return
 
         approved_courses = courseEnrollment.approved_course_list
-        if approved_courses is None or not approved_courses:
+        if approved_courses is None or len(approved_courses) == 0:
             print("No approved courses found for the student.")
             return
 
         for selected_course in approved_courses:
-            course_code = selected_course.courseCode  # Assuming courseCode is an attribute
+            course_code = selected_course['courseCode']  # Assuming courseCode is an attribute
             print(f"Processing course with code: {course_code}")
 
             # Find the corresponding course in the repository
@@ -105,7 +105,7 @@ class CourseRepository:
                 try:
                     file_path = f"{self.path}/{repository_course.semester}/{repository_course.courseCode}.json"
                     self.database_manager.write(file_path, repository_course)
-                    print(f"Quota updated successfully for course: {course_code}")
+                    #print(f"Quota updated successfully for course: {course_code}")
                 except Exception as e:
                     print(f"Error updating quota for {course_code}: {e}")
             else:

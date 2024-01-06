@@ -29,7 +29,7 @@ class CourseEnrollmentRepository:
             for student_id in advisor.listOfStudentIds:
                 try:
                     course_enrollment = self.database_manager.read(os.path.join(self.path, f"{student_id}.json"), CourseEnrollment)
-                    if course_enrollment.approvalState == ApprovalState.PENDING:
+                    if course_enrollment is not None and (course_enrollment.approvalState == ApprovalState.PENDING or course_enrollment.approvalState == "Pending"):
                         course_enrollments.append(course_enrollment)
                 except Exception as e:
                     print(f"An error occurred while getting course enrollment by student id: {e}")
