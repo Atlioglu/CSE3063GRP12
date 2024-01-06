@@ -1,9 +1,8 @@
-from ....core.general_providers import TerminalManager
-from ....core.repositories import CourseEnrollmentRepository
-from ....core.exceptions import UnexpectedInputException
-from ..approval_courses_selected import ApprovalCoursesSelectedController
-from ..course_approval import CourseApprovalView
-from ..main_menu import MenuController
+from core.repositories.CourseEnrollmentRepository import CourseEnrollmentRepository
+from core.exceptions.UnexpectedInputException import UnexpectedInputException
+from features.advisor.approval_courses_selected.ApprovalCoursesSelectedController import ApprovalCoursesSelectedController
+from features.advisor.course_approval.CourseApprovalView import CourseApprovalView
+
 
 class CourseApprovalController:
     def __init__(self):
@@ -13,7 +12,7 @@ class CourseApprovalController:
         try:
             self.handle_approval_controller()
         except UnexpectedInputException as e:
-            self.__courseApprovalView.show_error_message(e)
+            self.__courseApprovalView.showErrorMessage(e)
             CourseApprovalController()
 
     def fetch_pending_enrollments(self):
@@ -23,18 +22,15 @@ class CourseApprovalController:
         ApprovalCoursesSelectedController(course_enrollment)
 
     def navigate_to_menu(self):
+        from features.main_menu.MenuController import MenuController
         MenuController()
-
-    def get_user_input(self):
-        input_value = TerminalManager.get_instance().read()
-        return input_value
 
     def handle_approval_controller(self):
         pending_enrollments = self.fetch_pending_enrollments()
-        self.__courseApprovalView.show_pending_course_enrollments(pending_enrollments)
+        self.__courseApprovalView.showPendingCourseEnrollments(pending_enrollments)
 
-        self.__courseApprovalView.show_prompt_message()
-        selection = self.get_user_input()
+
+        selection = input("Please enter your selection: ")
         if not selection.isdigit() and selection != "q":
             raise UnexpectedInputException()
         elif selection == "q":
