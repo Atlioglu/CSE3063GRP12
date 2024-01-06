@@ -1,9 +1,7 @@
-from ....core.general_providers import TerminalManager
-from ....core.general_providers import SessionController
-from ....core.models.concretes import Advisor
-from ....core.repositories import UserRepository
-from ..main_menu import MenuController
-from . import AdvisorStudentListView
+from core.general_providers.SessionController import SessionController
+from core.models.concretes.Advisor import Advisor
+from core.repositories.UserRepository import UserRepository
+from features.advisor.student_list.AdvisorStudentListView import AdvisorStudentListView
 
 class AdvisorStudentListController:
     def __init__(self):
@@ -12,23 +10,20 @@ class AdvisorStudentListController:
         self.handle_student_list()
 
     def navigate_to_menu(self):
+        from features.main_menu.MenuController import MenuController
         MenuController()
 
-    def get_user_input(self):
-        input_value = TerminalManager.getInstance().read()
-        return input_value
-
     def handle_student_list(self):
-        advisor = SessionController.getInstance().getCurrentUser()
+        advisor = SessionController.getInstance().get_current_user()
         if isinstance(advisor, Advisor):
-            self.__advisorStudentListView.show_student_list(self.__userRepository.get_students_by_advisor(advisor))
-            self.__advisorStudentListView.show_quit_message()
-            user_input = self.get_user_input()
+            self.__advisorStudentListView.showStudentList(self.__userRepository.get_students_by_advisor(advisor))
+            self.__advisorStudentListView.showQuitMessage()
+            user_input = input()
             try:
                 if user_input == "q":
                     self.navigate_to_menu()
                 else:
-                    self.__advisorStudentListView.show_error_message()
+                    self.__advisorStudentListView.showErrorMessage()
             except Exception as e:
                 print("Error:", str(e))
                 self.handle_student_list()

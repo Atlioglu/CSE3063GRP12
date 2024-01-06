@@ -1,4 +1,4 @@
-from ....core.exceptions import UnexpectedInputException
+from core.exceptions.UnexpectedInputException import UnexpectedInputException
 
 class AdvisorStudentListView:
     def showStudentList(self, studentArrayList):
@@ -6,7 +6,7 @@ class AdvisorStudentListView:
         print("%-27s%-20s%-20s" % ("[Student ID]", "[First Name]", "[Last Name]"))
         print("========================================================================================================================================================================================")
         for i, student in enumerate(studentArrayList, start=1):
-            print("[%d] %-20s %-20s %-20s" % (i, student.getUserName(), student.getFirstName(), student.getLastName()))
+            print("[%d] %-20s %-20s %-20s" % (i, student.userName, student.firstName, student.lastName))
         print("========================================================================================================================================================================================")
 
     def showQuitMessage(self):
