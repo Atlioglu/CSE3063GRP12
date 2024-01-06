@@ -112,7 +112,7 @@ class CourseRegistrationController:
 
             all_courses = []
 
-            if course_enrollment is not None and course_enrollment.approvalState == ApprovalState.REJECTED:
+            if course_enrollment is not None and (course_enrollment.approvalState == ApprovalState.REJECTED or course_enrollment.approvalState == "Rejected"):
                 self.handle_rejected_enrollment(transcript, course_enrollment, available_courses_for_student, all_courses)
             else:
                 self.handle_new_enrollment(transcript, course_enrollment, all_courses, available_courses_for_student)
@@ -134,6 +134,10 @@ class CourseRegistrationController:
 
         if len(all_courses) > 0:
             while True:
+                if course_enrollment.approved_course_list is None or len(course_enrollment.approved_course_list) == 0:
+                    print("You don't have any approved course. You need to select courses again.")
+                    self.show_available_courses(course_enrollment, all_courses)
+                    break
                 print("Option-1: Do you want to finalize your enrollment with the approved courses? -or- Option-2: Do you want to choose other courses? ")
                 user_input = input("Choose 1 or 2: ")
                 try:
@@ -151,6 +155,15 @@ class CourseRegistrationController:
             self.send_courses_to_approval(course_enrollment, course_enrollment.approved_course_list, ApprovalState.APPROVED)
         self.navigate_to_menu()
     
+    def update_transcript(self, course_enrollment):
+        self.transcriptRepository.update_transcript(course_enrollment)
+
+    def update_current_quota(self, course_enrollment):
+        try:
+            self.courseRepository.updateCurrentQuota(course_enrollment)
+        except Exception as e:
+            print(e)
+
     def handle_new_enrollment(self, transcript, course_enrollment, all_courses, available_courses_in_current_semester):
         all_courses.extend(available_courses_in_current_semester)
         all_courses.extend(self.get_retake_courses(transcript))
@@ -252,8 +265,12 @@ class CourseRegistrationController:
     
     def contains_course_with_id(self, courses, target_course):
         for course in courses:
-            if course.get("id") == target_course.id:
-                return True
+            if isinstance(target_course, dict):
+                if course.get("id") == target_course.get("id"):
+                    return True
+            else:
+                if course.get("id") == target_course.id:
+                    return True
         return False
 
     def get_retake_courses(self, transcript):
@@ -487,6 +504,10 @@ class CourseRegistrationController:
                                                                   course_enrollment.approved_course_list,
                                                                   course_enrollment.rejected_course_list,
                                                                   approval_state)
+                
+                if approval_state == ApprovalState.APPROVED:
+                    self.update_transcript(course_enrollment)
+                    self.update_current_quota(course_enrollment)
                 self.courseRegistrationView.show_success_message()
                 self.navigate_to_menu()
         except Exception as e:
