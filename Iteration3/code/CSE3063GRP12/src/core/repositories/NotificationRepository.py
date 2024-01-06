@@ -80,7 +80,7 @@ class NotificationRepository:
 
             notifications = notification_response.listOfNotification
             for notification in reversed(notifications):
-                notification.set_read(True)
+                notification["read"] = True
 
             self.write_notification(user_name, notification_response)
 

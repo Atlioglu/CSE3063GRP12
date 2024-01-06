@@ -40,7 +40,7 @@ class UserRepository:
   
     def get_students_by_advisor(self, advisor):
         students = []
-        for student_id in advisor.list_of_student_ids:
+        for student_id in advisor.listOfStudentIds:
             student = self.database_manager.read(f"{self.student_path}/{student_id}.json", Student)
             students.append(student)
         return students
