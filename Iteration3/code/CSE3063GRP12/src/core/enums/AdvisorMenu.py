@@ -1,4 +1,7 @@
 from core.enums.Menu import Menu
+from features.notification.NotificationController import NotificationController
+from features.advisor.course_approval.CourseApprovalController import CourseApprovalController
+from features.advisor.student_list.AdvisorStudentListController import AdvisorStudentListController
 
 class AdvisorMenu(Menu):
     COURSE_APPROVAL = "Course Approval"
@@ -11,17 +14,14 @@ class AdvisorMenu(Menu):
     
     def navigate(self):
         if self == AdvisorMenu.COURSE_APPROVAL:
-            # Placeholder for course approval action
-            print("Navigating to Course Approval")
+            CourseApprovalController()
         elif self == AdvisorMenu.STUDENT_LIST:
-            # Placeholder for student list action
-            print("Navigating to Student List")
+            AdvisorStudentListController()
         elif self == AdvisorMenu.NOTIFICATION:
-            # Placeholder for notification action
-            print("Navigating to Notifications")
+            NotificationController()
         elif self == AdvisorMenu.LOGOUT:
-            # Placeholder for logout action
-            print("Logging out")
+            from features.login.LoginController import LoginController
+            LoginController()  
 
     def is_notification(self):
         return self == AdvisorMenu.NOTIFICATION

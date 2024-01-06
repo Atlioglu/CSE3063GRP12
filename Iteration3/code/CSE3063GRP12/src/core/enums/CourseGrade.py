@@ -11,3 +11,6 @@ class CourseGrade(Enum):
     FD = 0.50
     FF = 0.00
     NON = 0.00
+
+    def to_dict(self):
+        return self.value
