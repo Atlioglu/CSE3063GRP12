@@ -1,6 +1,7 @@
 from core.enums.Menu import Menu
 from features.student.course_registration.CourseRegistrationController import CourseRegistrationController
 from features.student.transcript.TranscriptController import TranscriptController
+from features.notification.NotificationController import NotificationController
 
 class StudentMenu(Menu):
     COURSE_REGISTRATION = "Course Registration"
@@ -21,8 +22,7 @@ class StudentMenu(Menu):
         elif self == StudentMenu.TRANSCRIPT:
             TranscriptController()
         elif self == StudentMenu.NOTIFICATION:
-            # Placeholder for notification action
-            print("Navigating to Notifications")
+            NotificationController()
         elif self == StudentMenu.LOGOUT:
             from features.login.LoginController import LoginController
             LoginController()    
