@@ -9,14 +9,15 @@ class Transcript:
         self.currentSemester = currentSemester
     
     def to_dict(self):
-        return {
+        dict = {
             "studentId": self.studentId,
             "transcriptId": self.transcriptId,
-            "listOfSemesters": {semesterNo: semester.to_dict() for semesterNo, semester in self.listOfSemesters.items()},
+            "listOfSemesters": {semesterNo: semester.to_dict() if hasattr(semester, 'to_dict') else semester for semesterNo, semester in self.listOfSemesters.items()},
             "gano": self.gano,
             "totalCreditTaken": self.totalCreditTaken,
             "totalCreditCompleted": self.totalCreditCompleted,
             "currentSemester": self.currentSemester
         }
+        return dict
 
   
