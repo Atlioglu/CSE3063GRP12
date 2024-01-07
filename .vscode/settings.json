@@ -3,5 +3,14 @@
         "lib/**/*.jar",
         "libraries/gson-2.10.1.jar",
         "libraries/junit-4.13.2.jar"
-    ]
+    ],
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./Iteration3",
+        "-p",
+        "*test*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }
