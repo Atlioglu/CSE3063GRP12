@@ -39,15 +39,12 @@ class TranscriptController:
                 print()
 
                 for semester in semesters.values():
-                    print("===========================================================================================================================================================================")
-                    print("# -> Year ({}): --Semester [{}]--".format(semester.semesterNo // 2 if semester.semesterNo % 2 == 0 else (semester.semesterNo + 1) // 2, semester.semesterNo))
-                    print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-
-                    course_id_list = list(semester.listOfCoursesTaken.keys())
+                    print("-" * 100)
+                    course_id_list = list(semester.get("listOfCoursesTaken").keys())
                     courses = self.course_repository.findCoursesWithCourseIds(course_id_list)
 
-                    print("\t{: <15}{: <80}{: <20}{: <20}".format("Course Code", "Course Name", "Course Credit", "Course Grade"))
-                    print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+                    print(f"{'Course Code':<15} {'Course Name':<60} {'Course Credit':<15} {'Course Grade':<15}")
+                    print("-" * 100)
                     print()
 
                     for course in courses:
@@ -56,29 +53,18 @@ class TranscriptController:
                         if course_grade is None:
                             course_grade = "NA"
                         
-                        print("\t{: <15}{: <85}{: <20}{: <20}".format(course.courseCode, course.name, course.credit, semester.listOfCoursesTaken[course.courseCode]))
+                        
+                        print(f"{course.courseCode:<15} {course.name:<60} {course.credit:<15} {course_grade:<15}")
+                        print()
 
-                    print()
-                    print("===========================================================================================================================================================================")
-                    print(">>---> Completed Credits: {}".format(semester.credits_completed))
-                    print(">>---> Taken Credits: {}".format(semester.credits_taken))
-                    print(">>---> Yano: {}".format(semester.yano))
-                    print(">>---> Gano: {}".format(semester.gano))
-                    print()
+                print("-" * 100)
+                input_message = input("Press q to return Main Menu: ")
+                if input_message == "q":
+                    self.navigate_to_menu()
+                else:
+                    raise UnexpectedInputException("Unexpected input!")
 
-                print("|||========================================================================================================================================================TRANSCRIPT<---<<")
-                print("###===>> Completed Credits: {}".format(transcript.totalCreditCompleted))
-                print("###===>> Taken Credits: {}".format(transcript.totalCreditTaken))
-                print("###===>> Gano: {}".format(transcript.gano))
-                print("|||========================================================================================================================================================TRANSCRIPT<---<<")
                 
-                while True:
-                    input_message = input("Press q to return Main Menu: ")
-                    if input_message == "q":
-                        self.navigate_to_menu()
-                        break
-                    else:
-                        raise UnexpectedInputException("Unexpected input!")
         except Exception as e:
             print(e)
         
