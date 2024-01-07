@@ -5,7 +5,7 @@ class Semester:
         self.credits_taken = creditsTaken
         self.yano = yano 
         self.semesterNo = semesterNo
-    
+        
     def to_dict(self):
         dict = {
             "id": self.id,

@@ -21,7 +21,7 @@ class TranscriptController:
     def navigate_to_menu(self):
         from features.main_menu.MenuController import MenuController
         MenuController()
-    
+     
     def handle_transcript(self):
         try:
             session_controller = SessionController.getInstance()
